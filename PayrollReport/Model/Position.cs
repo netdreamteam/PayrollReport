@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Model
 {
     /// <summary>
-    /// 岗位
+    /// 岗位(所在岗位表)
     /// </summary>
     public class Position
     {
