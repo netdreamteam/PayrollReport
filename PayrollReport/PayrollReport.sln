@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelOperator", "ExcelOperator\ExcelOperator.csproj", "{4A84B3F8-BE66-468A-8CB4-6E1D7E1F87A5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Views", "Views", "{25A49DDB-5FF5-454F-9058-E5A970175310}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainUI", "MainUI\MainUI.csproj", "{FD17C35F-7C90-4647-9A14-25532C544E87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{6B645896-84CB-4BEE-B8F2-FAEC9C13FB5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{FD17C35F-7C90-4647-9A14-25532C544E87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD17C35F-7C90-4647-9A14-25532C544E87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD17C35F-7C90-4647-9A14-25532C544E87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B645896-84CB-4BEE-B8F2-FAEC9C13FB5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B645896-84CB-4BEE-B8F2-FAEC9C13FB5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B645896-84CB-4BEE-B8F2-FAEC9C13FB5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B645896-84CB-4BEE-B8F2-FAEC9C13FB5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
