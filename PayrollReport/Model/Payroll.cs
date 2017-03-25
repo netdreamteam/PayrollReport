@@ -16,6 +16,11 @@ namespace Model
         public Payroll()
         { }
         #region Model
+        /// <summary>
+        /// 主键
+        /// </summary>
+        [Key]
+        public string ID { get; set; }
 
         /// <summary>
         /// 社保编号
