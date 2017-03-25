@@ -11,12 +11,12 @@ namespace Model
     /// <summary>
     /// 源数据
     /// </summary>
-    class Payroll
+    public class Payroll
     {
         public Payroll()
         { }
         #region Model
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -36,12 +36,12 @@ namespace Model
         /// <summary>
         /// 
         /// </summary>
-        [ForeignKey("Position")]
+        [ForeignKey("PositionLink")]
         public string PositionID { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        [ForeignKey("PostRank")]
+        [ForeignKey("PostRankLink")]
         public string PostRankID { get; set; }
         /// <summary>
         /// 
@@ -172,5 +172,11 @@ namespace Model
         /// </summary>
         public decimal AnnualYearEndPerformance { get; set; }
         #endregion Model
+
+        #region 外键
+        public virtual Position PositionLink { get; set; }
+        public virtual PostRank PostRankLink { get; set; }
+
+        #endregion
     }
 }
