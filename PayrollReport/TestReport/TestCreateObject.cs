@@ -17,22 +17,23 @@ namespace TestReport
         public void Test1()
         {
             Dictionary<string, List<ReportPost>> dicReportLeader = new Dictionary<string, List<ReportPost>>();
-            List<ReportPost> list = new List<ReportPost>();
-            list.Add(new ReportPost()
+            List<ReportPost> list1 = new List<ReportPost>();
+            list1.Add(new ReportPost()
             {
-                PositionName="公司正职领导",
+                PositionName="管理人员",
+                PostRankName = "主办一",
                 AlreadyCount=1,
                 NotCount=1,
-                NotName="罗唐坤",
+                NotName="罗唐坤、蒋波",
                 SmileStar=1,
-                AnnualYearEndPerformance=1,
-                CommunicationSubsidy=1,
-                Debit=1,
-                DustCharge=1,
-                HardshipAllowance=1,
-                HighSubsidies=1,
-                JobReplacement=1,
-                MonthlyPerformancePay=1,
+                AnnualYearEndPerformance=10,
+                CommunicationSubsidy=10,
+                Debit=10,
+                DustCharge=21,
+                HardshipAllowance=31,
+                HighSubsidies=11,
+                JobReplacement=13,
+                MonthlyPerformancePay=13,
                 NaturalYearEndPerformance=100,
                 NightAllowance=12,
                 Other=12,
@@ -44,7 +45,117 @@ namespace TestReport
                 ReuseCount=1,
                 ReuseName="蒋波"
             });
-            dicReportLeader["ReportLeader"] = list;
+            list1.Add(new ReportPost()
+            {
+                PositionName = "管理人员",
+                PostRankName = "主办一",
+                AlreadyCount = 1,
+                NotCount = 1,
+                NotName = "罗唐坤1",
+                SmileStar = 1,
+                AnnualYearEndPerformance = 10,
+                CommunicationSubsidy = 10,
+                Debit = 10,
+                DustCharge = 21,
+                HardshipAllowance = 31,
+                HighSubsidies = 11,
+                JobReplacement = 13,
+                MonthlyPerformancePay = 13,
+                NaturalYearEndPerformance = 100,
+                NightAllowance = 12,
+                Other = 12,
+                OvertimePay = 12,
+                PerformancePay = 12,
+                PostAllowance = 12,
+                Reserve1 = 12,
+                Reserve2 = 13,
+                ReuseCount = 1,
+                ReuseName = "蒋波1"
+            });
+
+            List<ReportPost> list2 = new List<ReportPost>();
+            list2.Add(new ReportPost()
+            {
+                PositionName = "公司领导正职",
+                AlreadyCount = 1,
+                NotCount = 1,
+                NotName = "王娇",
+                SmileStar = 1,
+                AnnualYearEndPerformance = 1,
+                CommunicationSubsidy = 1,
+                Debit = 1,
+                DustCharge = 1,
+                HardshipAllowance = 1,
+                HighSubsidies = 1,
+                JobReplacement = 1,
+                MonthlyPerformancePay = 1,
+                NaturalYearEndPerformance = 100,
+                NightAllowance = 12,
+                Other = 12,
+                OvertimePay = 12,
+                PerformancePay = 12,
+                PostAllowance = 12,
+                Reserve1 = 12,
+                Reserve2 = 13,
+                ReuseCount = 1,
+                ReuseName = "余明其"
+            });
+            list2.Add(new ReportPost()
+            {
+                PositionName = "公司领导KK职",
+                AlreadyCount = 1,
+                NotCount = 1,
+                NotName = "雪雪",
+                SmileStar = 1,
+                AnnualYearEndPerformance = 1,
+                CommunicationSubsidy = 1,
+                Debit = 1,
+                DustCharge = 1,
+                HardshipAllowance = 1,
+                HighSubsidies = 1,
+                JobReplacement = 1,
+                MonthlyPerformancePay = 1,
+                NaturalYearEndPerformance = 100,
+                NightAllowance = 12,
+                Other = 12,
+                OvertimePay = 12,
+                PerformancePay = 12,
+                PostAllowance = 12,
+                Reserve1 = 12,
+                Reserve2 = 13,
+                ReuseCount = 1,
+                ReuseName = "小潘"
+            });
+            List<ReportPost> list3 = new List<ReportPost>();
+            list3.Add(new ReportPost()
+            {
+                PositionName = "公司领导正职",
+                AlreadyCount = 1,
+                NotCount = 1,
+                NotName = "王娇",
+                SmileStar = 1,
+                AnnualYearEndPerformance = 1,
+                CommunicationSubsidy = 1,
+                Debit = 1,
+                DustCharge = 1,
+                HardshipAllowance = 1,
+                HighSubsidies = 1,
+                JobReplacement = 1,
+                MonthlyPerformancePay = 1,
+                NaturalYearEndPerformance = 100,
+                NightAllowance = 12,
+                Other = 12,
+                OvertimePay = 12,
+                PerformancePay = 12,
+                PostAllowance = 12,
+                Reserve1 = 12,
+                Reserve2 = 13,
+                ReuseCount = 1,
+                ReuseName = "余明其"
+            });
+            dicReportLeader["Artisan"] = list3;
+            dicReportLeader["ReportLeader"] = list2;
+            dicReportLeader["Manage"] = list1;
             report.ExportPostWage("公司:柳州分公司", "月份:12", dicReportLeader);
         }
     }
