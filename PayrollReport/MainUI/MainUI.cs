@@ -27,12 +27,20 @@ namespace MainUI
 
         private void btn_import_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            if (fbd.ShowDialog() == DialogResult.OK)
+            BusinessContext b = new BusinessContext();
+            b.Position.Add(new Position()
             {
-                string s = fbd.SelectedPath;
-            }
+                PositionID = "1",
+                PositionName = "1"
 
+            });
+
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog()==DialogResult.OK)
+            {
+                string s=fbd.SelectedPath;
+            }
+            
         }
 
         private void btn_export_Click(object sender, EventArgs e)
