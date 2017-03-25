@@ -10,6 +10,15 @@ namespace Model
 {
     public class PayCost
     {
+        public PayCost()
+        { }
+        #region Model
+        /// <summary>
+        /// 主键
+        /// </summary>
+        [Key]
+        public string ID { get; set; }
+
         /// <summary>
         /// 岗位工资
         /// </summary>
@@ -122,12 +131,13 @@ namespace Model
         /// 所属年度年终绩效
         /// </summary>
         public float AnnualYearEndPerformance { get; set; }
+        #endregion
     }
 
     /// <summary>
     /// 源数据(工资表)
     /// </summary>
-    public class Payroll:PayCost
+    public class Payroll : PayCost
     {
         public Payroll()
         { }
@@ -175,7 +185,7 @@ namespace Model
         /// 工资属性
         /// </summary>
         public string WageAttribute { get; set; }
-       
+
         #endregion Model
 
         #region 外键

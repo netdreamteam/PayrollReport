@@ -11,7 +11,7 @@ namespace Model
     public class BusinessContext : DbContext
     {
         public BusinessContext()
-            : base("BusinessConnection")
+            : base("BConnection")
         {
         }
 

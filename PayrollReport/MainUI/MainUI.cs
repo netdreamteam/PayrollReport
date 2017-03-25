@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Model;
 
 namespace MainUI
 {
@@ -27,11 +28,11 @@ namespace MainUI
         private void btn_import_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-            if (fbd.ShowDialog()==DialogResult.OK)
+            if (fbd.ShowDialog() == DialogResult.OK)
             {
-                string s=fbd.SelectedPath;
+                string s = fbd.SelectedPath;
             }
-            
+
         }
 
         private void btn_export_Click(object sender, EventArgs e)
