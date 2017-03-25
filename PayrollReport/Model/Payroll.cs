@@ -8,57 +8,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
-    /// <summary>
-    /// 源数据(工资表)
-    /// </summary>
-    class Payroll
+    public class PayCost
     {
-        public Payroll()
-        { }
-        #region Model
-        
-        /// <summary>
-        /// 社保编号
-        /// </summary>
-        public string SocialSecurityNumber { get; set; }
-        /// <summary>
-        /// 下属单位
-        /// </summary>
-        public string SubordinateNnits { get; set; }
-        /// <summary>
-        /// 年月
-        /// </summary>
-        public string Years { get; set; }
-        /// <summary>
-        /// 姓名
-        /// </summary>
-        public string Name { get; set; }
-        /// <summary>
-        /// 所在岗位ID
-        /// </summary>
-        [ForeignKey("Position")]
-        public string PositionID { get; set; }
-        /// <summary>
-        /// 岗位职级ID
-        /// </summary>
-        [ForeignKey("PostRank")]
-        public string PostRankID { get; set; }
-        /// <summary>
-        /// 系数
-        /// </summary>
-        public float Coefficient { get; set; }
-        /// <summary>
-        /// 是否在岗
-        /// </summary>
-        public int WhetherOnDuty { get; set; }
-        /// <summary>
-        /// 试用期
-        /// </summary>
-        public string ProbationPeriod { get; set; }
-        /// <summary>
-        /// 工资属性
-        /// </summary>
-        public string WageAttribute { get; set; }
         /// <summary>
         /// 岗位工资
         /// </summary>
@@ -171,6 +122,66 @@ namespace Model
         /// 所属年度年终绩效
         /// </summary>
         public float AnnualYearEndPerformance { get; set; }
+    }
+
+    /// <summary>
+    /// 源数据(工资表)
+    /// </summary>
+    public class Payroll:PayCost
+    {
+        public Payroll()
+        { }
+        #region Model
+
+        /// <summary>
+        /// 社保编号
+        /// </summary>
+        public string SocialSecurityNumber { get; set; }
+        /// <summary>
+        /// 下属单位
+        /// </summary>
+        public string SubordinateNnits { get; set; }
+        /// <summary>
+        /// 年月
+        /// </summary>
+        public string Years { get; set; }
+        /// <summary>
+        /// 姓名
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
+        /// 所在岗位ID
+        /// </summary>
+        [ForeignKey("PositionLink")]
+        public string PositionID { get; set; }
+        /// <summary>
+        /// 岗位职级ID
+        /// </summary>
+        [ForeignKey("PostRankLink")]
+        public string PostRankID { get; set; }
+        /// <summary>
+        /// 系数
+        /// </summary>
+        public float Coefficient { get; set; }
+        /// <summary>
+        /// 是否在岗
+        /// </summary>
+        public int WhetherOnDuty { get; set; }
+        /// <summary>
+        /// 试用期
+        /// </summary>
+        public string ProbationPeriod { get; set; }
+        /// <summary>
+        /// 工资属性
+        /// </summary>
+        public string WageAttribute { get; set; }
+       
         #endregion Model
+
+        #region 外键
+        public virtual Position PositionLink { get; set; }
+        public virtual PostRank PostRankLink { get; set; }
+
+        #endregion
     }
 }
