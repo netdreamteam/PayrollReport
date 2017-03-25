@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Model
 {
     /// <summary>
-    /// 岗位职级
+    /// 岗位职级(岗位职级表)
     /// </summary>
     public class PostRank
     {
@@ -16,12 +16,12 @@ namespace Model
         { }
         #region Model
         /// <summary>
-        /// 职级id
+        /// 岗位职级ID
         /// </summary>
         [Key]
         public string PostRankID { get; set; }
         /// <summary>
-        /// 职级名称
+        /// 岗位职级名称
         /// </summary>
         public string PostRankName { get; set; }
         #endregion Model
