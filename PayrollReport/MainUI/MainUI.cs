@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.IO;
 using ExcelImport;
 using Model;
+using Controller;
+
 namespace MainUI
 {
     public partial class MainUI : Form
@@ -33,7 +35,7 @@ namespace MainUI
         /// <param name="e"></param>
         private void btn_import_Click(object sender, EventArgs e)
         {
-            FileImportService(@"H:\项目\PayrollReport\输入件");
+            FileImportService(@"F:\code\PayrollReport\输入件\12");
 
             //FolderBrowserDialog fbd = new FolderBrowserDialog();
             //if (fbd.ShowDialog() == DialogResult.OK)
@@ -59,6 +61,10 @@ namespace MainUI
             ImportHelper im = new ImportHelper();
             _dsOld = im.ImportExcelFile(pathList);
             _ds = _dsOld;
+
+            AddSourceInfoController addSourceInfoController = new AddSourceInfoController();
+            addSourceInfoController.Run(_dsOld);
+
             PagerInit(1, 30);
         }
         /// <summary>

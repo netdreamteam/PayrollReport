@@ -133,6 +133,10 @@
     <None Include="Resources\search-folder.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Controller\Controller.csproj">
+      <Project>{b8931c80-5542-41ac-bd8d-d3137c0a6296}</Project>
+      <Name>Controller</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ExcelImport\ExcelImport.csproj">
       <Project>{35B2C7E7-FB04-4748-9587-90A7B20F4364}</Project>
       <Name>ExcelImport</Name>
