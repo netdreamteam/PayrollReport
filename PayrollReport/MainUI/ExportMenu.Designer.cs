@@ -36,11 +36,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txb_savePath = new System.Windows.Forms.TextBox();
             this.btn_savePath = new System.Windows.Forms.Button();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btn_ok
             // 
-            this.btn_ok.Location = new System.Drawing.Point(72, 131);
+            this.btn_ok.Location = new System.Drawing.Point(98, 131);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(101, 23);
             this.btn_ok.TabIndex = 0;
@@ -52,18 +53,18 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBox1.Location = new System.Drawing.Point(30, 40);
+            this.checkBox1.Location = new System.Drawing.Point(110, 40);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(166, 18);
+            this.checkBox1.Size = new System.Drawing.Size(138, 18);
             this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "岗级工资总额统计报表";
+            this.checkBox1.Text = "岗级工资总额统计";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
             this.checkBox2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBox2.Location = new System.Drawing.Point(202, 40);
+            this.checkBox2.Location = new System.Drawing.Point(254, 40);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(138, 18);
             this.checkBox2.TabIndex = 3;
@@ -74,16 +75,16 @@
             // 
             this.checkBox3.AutoSize = true;
             this.checkBox3.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBox3.Location = new System.Drawing.Point(346, 40);
+            this.checkBox3.Location = new System.Drawing.Point(398, 40);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(124, 18);
+            this.checkBox3.Size = new System.Drawing.Size(96, 18);
             this.checkBox3.TabIndex = 4;
-            this.checkBox3.Text = "年收入明细报表";
+            this.checkBox3.Text = "年收入明细";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(294, 131);
+            this.btn_cancel.Location = new System.Drawing.Point(308, 131);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(105, 23);
             this.btn_cancel.TabIndex = 1;
@@ -118,11 +119,23 @@
             this.btn_savePath.UseVisualStyleBackColor = true;
             this.btn_savePath.Click += new System.EventHandler(this.btn_savePath_Click);
             // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBox4.Location = new System.Drawing.Point(30, 40);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(68, 18);
+            this.checkBox4.TabIndex = 8;
+            this.checkBox4.Text = "数据源";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
             // ExportMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 178);
+            this.ClientSize = new System.Drawing.Size(536, 178);
+            this.Controls.Add(this.checkBox4);
             this.Controls.Add(this.btn_savePath);
             this.Controls.Add(this.txb_savePath);
             this.Controls.Add(this.label1);
@@ -150,5 +163,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txb_savePath;
         private System.Windows.Forms.Button btn_savePath;
+        private System.Windows.Forms.CheckBox checkBox4;
     }
 }

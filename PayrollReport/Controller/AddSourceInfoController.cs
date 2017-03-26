@@ -5,7 +5,6 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Transactions;
 
 namespace Controller
 {
@@ -14,6 +13,7 @@ namespace Controller
     /// </summary>
     public class AddSourceInfoController
     {
+
         /// <summary>
         /// 入口
         /// </summary>
@@ -29,7 +29,7 @@ namespace Controller
 
             foreach (DataTable dataDt in data.Tables)
             {
-                if (dataDt.TableName.Contains(CommonModel.DataSourceSheetName))
+                if (dataDt.TableName.Contains("数据源"))
                 {
                     if (dataDt == null || dataDt.Rows.Count == 0)
                     {
@@ -234,5 +234,6 @@ namespace Controller
 
             return id;
         }
+
     }
 }
