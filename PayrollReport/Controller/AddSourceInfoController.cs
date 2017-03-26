@@ -11,6 +11,7 @@ namespace Controller
     /// </summary>
     public class AddSourceInfoController
     {
+<<<<<<< HEAD
         /// <summary>
         /// 入口
         /// </summary>
@@ -232,5 +233,7 @@ namespace Controller
             return id;
         }
 
+=======
+>>>>>>> 676202506d21e076173c0dacd6fce4de12aee58c
     }
 }

@@ -34,6 +34,7 @@
   <ItemGroup>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -55,6 +56,8 @@
 =======
 =======
 >>>>>>> 676202506d21e076173c0dacd6fce4de12aee58c
+=======
+>>>>>>> 676202506d21e076173c0dacd6fce4de12aee58c
     <Reference Include="System"/>
     
     <Reference Include="System.Core"/>
@@ -70,6 +73,9 @@
     
     <Reference Include="System.Xml"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 676202506d21e076173c0dacd6fce4de12aee58c
+=======
 >>>>>>> 676202506d21e076173c0dacd6fce4de12aee58c
 =======
 >>>>>>> 676202506d21e076173c0dacd6fce4de12aee58c
