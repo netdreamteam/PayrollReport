@@ -70,6 +70,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConditionUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConditionUI.Designer.cs">
+      <DependentUpon>ConditionUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExportMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ConditionUI.resx">
+      <DependentUpon>ConditionUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExportMenu.resx">
       <DependentUpon>ExportMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,10 +133,17 @@
     <None Include="Resources\search-folder.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ExcelImport\ExcelImport.csproj">
+      <Project>{35B2C7E7-FB04-4748-9587-90A7B20F4364}</Project>
+      <Name>ExcelImport</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{6b645896-84cb-4bee-b8f2-faec9c13fb5b}</Project>
       <Name>Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\103.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.104.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.104.0\build\net45\System.Data.SQLite.Core.targets')" />
