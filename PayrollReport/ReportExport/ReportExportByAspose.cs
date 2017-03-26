@@ -38,6 +38,20 @@ namespace ReportExport
             designer.Workbook.Save(fileToSave);
         }
 
+        public void ExportReportDetailed(List<ReportDetailed> listData)
+        {
+            WorkbookDesigner designer = new WorkbookDesigner();
+            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ReportTemplate\\ReportDetailed.xlsx");
+
+            designer.Workbook = new Workbook(path);
+            designer.SetDataSource("ReportDetailed", listData);
+            //根据数据源处理生成报表内容
+            designer.Process();
+            //保存Excel文件
+            string fileToSave = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ReportDetailed.xlsx");
+            designer.Workbook.Save(fileToSave);
+        }
+
         public void ExportReportAnnualWage(List<ReportAnnualWage> listData)
         {
             WorkbookDesigner designer = new WorkbookDesigner();
