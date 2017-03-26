@@ -43,6 +43,24 @@
             this.lbl_RecordCount = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel_command = new System.Windows.Forms.Panel();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.button11 = new System.Windows.Forms.Button();
+            this.btn_shuaixuan = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btn_gangweizhiji = new System.Windows.Forms.Button();
+            this.btn_suozaigangwei = new System.Windows.Forms.Button();
+            this.btn_nianyue = new System.Windows.Forms.Button();
             this.btn_xiashudanwei = new System.Windows.Forms.Button();
             this.cmb_gangweizhiji = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,24 +70,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_nianyue = new System.Windows.Forms.Button();
-            this.btn_suozaigangwei = new System.Windows.Forms.Button();
-            this.btn_gangweizhiji = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.btn_shuaixuan = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.btn_condition = new System.Windows.Forms.Button();
             this.panel_menu.SuspendLayout();
             this.panel_table.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -251,7 +251,7 @@
             // panel_command
             // 
             this.panel_command.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel_command.Controls.Add(this.btn_condition);
+            this.panel_command.Controls.Add(this.listView1);
             this.panel_command.Controls.Add(this.button11);
             this.panel_command.Controls.Add(this.btn_shuaixuan);
             this.panel_command.Controls.Add(this.button9);
@@ -284,6 +284,174 @@
             this.panel_command.Size = new System.Drawing.Size(984, 136);
             this.panel_command.TabIndex = 2;
             // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(545, 15);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(217, 101);
+            this.listView1.TabIndex = 28;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // button11
+            // 
+            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button11.Location = new System.Drawing.Point(805, 78);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 23);
+            this.button11.TabIndex = 26;
+            this.button11.Text = "复原";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.btn_refresh_Click);
+            // 
+            // btn_shuaixuan
+            // 
+            this.btn_shuaixuan.Location = new System.Drawing.Point(805, 30);
+            this.btn_shuaixuan.Name = "btn_shuaixuan";
+            this.btn_shuaixuan.Size = new System.Drawing.Size(75, 23);
+            this.btn_shuaixuan.TabIndex = 25;
+            this.btn_shuaixuan.Text = "筛选";
+            this.btn_shuaixuan.UseVisualStyleBackColor = true;
+            this.btn_shuaixuan.Click += new System.EventHandler(this.btn_shuaixuan_Click);
+            // 
+            // button9
+            // 
+            this.button9.Image = global::MainUI.Properties.Resources._103;
+            this.button9.Location = new System.Drawing.Point(480, 93);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(38, 23);
+            this.button9.TabIndex = 24;
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // comboBox8
+            // 
+            this.comboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox8.FormattingEnabled = true;
+            this.comboBox8.Location = new System.Drawing.Point(353, 94);
+            this.comboBox8.Name = "comboBox8";
+            this.comboBox8.Size = new System.Drawing.Size(121, 20);
+            this.comboBox8.TabIndex = 23;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(294, 98);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(47, 12);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "条件4：";
+            // 
+            // button8
+            // 
+            this.button8.Image = global::MainUI.Properties.Resources._103;
+            this.button8.Location = new System.Drawing.Point(480, 66);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(38, 23);
+            this.button8.TabIndex = 21;
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // comboBox7
+            // 
+            this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox7.FormattingEnabled = true;
+            this.comboBox7.Location = new System.Drawing.Point(353, 67);
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.Size = new System.Drawing.Size(121, 20);
+            this.comboBox7.TabIndex = 20;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(294, 71);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(47, 12);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "条件3：";
+            // 
+            // button7
+            // 
+            this.button7.Image = global::MainUI.Properties.Resources._103;
+            this.button7.Location = new System.Drawing.Point(480, 40);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(38, 23);
+            this.button7.TabIndex = 18;
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Location = new System.Drawing.Point(353, 41);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(121, 20);
+            this.comboBox6.TabIndex = 17;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(294, 45);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(47, 12);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "条件2：";
+            // 
+            // button5
+            // 
+            this.button5.Image = global::MainUI.Properties.Resources._103;
+            this.button5.Location = new System.Drawing.Point(480, 14);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(38, 23);
+            this.button5.TabIndex = 15;
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(353, 15);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(121, 20);
+            this.comboBox5.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(294, 19);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 12);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "条件1：";
+            // 
+            // btn_gangweizhiji
+            // 
+            this.btn_gangweizhiji.Image = global::MainUI.Properties.Resources._103;
+            this.btn_gangweizhiji.Location = new System.Drawing.Point(224, 92);
+            this.btn_gangweizhiji.Name = "btn_gangweizhiji";
+            this.btn_gangweizhiji.Size = new System.Drawing.Size(38, 23);
+            this.btn_gangweizhiji.TabIndex = 12;
+            this.btn_gangweizhiji.UseVisualStyleBackColor = true;
+            this.btn_gangweizhiji.Click += new System.EventHandler(this.btn_gangweizhiji_Click);
+            // 
+            // btn_suozaigangwei
+            // 
+            this.btn_suozaigangwei.Image = global::MainUI.Properties.Resources._103;
+            this.btn_suozaigangwei.Location = new System.Drawing.Point(224, 67);
+            this.btn_suozaigangwei.Name = "btn_suozaigangwei";
+            this.btn_suozaigangwei.Size = new System.Drawing.Size(38, 23);
+            this.btn_suozaigangwei.TabIndex = 11;
+            this.btn_suozaigangwei.UseVisualStyleBackColor = true;
+            this.btn_suozaigangwei.Click += new System.EventHandler(this.btn_suozaigangwei_Click);
+            // 
+            // btn_nianyue
+            // 
+            this.btn_nianyue.Image = global::MainUI.Properties.Resources._103;
+            this.btn_nianyue.Location = new System.Drawing.Point(224, 39);
+            this.btn_nianyue.Name = "btn_nianyue";
+            this.btn_nianyue.Size = new System.Drawing.Size(38, 23);
+            this.btn_nianyue.TabIndex = 10;
+            this.btn_nianyue.UseVisualStyleBackColor = true;
+            this.btn_nianyue.Click += new System.EventHandler(this.btn_nianyue_Click);
+            // 
             // btn_xiashudanwei
             // 
             this.btn_xiashudanwei.Image = global::MainUI.Properties.Resources._103;
@@ -296,6 +464,7 @@
             // 
             // cmb_gangweizhiji
             // 
+            this.cmb_gangweizhiji.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_gangweizhiji.FormattingEnabled = true;
             this.cmb_gangweizhiji.Location = new System.Drawing.Point(97, 93);
             this.cmb_gangweizhiji.Name = "cmb_gangweizhiji";
@@ -313,6 +482,7 @@
             // 
             // cmb_suozaigangwei
             // 
+            this.cmb_suozaigangwei.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_suozaigangwei.FormattingEnabled = true;
             this.cmb_suozaigangwei.Location = new System.Drawing.Point(97, 67);
             this.cmb_suozaigangwei.Name = "cmb_suozaigangwei";
@@ -321,6 +491,7 @@
             // 
             // cmb_nianyue
             // 
+            this.cmb_nianyue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_nianyue.FormattingEnabled = true;
             this.cmb_nianyue.Location = new System.Drawing.Point(97, 41);
             this.cmb_nianyue.Name = "cmb_nianyue";
@@ -329,6 +500,7 @@
             // 
             // cmb_xiashudanwei
             // 
+            this.cmb_xiashudanwei.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_xiashudanwei.FormattingEnabled = true;
             this.cmb_xiashudanwei.Location = new System.Drawing.Point(97, 15);
             this.cmb_xiashudanwei.Name = "cmb_xiashudanwei";
@@ -361,171 +533,6 @@
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "下属单位：";
-            // 
-            // btn_nianyue
-            // 
-            this.btn_nianyue.Image = global::MainUI.Properties.Resources._103;
-            this.btn_nianyue.Location = new System.Drawing.Point(224, 39);
-            this.btn_nianyue.Name = "btn_nianyue";
-            this.btn_nianyue.Size = new System.Drawing.Size(38, 23);
-            this.btn_nianyue.TabIndex = 10;
-            this.btn_nianyue.UseVisualStyleBackColor = true;
-            this.btn_nianyue.Click += new System.EventHandler(this.btn_nianyue_Click);
-            // 
-            // btn_suozaigangwei
-            // 
-            this.btn_suozaigangwei.Image = global::MainUI.Properties.Resources._103;
-            this.btn_suozaigangwei.Location = new System.Drawing.Point(224, 67);
-            this.btn_suozaigangwei.Name = "btn_suozaigangwei";
-            this.btn_suozaigangwei.Size = new System.Drawing.Size(38, 23);
-            this.btn_suozaigangwei.TabIndex = 11;
-            this.btn_suozaigangwei.UseVisualStyleBackColor = true;
-            this.btn_suozaigangwei.Click += new System.EventHandler(this.btn_suozaigangwei_Click);
-            // 
-            // btn_gangweizhiji
-            // 
-            this.btn_gangweizhiji.Image = global::MainUI.Properties.Resources._103;
-            this.btn_gangweizhiji.Location = new System.Drawing.Point(224, 92);
-            this.btn_gangweizhiji.Name = "btn_gangweizhiji";
-            this.btn_gangweizhiji.Size = new System.Drawing.Size(38, 23);
-            this.btn_gangweizhiji.TabIndex = 12;
-            this.btn_gangweizhiji.UseVisualStyleBackColor = true;
-            this.btn_gangweizhiji.Click += new System.EventHandler(this.btn_gangweizhiji_Click);
-            // 
-            // button5
-            // 
-            this.button5.Image = global::MainUI.Properties.Resources._103;
-            this.button5.Location = new System.Drawing.Point(480, 15);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(38, 23);
-            this.button5.TabIndex = 15;
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(353, 16);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 20);
-            this.comboBox5.TabIndex = 14;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(294, 20);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 12);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "岗位职级：";
-            // 
-            // button7
-            // 
-            this.button7.Image = global::MainUI.Properties.Resources._103;
-            this.button7.Location = new System.Drawing.Point(480, 45);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(38, 23);
-            this.button7.TabIndex = 18;
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // comboBox6
-            // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(353, 46);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(121, 20);
-            this.comboBox6.TabIndex = 17;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(294, 50);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 12);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "岗位职级：";
-            // 
-            // button8
-            // 
-            this.button8.Image = global::MainUI.Properties.Resources._103;
-            this.button8.Location = new System.Drawing.Point(480, 73);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(38, 23);
-            this.button8.TabIndex = 21;
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // comboBox7
-            // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(353, 74);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(121, 20);
-            this.comboBox7.TabIndex = 20;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(294, 78);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 12);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "岗位职级：";
-            // 
-            // button9
-            // 
-            this.button9.Image = global::MainUI.Properties.Resources._103;
-            this.button9.Location = new System.Drawing.Point(480, 98);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(38, 23);
-            this.button9.TabIndex = 24;
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // comboBox8
-            // 
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Location = new System.Drawing.Point(353, 99);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(121, 20);
-            this.comboBox8.TabIndex = 23;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(294, 103);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 12);
-            this.label8.TabIndex = 22;
-            this.label8.Text = "岗位职级：";
-            // 
-            // btn_shuaixuan
-            // 
-            this.btn_shuaixuan.Location = new System.Drawing.Point(805, 30);
-            this.btn_shuaixuan.Name = "btn_shuaixuan";
-            this.btn_shuaixuan.Size = new System.Drawing.Size(75, 23);
-            this.btn_shuaixuan.TabIndex = 25;
-            this.btn_shuaixuan.Text = "筛选";
-            this.btn_shuaixuan.UseVisualStyleBackColor = true;
-            this.btn_shuaixuan.Click += new System.EventHandler(this.btn_shuaixuan_Click);
-            // 
-            // button11
-            // 
-            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button11.Location = new System.Drawing.Point(805, 78);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(75, 23);
-            this.button11.TabIndex = 26;
-            this.button11.Text = "复原";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // btn_condition
-            // 
-            this.btn_condition.Location = new System.Drawing.Point(607, 33);
-            this.btn_condition.Name = "btn_condition";
-            this.btn_condition.Size = new System.Drawing.Size(87, 63);
-            this.btn_condition.TabIndex = 27;
-            this.btn_condition.Text = "已选条件";
-            this.btn_condition.UseVisualStyleBackColor = true;
-            this.btn_condition.Click += new System.EventHandler(this.btn_condition_Click);
             // 
             // MainUI
             // 
@@ -578,7 +585,6 @@
         private System.Windows.Forms.Button btn_gangweizhiji;
         private System.Windows.Forms.Button btn_suozaigangwei;
         private System.Windows.Forms.Button btn_nianyue;
-        private System.Windows.Forms.Button btn_condition;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button btn_shuaixuan;
         private System.Windows.Forms.Button button9;
@@ -593,6 +599,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListView listView1;
     }
 }
 

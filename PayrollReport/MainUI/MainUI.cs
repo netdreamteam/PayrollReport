@@ -17,6 +17,7 @@ namespace MainUI
         private DataSet _ds = new DataSet();
         private DataSet _dsOld = new DataSet();
         private Dictionary<int, List<string>> _condition = new Dictionary<int, List<string>>();
+        private BusinessContext _bc;
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -25,6 +26,11 @@ namespace MainUI
             InitializeComponent();
             this.panel_command.Visible = false;
             this.panel_table.Height += 136;
+            if (_ds==null||_ds.Tables.Count==0)
+            {
+                this.btn_command.Visible = false;
+            }
+            _bc = new BusinessContext();
         }
         /// <summary>
         /// 导入按钮点击事件
@@ -58,8 +64,16 @@ namespace MainUI
             }
             ImportHelper im = new ImportHelper();
             _dsOld = im.ImportExcelFile(pathList);
+            if (_dsOld!=null&&_dsOld.Tables.Count>0)
+            {
+                this.btn_command.Visible = true;
+            }
             _ds = _dsOld;
             PagerInit(1, 30);
+            this.cmb_xiashudanwei.DataSource = ComboBoxBinding(0);
+            this.cmb_nianyue.DataSource = ComboBoxBinding(1);
+            this.cmb_suozaigangwei.DataSource = ComboBoxBinding(4);
+            this.cmb_gangweizhiji.DataSource = ComboBoxBinding(5);
         }
         /// <summary>
         /// 导出按钮点击事件
@@ -176,29 +190,6 @@ namespace MainUI
 
         private void btn_shuaixuan_Click(object sender, EventArgs e)
         {
-            //DataTable dt = new DataTable();
-            //if (_condition.Count==0)
-            //{
-            //    dt = _ds.Tables[0];
-            //}
-            //foreach (DataRow item in _ds.Tables[0].Rows)
-            //{
-            //    int i = 0;
-            //    foreach (var con in _condition)
-            //    {
-            //        if (item[con.Value].ToString()!=con.Key)
-            //        {
-            //            break;
-            //        }
-            //        i++;
-            //    }
-            //    if (i== _condition.Count)
-            //    {
-            //        dt.Rows.Add(item);
-            //    } 
-            //}
-            //_ds = new DataSet();
-            //_ds.Tables.Add(dt);
             DataTable dt = _ds.Tables[0];
             foreach (var item in _condition)
             {
@@ -225,7 +216,9 @@ namespace MainUI
                 _condition.Add(0, new List<string>());
             }
             _condition[0].Add(cmb_xiashudanwei.SelectedValue.ToString());
-            //this.cmb_xiashudanwei.Items.Remove(cmb_xiashudanwei.SelectedValue);
+            this.cmb_xiashudanwei.DataSource = ComboBoxBinding(0);
+            
+            Condition();
         }
 
         private void btn_nianyue_Click(object sender, EventArgs e)
@@ -236,6 +229,9 @@ namespace MainUI
             }
             _condition[1].Add(cmb_nianyue.SelectedValue.ToString());
             //this.cmb_nianyue.Items.Remove(cmb_nianyue.SelectedValue);
+            this.cmb_nianyue.DataSource = ComboBoxBinding(1);
+            
+            Condition();
         }
 
         private void btn_suozaigangwei_Click(object sender, EventArgs e)
@@ -246,6 +242,8 @@ namespace MainUI
             }
             _condition[4].Add(cmb_suozaigangwei.SelectedValue.ToString());
             //this.cmb_suozaigangwei.Items.Remove(cmb_suozaigangwei.SelectedValue);
+            this.cmb_suozaigangwei.DataSource = ComboBoxBinding(4);
+            Condition();
         }
 
         private void btn_gangweizhiji_Click(object sender, EventArgs e)
@@ -256,10 +254,17 @@ namespace MainUI
             }
             _condition[5].Add(cmb_gangweizhiji.SelectedValue.ToString());
             //this.cmb_gangweizhiji.Items.Remove(cmb_gangweizhiji.SelectedValue);
+            this.cmb_gangweizhiji.DataSource = ComboBoxBinding(5);
+            Condition();
         }
-
-        private void button11_Click(object sender, EventArgs e)
+        /// <summary>
+        /// 复原
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_refresh_Click(object sender, EventArgs e)
         {
+            listView1.Clear();
             this._ds = _dsOld;
             PagerInit(1, 30);
             this._condition.Clear();
@@ -267,7 +272,29 @@ namespace MainUI
 
         private void btn_condition_Click(object sender, EventArgs e)
         {
-            ConditionUI cui = new ConditionUI(_condition);
+            //ConditionUI cui = new ConditionUI(_condition);
+            //cui.ShowDialog();
+            
+        }
+        internal void Condition()
+        {
+            listView1.Clear();
+            this.listView1.Columns.Add("类别", 90, HorizontalAlignment.Left);
+            this.listView1.Columns.Add("条件", 90, HorizontalAlignment.Left);
+            ListViewItem lvi = null;
+            foreach (var item in _condition)
+            {
+                
+                lvi = null;
+                foreach (var item1 in item.Value)
+                {
+                    lvi = new ListViewItem();
+                    lvi.Tag = _ds.Tables[0].Columns[item.Key].ToString();
+                    lvi.Text = _ds.Tables[0].Columns[item.Key].ToString();
+                    lvi.SubItems.Add(item1.ToString());
+                    this.listView1.Items.Add(lvi);
+                }
+            }
         }
     }
 }

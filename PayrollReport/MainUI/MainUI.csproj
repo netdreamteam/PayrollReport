@@ -70,12 +70,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConditionUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ConditionUI.Designer.cs">
-      <DependentUpon>ConditionUI.cs</DependentUpon>
-    </Compile>
     <Compile Include="ExportMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,9 +84,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ConditionUI.resx">
-      <DependentUpon>ConditionUI.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ExportMenu.resx">
       <DependentUpon>ExportMenu.cs</DependentUpon>
     </EmbeddedResource>
