@@ -137,6 +137,7 @@ namespace Model
     /// <summary>
     /// 源数据(工资表)
     /// </summary>
+    [Table("Payroll")]
     public class Payroll : PayCost
     {
         public Payroll()
@@ -163,11 +164,13 @@ namespace Model
         /// 所在岗位ID
         /// </summary>
         [ForeignKey("PositionLink")]
+        [Column("Position_ID")]
         public string PositionID { get; set; }
         /// <summary>
         /// 岗位职级ID
         /// </summary>
         [ForeignKey("PostRankLink")]
+        [Column("PostRank_ID")]
         public string PostRankID { get; set; }
         /// <summary>
         /// 系数

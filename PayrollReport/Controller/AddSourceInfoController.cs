@@ -36,20 +36,20 @@ namespace Controller
                         return true;
                     }
 
-                    using (var scope = new TransactionScope())
-                    {
+                    //using (var scope = new TransactionScope())
+                    //{
                         if (AddPayroll(dataDt))
                         {
-                            scope.Complete();
-                            scope.Dispose();
+                            //scope.Complete();
+                            //scope.Dispose();
 
                             continue;
                         }
 
-                        scope.Dispose();
+                        //scope.Dispose();
 
                         return false;
-                    }
+                    //}
                 }
             }
 

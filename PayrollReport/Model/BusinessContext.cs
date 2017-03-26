@@ -13,6 +13,7 @@ namespace Model
         public BusinessContext()
             : base("BConnection")
         {
+            
         }
 
         public DbSet<Payroll> Payroll { get; set; }
