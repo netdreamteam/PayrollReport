@@ -11,6 +11,6 @@ namespace Model
     /// </summary>
     public class CommonModel
     {
-        public static string DataSourceSheetName = "源数据";
+        public static string DataSourceSheetName = "数据源";
     }
 }

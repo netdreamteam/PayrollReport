@@ -26,35 +26,34 @@ namespace Controller
                 return true;
             }
 
-            DataTable dataDt = new DataTable();
 
-            foreach (DataTable dt in data.Tables)
+            foreach (DataTable dataDt in data.Tables)
             {
-                if (dt.TableName.Contains(CommonModel.DataSourceSheetName))
+                if (dataDt.TableName.Contains(CommonModel.DataSourceSheetName))
                 {
-                    dataDt = dt.Copy();
+                    if (dataDt == null || dataDt.Rows.Count == 0)
+                    {
+                        return true;
+                    }
+
+                    using (var scope = new TransactionScope())
+                    {
+                        if (AddPayroll(dataDt))
+                        {
+                            scope.Complete();
+                            scope.Dispose();
+
+                            continue;
+                        }
+
+                        scope.Dispose();
+
+                        return false;
+                    }
                 }
             }
 
-            if (dataDt == null || dataDt.Rows.Count == 0)
-            {
-                return true;
-            }
-
-            using (var scope = new TransactionScope())
-            {
-                if (AddPayroll(dataDt))
-                {
-                    scope.Complete();
-                    scope.Dispose();
-
-                    return true;
-                }
-
-                scope.Dispose();
-
-                return false;
-            }
+            return true;
         }
 
         /// <summary>
@@ -176,7 +175,7 @@ namespace Controller
 
                     dbContext.SaveChanges();
                 }
-                catch
+                catch(Exception ex)
                 {
                     return false;
                 }

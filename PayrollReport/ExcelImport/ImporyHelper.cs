@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ExcelImport
 {
@@ -16,6 +17,7 @@ namespace ExcelImport
     /// </summary>
     public class ImportHelper
     {
+        private bool isException = false;
         /// <summary>
         /// NPOI导入Excel
         /// </summary>
@@ -51,7 +53,10 @@ namespace ExcelImport
             {
                 ex.Message.ToString();
             }
-
+            if (isException)
+            {
+                return new DataSet();
+            }
             return ds;
         }
         #endregion
@@ -66,7 +71,7 @@ namespace ExcelImport
         private DataTable ReadDataBy07(string fileName)
         {
             DataTable dt = new DataTable();
-            XSSFWorkbook hssfworkbook;
+            XSSFWorkbook hssfworkbook=null;
             XSSFRow row;
             int rowNum = 0;
             int sheetNum = 0;
@@ -78,9 +83,13 @@ namespace ExcelImport
                     hssfworkbook = new XSSFWorkbook(file);
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw e;
+                if(ex.Message.ToString().Contains("进程"))
+                {
+                    isException = true;
+                    MessageBox.Show(string.Format("文件:{0}被打开，请先关闭！", fileName.Replace("~$","")));
+                }
             }
             #endregion
             foreach (XSSFSheet sheet in hssfworkbook)
@@ -181,7 +190,7 @@ namespace ExcelImport
         private DataTable ReadDataBy03(string fileName)
         {
             DataTable dt = new DataTable();
-            HSSFWorkbook hssfworkbook;
+            HSSFWorkbook hssfworkbook=null;
             HSSFRow row;
             int rowNum = 0;
             int sheetNum = 0;
@@ -193,9 +202,13 @@ namespace ExcelImport
                     hssfworkbook = new HSSFWorkbook(file);
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw e;
+                if (ex.Message.ToString().Contains("进程"))
+                {
+                    isException = true;
+                    MessageBox.Show(string.Format("文件:{0}被打开，请先关闭！", fileName));
+                }
             }
             #endregion
             foreach (HSSFSheet sheet in hssfworkbook)
