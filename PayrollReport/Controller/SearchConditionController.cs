@@ -41,10 +41,10 @@ namespace Controller
             while ((s.Year < model.EndYears.Year) || (s.Year == model.EndYears.Year && s.Month <= model.EndYears.Month))
             {
                 timeStr.Add(s.ToString("yyyyMM"));
-                s=s.AddMonths(1);
+                s = s.AddMonths(1);
             }
 
-            if (model.StartYears != null || model.EndYears != null)
+            if (model.StartYears != new DateTime() && model.EndYears != new DateTime())
             {
                 result = result.Where(a => timeStr.Contains(a.Years)).ToList();
             }
