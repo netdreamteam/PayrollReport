@@ -22,17 +22,17 @@ namespace Controller
                 return result;
             }
 
-            if (!string.IsNullOrEmpty(model.ID))
+            if (model.ID != null && model.ID.Count() != 0)
             {
                 result = result.Where(a => a.ID.Equals(model.ID)).ToList();
             }
-            if (!string.IsNullOrEmpty(model.SocialSecurityNumber))
+            if (model.SocialSecurityNumber != null && model.SocialSecurityNumber.Count() != 0)
             {
                 result = result.Where(a => a.SocialSecurityNumber.Equals(model.SocialSecurityNumber)).ToList();
             }
-            if (!string.IsNullOrEmpty(model.SubordinateNnits))
+            if (model.SubordinateNnits != null && model.SubordinateNnits.Count() > 0)
             {
-                result = result.Where(a => a.SubordinateNnits.Equals(model.SubordinateNnits)).ToList();
+                result = result.Where(a => model.SubordinateNnits.Contains(a.SubordinateNnits)).ToList();
             }
 
             List<string> timeStr = new List<string>();
@@ -49,17 +49,17 @@ namespace Controller
                 result = result.Where(a => timeStr.Contains(a.Years)).ToList();
             }
 
-            if (!string.IsNullOrEmpty(model.Name))
+            if (model.Name != null && model.Name.Count() > 0)
             {
-                result = result.Where(a => a.Name.Equals(model.Name)).ToList();
+                result = result.Where(a => model.Name.Contains(a.Name)).ToList();
             }
-            if (!string.IsNullOrEmpty(model.PositionName))
+            if (model.PositionName != null && model.PositionName.Count() > 0)
             {
-                result = result.Where(a => a.PositionLink.PositionName.Equals(model.PositionName)).ToList();
+                result = result.Where(a => model.PositionName.Contains(a.PositionLink.PositionName)).ToList();
             }
-            if (!string.IsNullOrEmpty(model.PostRankName))
+            if (model.PostRankName != null && model.PostRankName.Count() > 0)
             {
-                result = result.Where(a => a.PostRankLink.PostRankName.Equals(model.PostRankName)).ToList();
+                result = result.Where(a => model.PostRankName.Contains(a.PostRankLink.PostRankName)).ToList();
             }
             if (model.Coefficient != null)
             {
@@ -69,13 +69,13 @@ namespace Controller
             {
                 result = result.Where(a => a.WhetherOnDuty.Equals(model.WhetherOnDuty)).ToList();
             }
-            if (!string.IsNullOrEmpty(model.ProbationPeriod))
+            if (model.ProbationPeriod != null && model.ProbationPeriod.Count() > 0)
             {
-                result = result.Where(a => a.ProbationPeriod.Equals(model.ProbationPeriod)).ToList();
+                result = result.Where(a => model.ProbationPeriod.Contains(a.ProbationPeriod)).ToList();
             }
-            if (!string.IsNullOrEmpty(model.WageAttribute))
+            if (model.WageAttribute != null && model.WageAttribute.Count() > 0)
             {
-                result = result.Where(a => a.WageAttribute.Equals(model.WageAttribute)).ToList();
+                result = result.Where(a => model.WageAttribute.Contains(a.WageAttribute)).ToList();
             }
 
             return result;

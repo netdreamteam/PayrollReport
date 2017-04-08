@@ -42,6 +42,12 @@ namespace MainUI
         /// <param name="e"></param>
         private void btn_import_Click(object sender, EventArgs e)
         {
+            FileImportService(@"H:\项目\PayrollReport\输入件");
+            //FolderBrowserDialog fbd = new FolderBrowserDialog();
+            //if (fbd.ShowDialog() == DialogResult.OK)
+            //{
+            //    FileImportService(fbd.SelectedPath);
+            //}
             //FileImportService(@"F:\code\PayrollReport\输入件\12");
             FileImportService(@"H:\项目\PayrollReport\输入件");
             //FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -66,10 +72,15 @@ namespace MainUI
                 }
             }
             ImportHelper im = new ImportHelper();
+
             DataSet ds = im.ImportExcelFile(pathList);
             if (ds != null&& ds.Tables.Count>0)
             {
                 this.btn_command.Visible = true;
+                //for (int i = 0; i < ds.Tables[0].Columns.Count; i++)
+                //{
+                //    dataGridView1.Columns[i].HeaderCell.Value = ds.Tables[0].Columns[i].ColumnName;
+                //}
                 int j = 0;
                 for (int i = 0; i < dataGridView1.ColumnCount; i++)
                 {
@@ -82,7 +93,6 @@ namespace MainUI
                 }
             }
             AddSourceInfoController addSourceInfoController = new AddSourceInfoController();
-            addSourceInfoController.Run(ds);
             bool flag = addSourceInfoController.Run(ds);
             if (!flag)
             {
@@ -133,11 +143,10 @@ namespace MainUI
 
                 return;
             }
-
             this.cmb_xiashudanwei.DataSource = _bc.Payroll.Select(r => r.SubordinateNnits).Distinct().ToList();
             this.cmb_nianyue.DataSource = _bc.Payroll.Select(r => r.Years).Distinct().ToList();
-            this.cmb_suozaigangwei.DataSource = _bc.Payroll.Select(r => r.PositionLink).Distinct().ToList();
-            this.cmb_gangweizhiji.DataSource = _bc.Payroll.Select(r => r.PostRankLink).Distinct().ToList();
+            this.cmb_suozaigangwei.DataSource = _bc.Payroll.Select(r => r.PositionID).Distinct().ToList();
+            this.cmb_gangweizhiji.DataSource = _bc.Payroll.Select(r => r.PostRankID).Distinct().ToList();
         }
         /// <summary>
         /// 页面初始化数据
@@ -146,12 +155,14 @@ namespace MainUI
         /// <param name="num">一页显示的数量</param>
         private void PagerInit(int startPager, int num)
         {
+            if (this._bc.Payroll == null)
+
             if (_bc.Payroll==null)
             {
                 return;
             }
-            
             int count = this._bc.Payroll.Count();
+            
             if (count == 0)
             {
                 return;
@@ -197,6 +208,7 @@ namespace MainUI
 
         private void btn_last_Click(object sender, EventArgs e)
         {
+            PagerInit(1000000000, 30);
 
             PagerInit(1000000000, 30);
         }
@@ -217,14 +229,13 @@ namespace MainUI
         private void btn_xiashudanwei_Click(object sender, EventArgs e)
         {
 
+
             if (!_condition.ContainsKey("下属单位"))
             {
-
                 _condition.Add("下属单位", new List<string>());
-            }
 
+            }
             _condition["下属单位"].Add(cmb_xiashudanwei.SelectedValue.ToString());
-            //this.cmb_xiashudanwei.DataSource = ComboBoxBinding(0);
 
 
             Condition();
@@ -233,16 +244,15 @@ namespace MainUI
         private void btn_nianyue_Click(object sender, EventArgs e)
         {
 
+
             if (!_condition.ContainsKey("年月"))
             {
-
                 _condition.Add("年月", new List<string>());
+
+
             }
-
             _condition["年月"].Add(cmb_nianyue.SelectedValue.ToString());
-            //this.cmb_nianyue.Items.Remove(cmb_nianyue.SelectedValue);
 
-            //this.cmb_nianyue.DataSource = ComboBoxBinding(1);
 
             Condition();
         }
@@ -250,32 +260,30 @@ namespace MainUI
         private void btn_suozaigangwei_Click(object sender, EventArgs e)
         {
 
+
             if (!_condition.ContainsKey("所在单位"))
             {
-
                 _condition.Add("所在单位", new List<string>());
+
             }
-
             _condition["所在单位"].Add(cmb_suozaigangwei.SelectedValue.ToString());
-            //this.cmb_suozaigangwei.Items.Remove(cmb_suozaigangwei.SelectedValue);
 
-            //this.cmb_suozaigangwei.DataSource = ComboBoxBinding(4);
+
             Condition();
         }
 
         private void btn_gangweizhiji_Click(object sender, EventArgs e)
         {
 
+
             if (!_condition.ContainsKey("岗位职级"))
             {
-
                 _condition.Add("岗位职级", new List<string>());
+
+
             }
-
             _condition["岗位职级"].Add(cmb_gangweizhiji.SelectedValue.ToString());
-            //this.cmb_gangweizhiji.Items.Remove(cmb_gangweizhiji.SelectedValue);
 
-            //this.cmb_gangweizhiji.DataSource = ComboBoxBinding(5);
             Condition();
         }
         /// <summary>
@@ -285,6 +293,10 @@ namespace MainUI
         /// <param name="e"></param>
         private void btn_refresh_Click(object sender, EventArgs e)
         {
+            //listView1.Clear();
+            //this._ds = _dsOld;
+            //PagerInit(1, 30);
+            //this._condition.Clear();
 
             listView1.Clear();
             PagerInit(1, 30);
@@ -311,6 +323,8 @@ namespace MainUI
                 foreach (var item1 in item.Value)
                 {
                     lvi = new ListViewItem();
+                    lvi.Tag = item.Key;
+                    lvi.Text = item.Key;
 
                     lvi.Tag = item.Key;
                     lvi.Text = item.Key;

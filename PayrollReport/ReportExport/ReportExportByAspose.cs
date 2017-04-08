@@ -18,10 +18,10 @@ namespace ReportExport
         /// <param name="companyName"></param>
         /// <param name="month"></param>
         /// <param name="dicReportLeader"></param>
-        public void ExportPostWage(string companyName, string month, Dictionary<string, List<ReportPost>> dicReportLeader)
+        public void ExportPostWage(string companyName, string month, Dictionary<string, List<ReportPost>> dicReportLeader,string reportFile)
         {
             WorkbookDesigner designer = new WorkbookDesigner();
-            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ReportTemplate\\ReportPost.xls");
+            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ReportTemplate\\ReportPost.xlsx");
 
             designer.Workbook = new Workbook(path);
             designer.SetDataSource("Company", companyName);
@@ -34,37 +34,58 @@ namespace ReportExport
             designer.Process();
 
             //保存Excel文件
-            string fileToSave = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SmartMarker.xls");
-            designer.Workbook.Save(fileToSave);
+            //string fileToSave = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SmartMarker.xls");
+            designer.Workbook.Save(reportFile);
         }
 
-        public void ExportReportDetailed(List<ReportDetailed> listData)
+        public void ExportReport<T>(List<T> listData,string reportFile,Dictionary<string,object> dicVariable=null)
         {
             WorkbookDesigner designer = new WorkbookDesigner();
-            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ReportTemplate\\ReportDetailed.xlsx");
+            string typeName = typeof (T).Name;
+            string muban = string.Format("ReportTemplate\\{0}.xlsx", typeName);
+            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, muban);
 
             designer.Workbook = new Workbook(path);
-            designer.SetDataSource("ReportDetailed", listData);
+            designer.SetDataSource(typeName, listData);
+            if (dicVariable != null)
+            {
+                foreach (var item in dicVariable)
+                {
+                    designer.SetDataSource(item.Key, item.Value);
+                }
+                
+            }
             //根据数据源处理生成报表内容
             designer.Process();
             //保存Excel文件
-            string fileToSave = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ReportDetailed.xlsx");
-            designer.Workbook.Save(fileToSave);
+            designer.Workbook.Save(reportFile);
         }
 
-        public void ExportReportAnnualWage(List<ReportAnnualWage> listData)
-        {
-            WorkbookDesigner designer = new WorkbookDesigner();
-            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ReportTemplate\\AnnualWage.xlsx");
+        //public void ExportReportDetailed(List<ReportDetailed> listData,string reportFile)
+        //{
+        //    WorkbookDesigner designer = new WorkbookDesigner();
+        //    string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ReportTemplate\\ReportDetailed.xlsx");
 
-            designer.Workbook = new Workbook(path);
-            designer.SetDataSource("ReportAnnualWage", listData);
-            //根据数据源处理生成报表内容
-            designer.Process();
+        //    designer.Workbook = new Workbook(path);
+        //    designer.SetDataSource("ReportDetailed", listData);
+        //    //根据数据源处理生成报表内容
+        //    designer.Process();
+        //    //保存Excel文件
+        //    designer.Workbook.Save(reportFile);
+        //}
 
-            //保存Excel文件
-            string fileToSave = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AnnualWage1.xlsx");
-            designer.Workbook.Save(fileToSave);
-        }
+        //public void ExportReportAnnualWage(List<ReportAnnualWage> listData,string reportFile)
+        //{
+        //    WorkbookDesigner designer = new WorkbookDesigner();
+        //    string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ReportTemplate\\AnnualWage.xlsx");
+
+        //    designer.Workbook = new Workbook(path);
+        //    designer.SetDataSource("ReportAnnualWage", listData);
+        //    //根据数据源处理生成报表内容
+        //    designer.Process();
+
+        //    //保存Excel文件
+        //    designer.Workbook.Save(reportFile);
+        //}
     }
 }

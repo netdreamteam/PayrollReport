@@ -166,12 +166,26 @@ namespace Model
         [ForeignKey("PositionLink")]
         [Column("Position_ID")]
         public string PositionID { get; set; }
+
+        [NotMapped]
+        public string PositionName
+        {
+            get { return PositionLink.PositionName; }
+        }
+
         /// <summary>
         /// 岗位职级ID
         /// </summary>
         [ForeignKey("PostRankLink")]
         [Column("PostRank_ID")]
         public string PostRankID { get; set; }
+
+        [NotMapped]
+        public string PostRankName
+        {
+            get { return PostRankLink.PostRankName; }
+        }
+
         /// <summary>
         /// 系数
         /// </summary>
