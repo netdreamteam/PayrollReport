@@ -41,13 +41,13 @@ namespace MainUI
         /// <param name="e"></param>
         private void btn_import_Click(object sender, EventArgs e)
         {
-            FileImportService(@"F:\code\PayrollReport\输入件\12");
+            //FileImportService(@"F:\code\PayrollReport\输入件\12");
 
-            //FolderBrowserDialog fbd = new FolderBrowserDialog();
-            //if (fbd.ShowDialog() == DialogResult.OK)
-            //{
-            //    FileImportService(fbd.SelectedPath);
-            //}
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                FileImportService(fbd.SelectedPath);
+            }
 
         }
         /// <summary>

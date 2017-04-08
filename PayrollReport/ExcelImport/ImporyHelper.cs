@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ExcelImport
 {
@@ -49,7 +50,10 @@ namespace ExcelImport
             }
             catch (Exception ex)
             {
-                ex.Message.ToString();
+                if (ex.Message.ToString().Contains("进程"))
+                {
+                    MessageBox.Show(ex.Message.ToString(),"提示");
+                }
             }
 
             return ds;
