@@ -28,7 +28,7 @@ namespace MainUI
             InitializeComponent();
             this.panel_command.Visible = false;
             this.panel_table.Height += 136;
-            if (_ds==null||_ds.Tables.Count==0)
+            if (_ds == null || _ds.Tables.Count == 0)
             {
                 this.btn_command.Visible = false;
             }
@@ -66,7 +66,7 @@ namespace MainUI
             }
             ImportHelper im = new ImportHelper();
             _dsOld = im.ImportExcelFile(pathList);
-            if (_dsOld!=null&&_dsOld.Tables.Count>0)
+            if (_dsOld != null && _dsOld.Tables.Count > 0)
             {
                 this.btn_command.Visible = true;
             }
@@ -134,7 +134,7 @@ namespace MainUI
         }
         private void PagerInit(int startPager, int num)
         {
-            if (this._ds == null)
+            if (this._ds == null || this._ds.Tables.Count == 0 || startPager == -1)
             {
                 return;
             }
@@ -223,7 +223,7 @@ namespace MainUI
             }
             _condition[0].Add(cmb_xiashudanwei.SelectedValue.ToString());
             this.cmb_xiashudanwei.DataSource = ComboBoxBinding(0);
-            
+
             Condition();
         }
 
@@ -236,7 +236,7 @@ namespace MainUI
             _condition[1].Add(cmb_nianyue.SelectedValue.ToString());
             //this.cmb_nianyue.Items.Remove(cmb_nianyue.SelectedValue);
             this.cmb_nianyue.DataSource = ComboBoxBinding(1);
-            
+
             Condition();
         }
 
@@ -280,7 +280,7 @@ namespace MainUI
         {
             //ConditionUI cui = new ConditionUI(_condition);
             //cui.ShowDialog();
-            
+
         }
         internal void Condition()
         {
@@ -290,7 +290,7 @@ namespace MainUI
             ListViewItem lvi = null;
             foreach (var item in _condition)
             {
-                
+
                 lvi = null;
                 foreach (var item1 in item.Value)
                 {
