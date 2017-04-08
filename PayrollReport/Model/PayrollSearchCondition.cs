@@ -15,12 +15,12 @@ namespace Model
         /// <summary>
         /// 主键
         /// </summary>
-        public string ID { get; set; }
+        public List<string> ID { get; set; }
 
         /// <summary>
         /// 社保编号
         /// </summary>
-        public string SocialSecurityNumber { get; set; }
+        public List<string> SocialSecurityNumber { get; set; }
         /// <summary>
         /// 下属单位
         /// </summary>
@@ -36,15 +36,15 @@ namespace Model
         /// <summary>
         /// 姓名
         /// </summary>
-        public string Name { get; set; }
+        public List<string> Name { get; set; }
         /// <summary>
         /// 岗位名称
         /// </summary>
-        public string PositionName { get; set; }
+        public List<string> PositionName { get; set; }
         /// <summary>
         /// 岗位职级名称
         /// </summary>
-        public string PostRankName { get; set; }
+        public List<string> PostRankName { get; set; }
         /// <summary>
         /// 系数
         /// </summary>
@@ -56,11 +56,11 @@ namespace Model
         /// <summary>
         /// 试用期
         /// </summary>
-        public string ProbationPeriod { get; set; }
+        public List<string> ProbationPeriod { get; set; }
         /// <summary>
         /// 工资属性
         /// </summary>
-        public string WageAttribute { get; set; }
+        public List<string> WageAttribute { get; set; }
         #endregion
     }
 }
