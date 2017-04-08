@@ -56,6 +56,7 @@ namespace Controller
             return true;
         }
 
+
         /// <summary>
         /// 添加工资表
         /// </summary>
@@ -64,7 +65,6 @@ namespace Controller
         public bool AddPayroll(DataTable dataDt)
         {
             BusinessContext dbContext = new BusinessContext();
-
             for (var i = 2; i < dataDt.Rows.Count; i++)
             {
                 DataRow dr = dataDt.Rows[i];

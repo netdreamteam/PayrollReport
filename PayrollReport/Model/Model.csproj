@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessContext.cs" />
+    <Compile Include="PayrollSearchCondition.cs" />
     <Compile Include="Payroll.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="PostRank.cs" />
