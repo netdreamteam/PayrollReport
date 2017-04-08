@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -15,20 +16,20 @@ namespace Controller
         /// <summary>
         /// 源数据表
         /// </summary>
-        private DataTable m_table;
+        private List<Payroll> m_Payroll;
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="dt">源数据表</param>
-        public ImportTableOne(DataTable dt)
+        public ImportTableOne(List<Payroll> payroll)
         {
-            if (dt == null)
+            if (payroll == null)
             {
-                m_table=new DataTable();
+                m_Payroll = new List<Payroll>();
             }
             else
             {
-                m_table = dt;
+                m_Payroll = payroll;
             }
         }
 
@@ -36,11 +37,24 @@ namespace Controller
         /// 执行
         /// </summary>
         /// <returns></returns>
-        public DataTable Run()
+        public ReportPost Run()
         {
-            DataTable dtResult=new DataTable();
-
-            return dtResult;
+            ReportPost result = new ReportPost();
+            if (m_Payroll.Count > 0)
+            {
+                var values = m_Payroll.AsEnumerable().GroupBy(a => a.PositionID);
+                foreach (var value in values)
+                {
+                    foreach (var val in value)
+                    {
+                        Dictionary<string,List<ReportDetailed>> dic=new Dictionary<string, List<ReportDetailed>>();
+                        List<ReportDetailed> listReport=new List<ReportDetailed>();
+                        ReportDetailed report=new ReportDetailed();
+                        
+                    }
+                }
+            }
+            return result;
         }
     }
 }

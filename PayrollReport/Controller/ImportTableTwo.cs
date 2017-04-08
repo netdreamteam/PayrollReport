@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using Model;
 
 namespace Controller
 {
@@ -15,19 +16,19 @@ namespace Controller
         /// <summary>
         /// 源数据表
         /// </summary>
-        private DataTable m_table;
+        private List<Payroll> m_Payroll;
         /// <summary>
         /// 构造函数
         /// </summary>
-        public ImportTableTwo(DataTable dt)
+        public ImportTableTwo(List<Payroll> payroll)
         {
-            if (dt == null)
+            if (payroll == null)
             {
-                m_table = new DataTable();
+                m_Payroll = new List<Payroll>();
             }
             else
             {
-                m_table = dt;
+                m_Payroll = payroll;
             }
         }
 
@@ -35,11 +36,11 @@ namespace Controller
         /// 执行
         /// </summary>
         /// <returns></returns>
-        public DataTable Run()
+        public ReportAnnualWage Run()
         {
-            DataTable dtResult = new DataTable();
+            ReportAnnualWage result = new ReportAnnualWage();
 
-            return dtResult;
+            return result;
         }
     }
 }
