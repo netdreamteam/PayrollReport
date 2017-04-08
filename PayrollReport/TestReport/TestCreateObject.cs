@@ -158,5 +158,60 @@ namespace TestReport
             dicReportLeader["Manage"] = list1;
             report.ExportPostWage("公司:柳州分公司", "月份:12", dicReportLeader);
         }
+        [Test]
+        public void TestExportReportDetailed()
+        {
+            List<ReportDetailed> list = new List<ReportDetailed>();
+            list.Add(new ReportDetailed()
+            {
+                AnnualYearEndPerformance=10,
+
+                CommunicationSubsidy=10,
+ 
+                SocialSecurityNumber="123",
+                Name="罗唐坤",
+                NaturalYearEndPerformance=10,
+                PositionName="公司领导",
+                PostRankName="正职",
+                HighSubsidies=100,
+                January=20,
+                July=20,
+                June=30,
+                March=30,
+                May=20,
+                November=20,
+                October=20,
+                Reserve1=10,
+                Reserve2=20,
+                WorkTime=8
+            });
+            list.Add(new ReportDetailed()
+            {
+                AnnualYearEndPerformance = 10,
+                April = 10,
+                August = 10,
+                CommunicationSubsidy = 10,
+                December = 10,
+                February = 20,
+                September = 30,
+                SocialSecurityNumber = "123",
+                Name = "罗唐坤",
+                NaturalYearEndPerformance = 10,
+                PositionName = "公司领导",
+                PostRankName = "副职",
+                HighSubsidies = 100,
+                January = 20,
+                July = 20,
+                June = 30,
+                March = 30,
+                May = 20,
+                November = 20,
+                October = 20,
+                Reserve1 = 10,
+                Reserve2 = 20,
+                WorkTime = 8
+            });
+            report.ExportReportDetailed(list);
+        }
     }
 }

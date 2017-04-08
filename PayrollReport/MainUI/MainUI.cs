@@ -16,9 +16,8 @@ namespace MainUI
 {
     public partial class MainUI : Form
     {
-        private DataSet _ds = new DataSet();
-        private DataSet _dsOld = new DataSet();
-        private Dictionary<int, List<string>> _condition = new Dictionary<int, List<string>>();
+        private Payroll _payroll;
+        private Dictionary<string, List<string>> _condition = new Dictionary<string, List<string>>();
         private BusinessContext _bc;
         /// <summary>
         /// 构造函数
@@ -28,11 +27,13 @@ namespace MainUI
             InitializeComponent();
             this.panel_command.Visible = false;
             this.panel_table.Height += 136;
-            if (_ds==null||_ds.Tables.Count==0)
+            _bc = new BusinessContext();
+            _payroll = new Payroll();
+            if (_bc.Payroll == null || _bc.Payroll.Count() == 0)
             {
                 this.btn_command.Visible = false;
             }
-            _bc = new BusinessContext();
+            PagerInit(1, 30);
         }
         /// <summary>
         /// 导入按钮点击事件
@@ -41,8 +42,7 @@ namespace MainUI
         /// <param name="e"></param>
         private void btn_import_Click(object sender, EventArgs e)
         {
-            FileImportService(@"F:\code\PayrollReport\输入件\12");
-
+            FileImportService(@"H:\项目\PayrollReport\输入件");
             //FolderBrowserDialog fbd = new FolderBrowserDialog();
             //if (fbd.ShowDialog() == DialogResult.OK)
             //{
@@ -65,22 +65,24 @@ namespace MainUI
                 }
             }
             ImportHelper im = new ImportHelper();
-            _dsOld = im.ImportExcelFile(pathList);
-            if (_dsOld!=null&&_dsOld.Tables.Count>0)
+            DataSet ds = im.ImportExcelFile(pathList);
+            if (ds != null&& ds.Tables.Count>0)
             {
                 this.btn_command.Visible = true;
+                //for (int i = 0; i < ds.Tables[0].Columns.Count; i++)
+                //{
+                //    dataGridView1.Columns[i].HeaderCell.Value = ds.Tables[0].Columns[i].ColumnName;
+                //}
             }
-            _ds = _dsOld;
-
             AddSourceInfoController addSourceInfoController = new AddSourceInfoController();
-            addSourceInfoController.Run(_dsOld);
-
+            bool flag = addSourceInfoController.Run(ds);
+            if (!flag)
+            {
+                MessageBox.Show("添加数据到数据库失败","提示");
+            }
             PagerInit(1, 30);
-            this.cmb_xiashudanwei.DataSource = ComboBoxBinding(0);
-            this.cmb_nianyue.DataSource = ComboBoxBinding(1);
-            this.cmb_suozaigangwei.DataSource = ComboBoxBinding(4);
-            this.cmb_gangweizhiji.DataSource = ComboBoxBinding(5);
         }
+
         /// <summary>
         /// 导出按钮点击事件
         /// </summary>
@@ -109,36 +111,35 @@ namespace MainUI
             {
                 this.panel_command.Visible = true;
                 this.panel_table.Height -= 136;
-                this.cmb_xiashudanwei.DataSource = ComboBoxBinding(0);
-                this.cmb_nianyue.DataSource = ComboBoxBinding(1);
-                this.cmb_suozaigangwei.DataSource = ComboBoxBinding(4);
-                this.cmb_gangweizhiji.DataSource = ComboBoxBinding(5);
+                ComboBoxBinding();
             }
         }
         /// <summary>
         /// 下拉框数据绑定
         /// </summary>
-        /// <param name="i"></param>
-        /// <returns></returns>
-        private List<object> ComboBoxBinding(int i)
+        private void ComboBoxBinding()
         {
-            if (_ds == null || _ds.Tables.Count == 0)
-            {
-                return new List<object>();
-            }
-            var sql =
-                from dt in _ds.Tables[0].AsEnumerable()
-                select dt.ItemArray[i];
-            HashSet<object> hs = new HashSet<object>(sql.ToList());
-            return hs.ToList();
-        }
-        private void PagerInit(int startPager, int num)
-        {
-            if (this._ds == null)
+            if (_bc.Payroll == null || _bc.Payroll.Count() == 0)
             {
                 return;
             }
-            int count = this._ds.Tables[0].Rows.Count;
+            this.cmb_xiashudanwei.DataSource = _bc.Payroll.Select(r => r.SubordinateNnits).Distinct().ToList();
+            this.cmb_nianyue.DataSource = _bc.Payroll.Select(r => r.Years).Distinct().ToList();
+            this.cmb_suozaigangwei.DataSource = _bc.Payroll.Select(r => r.PositionID).Distinct().ToList();
+            this.cmb_gangweizhiji.DataSource = _bc.Payroll.Select(r => r.PostRankID).Distinct().ToList();
+        }
+        /// <summary>
+        /// 页面初始化数据
+        /// </summary>
+        /// <param name="startPager">开始页面</param>
+        /// <param name="num">一页显示的数量</param>
+        private void PagerInit(int startPager, int num)
+        {
+            if (this._bc.Payroll == null)
+            {
+                return;
+            }
+            int count = this._bc.Payroll.Count();
             if (count == 0)
             {
                 return;
@@ -159,8 +160,8 @@ namespace MainUI
             this.txb_pager.Text = startPager.ToString();
             startPager -= 1;
             this.lbl_RecordCount.Text = string.Format("共【{0}】记录,每页【{1}】条记录,共【{2}】页", count, num, pager);
-            this.dataGridView1.DataSource = _ds.Tables[0].AsEnumerable().Skip(0 + startPager * num).Take(num).CopyToDataTable();
-
+            this.dataGridView1.DataSource = _bc.Payroll.AsEnumerable().Skip(0 + startPager * num).Take(num).ToList();
+            
         }
 
         private void btn_firstPage_Click(object sender, EventArgs e)
@@ -184,7 +185,7 @@ namespace MainUI
 
         private void btn_last_Click(object sender, EventArgs e)
         {
-            PagerInit(100000, 30);
+            PagerInit(1000000000, 30);
         }
 
         private void txb_pager_TextChanged(object sender, EventArgs e)
@@ -196,71 +197,55 @@ namespace MainUI
 
         private void btn_shuaixuan_Click(object sender, EventArgs e)
         {
-            DataTable dt = _ds.Tables[0];
-            foreach (var item in _condition)
-            {
-                if (dt.Rows.Count == 0)
-                {
-                    break;
-                }
-                var result = dt.AsEnumerable().Where(s => item.Value.Contains(s.ItemArray[item.Key].ToString()));
-                if (result.Count() == 0)
-                {
-                    break;
-                }
-                dt = result.CopyToDataTable();
-            }
-            _ds = new DataSet();
-            _ds.Tables.Add(dt.Copy());
-            PagerInit(1, 30);
+            
         }
 
         private void btn_xiashudanwei_Click(object sender, EventArgs e)
         {
-            if (!_condition.ContainsKey(0))
+            if (!_condition.ContainsKey("下属单位"))
             {
-                _condition.Add(0, new List<string>());
+                _condition.Add("下属单位", new List<string>());
             }
-            _condition[0].Add(cmb_xiashudanwei.SelectedValue.ToString());
-            this.cmb_xiashudanwei.DataSource = ComboBoxBinding(0);
+            _condition["下属单位"].Add(cmb_xiashudanwei.SelectedValue.ToString());
+            //this.cmb_xiashudanwei.DataSource = ComboBoxBinding(0);
             
             Condition();
         }
 
         private void btn_nianyue_Click(object sender, EventArgs e)
         {
-            if (!_condition.ContainsKey(1))
+            if (!_condition.ContainsKey("年月"))
             {
-                _condition.Add(1, new List<string>());
+                _condition.Add("年月", new List<string>());
             }
-            _condition[1].Add(cmb_nianyue.SelectedValue.ToString());
+            _condition["年月"].Add(cmb_nianyue.SelectedValue.ToString());
             //this.cmb_nianyue.Items.Remove(cmb_nianyue.SelectedValue);
-            this.cmb_nianyue.DataSource = ComboBoxBinding(1);
+            //this.cmb_nianyue.DataSource = ComboBoxBinding(1);
             
             Condition();
         }
 
         private void btn_suozaigangwei_Click(object sender, EventArgs e)
         {
-            if (!_condition.ContainsKey(4))
+            if (!_condition.ContainsKey("所在单位"))
             {
-                _condition.Add(4, new List<string>());
+                _condition.Add("所在单位", new List<string>());
             }
-            _condition[4].Add(cmb_suozaigangwei.SelectedValue.ToString());
+            _condition["所在单位"].Add(cmb_suozaigangwei.SelectedValue.ToString());
             //this.cmb_suozaigangwei.Items.Remove(cmb_suozaigangwei.SelectedValue);
-            this.cmb_suozaigangwei.DataSource = ComboBoxBinding(4);
+            //this.cmb_suozaigangwei.DataSource = ComboBoxBinding(4);
             Condition();
         }
 
         private void btn_gangweizhiji_Click(object sender, EventArgs e)
         {
-            if (!_condition.ContainsKey(5))
+            if (!_condition.ContainsKey("岗位职级"))
             {
-                _condition.Add(5, new List<string>());
+                _condition.Add("岗位职级", new List<string>());
             }
-            _condition[5].Add(cmb_gangweizhiji.SelectedValue.ToString());
+            _condition["岗位职级"].Add(cmb_gangweizhiji.SelectedValue.ToString());
             //this.cmb_gangweizhiji.Items.Remove(cmb_gangweizhiji.SelectedValue);
-            this.cmb_gangweizhiji.DataSource = ComboBoxBinding(5);
+            //this.cmb_gangweizhiji.DataSource = ComboBoxBinding(5);
             Condition();
         }
         /// <summary>
@@ -270,10 +255,10 @@ namespace MainUI
         /// <param name="e"></param>
         private void btn_refresh_Click(object sender, EventArgs e)
         {
-            listView1.Clear();
-            this._ds = _dsOld;
-            PagerInit(1, 30);
-            this._condition.Clear();
+            //listView1.Clear();
+            //this._ds = _dsOld;
+            //PagerInit(1, 30);
+            //this._condition.Clear();
         }
 
         private void btn_condition_Click(object sender, EventArgs e)
@@ -290,13 +275,13 @@ namespace MainUI
             ListViewItem lvi = null;
             foreach (var item in _condition)
             {
-                
+
                 lvi = null;
                 foreach (var item1 in item.Value)
                 {
                     lvi = new ListViewItem();
-                    lvi.Tag = _ds.Tables[0].Columns[item.Key].ToString();
-                    lvi.Text = _ds.Tables[0].Columns[item.Key].ToString();
+                    lvi.Tag = item.Key;
+                    lvi.Text = item.Key;
                     lvi.SubItems.Add(item1.ToString());
                     this.listView1.Items.Add(lvi);
                 }

@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel_menu = new System.Windows.Forms.Panel();
             this.btn_command = new System.Windows.Forms.Button();
             this.btn_export = new System.Windows.Forms.Button();
             this.btn_import = new System.Windows.Forms.Button();
             this.panel_table = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_bottom = new System.Windows.Forms.Panel();
             this.btn_last = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.btn_next = new System.Windows.Forms.Button();
@@ -53,10 +54,7 @@
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btn_gangweizhiji = new System.Windows.Forms.Button();
             this.btn_suozaigangwei = new System.Windows.Forms.Button();
@@ -70,11 +68,56 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.payrollBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.socialSecurityNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subordinateNnitsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yearsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.positionIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.postRankIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coefficientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.whetherOnDutyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.probationPeriodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wageAttributeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.positionLinkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.postRankLinkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.postWageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monthlyPerformancePayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.performancePayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.seniorityWageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.technicalAllowanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.professionalAllowancesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quasiVehicleAllowancesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.postAllowanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staffServiceAllowanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dustChargeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nightAllowanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hardshipAllowanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tollStationServiceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.smileStarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobReplacementDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.replacementPayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pluggingIncomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.otherDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reserve1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reserve2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.highSubsidiesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.communicationSubsidyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.overtimePayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.debitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalShouldBeIssuedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.naturalYearEndPerformanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.annualYearEndPerformanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtp_start = new System.Windows.Forms.DateTimePicker();
+            this.dtp_stop = new System.Windows.Forms.DateTimePicker();
             this.panel_menu.SuspendLayout();
             this.panel_table.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panel_bottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel_command.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.payrollBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_menu
@@ -140,27 +183,27 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_table.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel_table.Controls.Add(this.panel1);
+            this.panel_table.Controls.Add(this.panel_bottom);
             this.panel_table.Controls.Add(this.dataGridView1);
             this.panel_table.Location = new System.Drawing.Point(0, 70);
             this.panel_table.Name = "panel_table";
             this.panel_table.Size = new System.Drawing.Size(983, 349);
             this.panel_table.TabIndex = 1;
             // 
-            // panel1
+            // panel_bottom
             // 
-            this.panel1.Controls.Add(this.btn_last);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.btn_next);
-            this.panel1.Controls.Add(this.txb_pager);
-            this.panel1.Controls.Add(this.btn_before);
-            this.panel1.Controls.Add(this.btn_firstPage);
-            this.panel1.Controls.Add(this.lbl_RecordCount);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 315);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(979, 30);
-            this.panel1.TabIndex = 1;
+            this.panel_bottom.Controls.Add(this.btn_last);
+            this.panel_bottom.Controls.Add(this.button6);
+            this.panel_bottom.Controls.Add(this.btn_next);
+            this.panel_bottom.Controls.Add(this.txb_pager);
+            this.panel_bottom.Controls.Add(this.btn_before);
+            this.panel_bottom.Controls.Add(this.btn_firstPage);
+            this.panel_bottom.Controls.Add(this.lbl_RecordCount);
+            this.panel_bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel_bottom.Location = new System.Drawing.Point(0, 315);
+            this.panel_bottom.Name = "panel_bottom";
+            this.panel_bottom.Size = new System.Drawing.Size(979, 30);
+            this.panel_bottom.TabIndex = 1;
             // 
             // btn_last
             // 
@@ -239,8 +282,52 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.socialSecurityNumberDataGridViewTextBoxColumn,
+            this.subordinateNnitsDataGridViewTextBoxColumn,
+            this.yearsDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.positionIDDataGridViewTextBoxColumn,
+            this.postRankIDDataGridViewTextBoxColumn,
+            this.coefficientDataGridViewTextBoxColumn,
+            this.whetherOnDutyDataGridViewTextBoxColumn,
+            this.probationPeriodDataGridViewTextBoxColumn,
+            this.wageAttributeDataGridViewTextBoxColumn,
+            this.positionLinkDataGridViewTextBoxColumn,
+            this.postRankLinkDataGridViewTextBoxColumn,
+            this.iDDataGridViewTextBoxColumn,
+            this.postWageDataGridViewTextBoxColumn,
+            this.monthlyPerformancePayDataGridViewTextBoxColumn,
+            this.performancePayDataGridViewTextBoxColumn,
+            this.seniorityWageDataGridViewTextBoxColumn,
+            this.technicalAllowanceDataGridViewTextBoxColumn,
+            this.professionalAllowancesDataGridViewTextBoxColumn,
+            this.quasiVehicleAllowancesDataGridViewTextBoxColumn,
+            this.postAllowanceDataGridViewTextBoxColumn,
+            this.staffServiceAllowanceDataGridViewTextBoxColumn,
+            this.dustChargeDataGridViewTextBoxColumn,
+            this.nightAllowanceDataGridViewTextBoxColumn,
+            this.hardshipAllowanceDataGridViewTextBoxColumn,
+            this.tollStationServiceDataGridViewTextBoxColumn,
+            this.smileStarDataGridViewTextBoxColumn,
+            this.jobReplacementDataGridViewTextBoxColumn,
+            this.replacementPayDataGridViewTextBoxColumn,
+            this.pluggingIncomeDataGridViewTextBoxColumn,
+            this.otherDataGridViewTextBoxColumn,
+            this.reserve1DataGridViewTextBoxColumn,
+            this.reserve2DataGridViewTextBoxColumn,
+            this.subtotalDataGridViewTextBoxColumn,
+            this.highSubsidiesDataGridViewTextBoxColumn,
+            this.communicationSubsidyDataGridViewTextBoxColumn,
+            this.overtimePayDataGridViewTextBoxColumn,
+            this.debitDataGridViewTextBoxColumn,
+            this.totalShouldBeIssuedDataGridViewTextBoxColumn,
+            this.naturalYearEndPerformanceDataGridViewTextBoxColumn,
+            this.annualYearEndPerformanceDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.payrollBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -251,6 +338,8 @@
             // panel_command
             // 
             this.panel_command.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel_command.Controls.Add(this.dtp_stop);
+            this.panel_command.Controls.Add(this.dtp_start);
             this.panel_command.Controls.Add(this.listView1);
             this.panel_command.Controls.Add(this.button11);
             this.panel_command.Controls.Add(this.btn_shuaixuan);
@@ -261,10 +350,7 @@
             this.panel_command.Controls.Add(this.comboBox7);
             this.panel_command.Controls.Add(this.label7);
             this.panel_command.Controls.Add(this.button7);
-            this.panel_command.Controls.Add(this.comboBox6);
             this.panel_command.Controls.Add(this.label6);
-            this.panel_command.Controls.Add(this.button5);
-            this.panel_command.Controls.Add(this.comboBox5);
             this.panel_command.Controls.Add(this.label5);
             this.panel_command.Controls.Add(this.btn_gangweizhiji);
             this.panel_command.Controls.Add(this.btn_suozaigangwei);
@@ -371,56 +457,29 @@
             // button7
             // 
             this.button7.Image = global::MainUI.Properties.Resources._103;
-            this.button7.Location = new System.Drawing.Point(480, 40);
+            this.button7.Location = new System.Drawing.Point(480, 15);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(38, 23);
+            this.button7.Size = new System.Drawing.Size(38, 48);
             this.button7.TabIndex = 18;
             this.button7.UseVisualStyleBackColor = true;
-            // 
-            // comboBox6
-            // 
-            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(353, 41);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(121, 20);
-            this.comboBox6.TabIndex = 17;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(294, 45);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 12);
+            this.label6.Size = new System.Drawing.Size(65, 12);
             this.label6.TabIndex = 16;
-            this.label6.Text = "条件2：";
-            // 
-            // button5
-            // 
-            this.button5.Image = global::MainUI.Properties.Resources._103;
-            this.button5.Location = new System.Drawing.Point(480, 14);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(38, 23);
-            this.button5.TabIndex = 15;
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(353, 15);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 20);
-            this.comboBox5.TabIndex = 14;
+            this.label6.Text = "结束时间：";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(294, 19);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 12);
+            this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 13;
-            this.label5.Text = "条件1：";
+            this.label5.Text = "开始时间：";
             // 
             // btn_gangweizhiji
             // 
@@ -534,6 +593,316 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "下属单位：";
             // 
+            // payrollBindingSource
+            // 
+            this.payrollBindingSource.DataSource = typeof(Model.Payroll);
+            // 
+            // socialSecurityNumberDataGridViewTextBoxColumn
+            // 
+            this.socialSecurityNumberDataGridViewTextBoxColumn.DataPropertyName = "SocialSecurityNumber";
+            this.socialSecurityNumberDataGridViewTextBoxColumn.HeaderText = "SocialSecurityNumber";
+            this.socialSecurityNumberDataGridViewTextBoxColumn.Name = "socialSecurityNumberDataGridViewTextBoxColumn";
+            this.socialSecurityNumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // subordinateNnitsDataGridViewTextBoxColumn
+            // 
+            this.subordinateNnitsDataGridViewTextBoxColumn.DataPropertyName = "SubordinateNnits";
+            this.subordinateNnitsDataGridViewTextBoxColumn.HeaderText = "SubordinateNnits";
+            this.subordinateNnitsDataGridViewTextBoxColumn.Name = "subordinateNnitsDataGridViewTextBoxColumn";
+            this.subordinateNnitsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // yearsDataGridViewTextBoxColumn
+            // 
+            this.yearsDataGridViewTextBoxColumn.DataPropertyName = "Years";
+            this.yearsDataGridViewTextBoxColumn.HeaderText = "Years";
+            this.yearsDataGridViewTextBoxColumn.Name = "yearsDataGridViewTextBoxColumn";
+            this.yearsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // positionIDDataGridViewTextBoxColumn
+            // 
+            this.positionIDDataGridViewTextBoxColumn.DataPropertyName = "PositionID";
+            this.positionIDDataGridViewTextBoxColumn.HeaderText = "PositionID";
+            this.positionIDDataGridViewTextBoxColumn.Name = "positionIDDataGridViewTextBoxColumn";
+            this.positionIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // postRankIDDataGridViewTextBoxColumn
+            // 
+            this.postRankIDDataGridViewTextBoxColumn.DataPropertyName = "PostRankID";
+            this.postRankIDDataGridViewTextBoxColumn.HeaderText = "PostRankID";
+            this.postRankIDDataGridViewTextBoxColumn.Name = "postRankIDDataGridViewTextBoxColumn";
+            this.postRankIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // coefficientDataGridViewTextBoxColumn
+            // 
+            this.coefficientDataGridViewTextBoxColumn.DataPropertyName = "Coefficient";
+            this.coefficientDataGridViewTextBoxColumn.HeaderText = "Coefficient";
+            this.coefficientDataGridViewTextBoxColumn.Name = "coefficientDataGridViewTextBoxColumn";
+            this.coefficientDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // whetherOnDutyDataGridViewTextBoxColumn
+            // 
+            this.whetherOnDutyDataGridViewTextBoxColumn.DataPropertyName = "WhetherOnDuty";
+            this.whetherOnDutyDataGridViewTextBoxColumn.HeaderText = "WhetherOnDuty";
+            this.whetherOnDutyDataGridViewTextBoxColumn.Name = "whetherOnDutyDataGridViewTextBoxColumn";
+            this.whetherOnDutyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // probationPeriodDataGridViewTextBoxColumn
+            // 
+            this.probationPeriodDataGridViewTextBoxColumn.DataPropertyName = "ProbationPeriod";
+            this.probationPeriodDataGridViewTextBoxColumn.HeaderText = "ProbationPeriod";
+            this.probationPeriodDataGridViewTextBoxColumn.Name = "probationPeriodDataGridViewTextBoxColumn";
+            this.probationPeriodDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // wageAttributeDataGridViewTextBoxColumn
+            // 
+            this.wageAttributeDataGridViewTextBoxColumn.DataPropertyName = "WageAttribute";
+            this.wageAttributeDataGridViewTextBoxColumn.HeaderText = "WageAttribute";
+            this.wageAttributeDataGridViewTextBoxColumn.Name = "wageAttributeDataGridViewTextBoxColumn";
+            this.wageAttributeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // positionLinkDataGridViewTextBoxColumn
+            // 
+            this.positionLinkDataGridViewTextBoxColumn.DataPropertyName = "PositionLink";
+            this.positionLinkDataGridViewTextBoxColumn.HeaderText = "PositionLink";
+            this.positionLinkDataGridViewTextBoxColumn.Name = "positionLinkDataGridViewTextBoxColumn";
+            this.positionLinkDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // postRankLinkDataGridViewTextBoxColumn
+            // 
+            this.postRankLinkDataGridViewTextBoxColumn.DataPropertyName = "PostRankLink";
+            this.postRankLinkDataGridViewTextBoxColumn.HeaderText = "PostRankLink";
+            this.postRankLinkDataGridViewTextBoxColumn.Name = "postRankLinkDataGridViewTextBoxColumn";
+            this.postRankLinkDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // postWageDataGridViewTextBoxColumn
+            // 
+            this.postWageDataGridViewTextBoxColumn.DataPropertyName = "PostWage";
+            this.postWageDataGridViewTextBoxColumn.HeaderText = "PostWage";
+            this.postWageDataGridViewTextBoxColumn.Name = "postWageDataGridViewTextBoxColumn";
+            this.postWageDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // monthlyPerformancePayDataGridViewTextBoxColumn
+            // 
+            this.monthlyPerformancePayDataGridViewTextBoxColumn.DataPropertyName = "MonthlyPerformancePay";
+            this.monthlyPerformancePayDataGridViewTextBoxColumn.HeaderText = "MonthlyPerformancePay";
+            this.monthlyPerformancePayDataGridViewTextBoxColumn.Name = "monthlyPerformancePayDataGridViewTextBoxColumn";
+            this.monthlyPerformancePayDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // performancePayDataGridViewTextBoxColumn
+            // 
+            this.performancePayDataGridViewTextBoxColumn.DataPropertyName = "PerformancePay";
+            this.performancePayDataGridViewTextBoxColumn.HeaderText = "PerformancePay";
+            this.performancePayDataGridViewTextBoxColumn.Name = "performancePayDataGridViewTextBoxColumn";
+            this.performancePayDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // seniorityWageDataGridViewTextBoxColumn
+            // 
+            this.seniorityWageDataGridViewTextBoxColumn.DataPropertyName = "SeniorityWage";
+            this.seniorityWageDataGridViewTextBoxColumn.HeaderText = "SeniorityWage";
+            this.seniorityWageDataGridViewTextBoxColumn.Name = "seniorityWageDataGridViewTextBoxColumn";
+            this.seniorityWageDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // technicalAllowanceDataGridViewTextBoxColumn
+            // 
+            this.technicalAllowanceDataGridViewTextBoxColumn.DataPropertyName = "TechnicalAllowance";
+            this.technicalAllowanceDataGridViewTextBoxColumn.HeaderText = "TechnicalAllowance";
+            this.technicalAllowanceDataGridViewTextBoxColumn.Name = "technicalAllowanceDataGridViewTextBoxColumn";
+            this.technicalAllowanceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // professionalAllowancesDataGridViewTextBoxColumn
+            // 
+            this.professionalAllowancesDataGridViewTextBoxColumn.DataPropertyName = "ProfessionalAllowances";
+            this.professionalAllowancesDataGridViewTextBoxColumn.HeaderText = "ProfessionalAllowances";
+            this.professionalAllowancesDataGridViewTextBoxColumn.Name = "professionalAllowancesDataGridViewTextBoxColumn";
+            this.professionalAllowancesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quasiVehicleAllowancesDataGridViewTextBoxColumn
+            // 
+            this.quasiVehicleAllowancesDataGridViewTextBoxColumn.DataPropertyName = "QuasiVehicleAllowances";
+            this.quasiVehicleAllowancesDataGridViewTextBoxColumn.HeaderText = "QuasiVehicleAllowances";
+            this.quasiVehicleAllowancesDataGridViewTextBoxColumn.Name = "quasiVehicleAllowancesDataGridViewTextBoxColumn";
+            this.quasiVehicleAllowancesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // postAllowanceDataGridViewTextBoxColumn
+            // 
+            this.postAllowanceDataGridViewTextBoxColumn.DataPropertyName = "PostAllowance";
+            this.postAllowanceDataGridViewTextBoxColumn.HeaderText = "PostAllowance";
+            this.postAllowanceDataGridViewTextBoxColumn.Name = "postAllowanceDataGridViewTextBoxColumn";
+            this.postAllowanceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // staffServiceAllowanceDataGridViewTextBoxColumn
+            // 
+            this.staffServiceAllowanceDataGridViewTextBoxColumn.DataPropertyName = "StaffServiceAllowance";
+            this.staffServiceAllowanceDataGridViewTextBoxColumn.HeaderText = "StaffServiceAllowance";
+            this.staffServiceAllowanceDataGridViewTextBoxColumn.Name = "staffServiceAllowanceDataGridViewTextBoxColumn";
+            this.staffServiceAllowanceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dustChargeDataGridViewTextBoxColumn
+            // 
+            this.dustChargeDataGridViewTextBoxColumn.DataPropertyName = "DustCharge";
+            this.dustChargeDataGridViewTextBoxColumn.HeaderText = "DustCharge";
+            this.dustChargeDataGridViewTextBoxColumn.Name = "dustChargeDataGridViewTextBoxColumn";
+            this.dustChargeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nightAllowanceDataGridViewTextBoxColumn
+            // 
+            this.nightAllowanceDataGridViewTextBoxColumn.DataPropertyName = "NightAllowance";
+            this.nightAllowanceDataGridViewTextBoxColumn.HeaderText = "NightAllowance";
+            this.nightAllowanceDataGridViewTextBoxColumn.Name = "nightAllowanceDataGridViewTextBoxColumn";
+            this.nightAllowanceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // hardshipAllowanceDataGridViewTextBoxColumn
+            // 
+            this.hardshipAllowanceDataGridViewTextBoxColumn.DataPropertyName = "HardshipAllowance";
+            this.hardshipAllowanceDataGridViewTextBoxColumn.HeaderText = "HardshipAllowance";
+            this.hardshipAllowanceDataGridViewTextBoxColumn.Name = "hardshipAllowanceDataGridViewTextBoxColumn";
+            this.hardshipAllowanceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tollStationServiceDataGridViewTextBoxColumn
+            // 
+            this.tollStationServiceDataGridViewTextBoxColumn.DataPropertyName = "TollStationService";
+            this.tollStationServiceDataGridViewTextBoxColumn.HeaderText = "TollStationService";
+            this.tollStationServiceDataGridViewTextBoxColumn.Name = "tollStationServiceDataGridViewTextBoxColumn";
+            this.tollStationServiceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // smileStarDataGridViewTextBoxColumn
+            // 
+            this.smileStarDataGridViewTextBoxColumn.DataPropertyName = "SmileStar";
+            this.smileStarDataGridViewTextBoxColumn.HeaderText = "SmileStar";
+            this.smileStarDataGridViewTextBoxColumn.Name = "smileStarDataGridViewTextBoxColumn";
+            this.smileStarDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // jobReplacementDataGridViewTextBoxColumn
+            // 
+            this.jobReplacementDataGridViewTextBoxColumn.DataPropertyName = "JobReplacement";
+            this.jobReplacementDataGridViewTextBoxColumn.HeaderText = "JobReplacement";
+            this.jobReplacementDataGridViewTextBoxColumn.Name = "jobReplacementDataGridViewTextBoxColumn";
+            this.jobReplacementDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // replacementPayDataGridViewTextBoxColumn
+            // 
+            this.replacementPayDataGridViewTextBoxColumn.DataPropertyName = "ReplacementPay";
+            this.replacementPayDataGridViewTextBoxColumn.HeaderText = "ReplacementPay";
+            this.replacementPayDataGridViewTextBoxColumn.Name = "replacementPayDataGridViewTextBoxColumn";
+            this.replacementPayDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pluggingIncomeDataGridViewTextBoxColumn
+            // 
+            this.pluggingIncomeDataGridViewTextBoxColumn.DataPropertyName = "PluggingIncome";
+            this.pluggingIncomeDataGridViewTextBoxColumn.HeaderText = "PluggingIncome";
+            this.pluggingIncomeDataGridViewTextBoxColumn.Name = "pluggingIncomeDataGridViewTextBoxColumn";
+            this.pluggingIncomeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // otherDataGridViewTextBoxColumn
+            // 
+            this.otherDataGridViewTextBoxColumn.DataPropertyName = "Other";
+            this.otherDataGridViewTextBoxColumn.HeaderText = "Other";
+            this.otherDataGridViewTextBoxColumn.Name = "otherDataGridViewTextBoxColumn";
+            this.otherDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // reserve1DataGridViewTextBoxColumn
+            // 
+            this.reserve1DataGridViewTextBoxColumn.DataPropertyName = "Reserve1";
+            this.reserve1DataGridViewTextBoxColumn.HeaderText = "Reserve1";
+            this.reserve1DataGridViewTextBoxColumn.Name = "reserve1DataGridViewTextBoxColumn";
+            this.reserve1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // reserve2DataGridViewTextBoxColumn
+            // 
+            this.reserve2DataGridViewTextBoxColumn.DataPropertyName = "Reserve2";
+            this.reserve2DataGridViewTextBoxColumn.HeaderText = "Reserve2";
+            this.reserve2DataGridViewTextBoxColumn.Name = "reserve2DataGridViewTextBoxColumn";
+            this.reserve2DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // subtotalDataGridViewTextBoxColumn
+            // 
+            this.subtotalDataGridViewTextBoxColumn.DataPropertyName = "Subtotal";
+            this.subtotalDataGridViewTextBoxColumn.HeaderText = "Subtotal";
+            this.subtotalDataGridViewTextBoxColumn.Name = "subtotalDataGridViewTextBoxColumn";
+            this.subtotalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // highSubsidiesDataGridViewTextBoxColumn
+            // 
+            this.highSubsidiesDataGridViewTextBoxColumn.DataPropertyName = "HighSubsidies";
+            this.highSubsidiesDataGridViewTextBoxColumn.HeaderText = "HighSubsidies";
+            this.highSubsidiesDataGridViewTextBoxColumn.Name = "highSubsidiesDataGridViewTextBoxColumn";
+            this.highSubsidiesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // communicationSubsidyDataGridViewTextBoxColumn
+            // 
+            this.communicationSubsidyDataGridViewTextBoxColumn.DataPropertyName = "CommunicationSubsidy";
+            this.communicationSubsidyDataGridViewTextBoxColumn.HeaderText = "CommunicationSubsidy";
+            this.communicationSubsidyDataGridViewTextBoxColumn.Name = "communicationSubsidyDataGridViewTextBoxColumn";
+            this.communicationSubsidyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // overtimePayDataGridViewTextBoxColumn
+            // 
+            this.overtimePayDataGridViewTextBoxColumn.DataPropertyName = "OvertimePay";
+            this.overtimePayDataGridViewTextBoxColumn.HeaderText = "OvertimePay";
+            this.overtimePayDataGridViewTextBoxColumn.Name = "overtimePayDataGridViewTextBoxColumn";
+            this.overtimePayDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // debitDataGridViewTextBoxColumn
+            // 
+            this.debitDataGridViewTextBoxColumn.DataPropertyName = "Debit";
+            this.debitDataGridViewTextBoxColumn.HeaderText = "Debit";
+            this.debitDataGridViewTextBoxColumn.Name = "debitDataGridViewTextBoxColumn";
+            this.debitDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // totalShouldBeIssuedDataGridViewTextBoxColumn
+            // 
+            this.totalShouldBeIssuedDataGridViewTextBoxColumn.DataPropertyName = "TotalShouldBeIssued";
+            this.totalShouldBeIssuedDataGridViewTextBoxColumn.HeaderText = "TotalShouldBeIssued";
+            this.totalShouldBeIssuedDataGridViewTextBoxColumn.Name = "totalShouldBeIssuedDataGridViewTextBoxColumn";
+            this.totalShouldBeIssuedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // naturalYearEndPerformanceDataGridViewTextBoxColumn
+            // 
+            this.naturalYearEndPerformanceDataGridViewTextBoxColumn.DataPropertyName = "NaturalYearEndPerformance";
+            this.naturalYearEndPerformanceDataGridViewTextBoxColumn.HeaderText = "NaturalYearEndPerformance";
+            this.naturalYearEndPerformanceDataGridViewTextBoxColumn.Name = "naturalYearEndPerformanceDataGridViewTextBoxColumn";
+            this.naturalYearEndPerformanceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // annualYearEndPerformanceDataGridViewTextBoxColumn
+            // 
+            this.annualYearEndPerformanceDataGridViewTextBoxColumn.DataPropertyName = "AnnualYearEndPerformance";
+            this.annualYearEndPerformanceDataGridViewTextBoxColumn.HeaderText = "AnnualYearEndPerformance";
+            this.annualYearEndPerformanceDataGridViewTextBoxColumn.Name = "annualYearEndPerformanceDataGridViewTextBoxColumn";
+            this.annualYearEndPerformanceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dtp_start
+            // 
+            this.dtp_start.CustomFormat = "yyyy年MM月";
+            this.dtp_start.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_start.Location = new System.Drawing.Point(353, 15);
+            this.dtp_start.Name = "dtp_start";
+            this.dtp_start.Size = new System.Drawing.Size(121, 21);
+            this.dtp_start.TabIndex = 29;
+            // 
+            // dtp_stop
+            // 
+            this.dtp_stop.CustomFormat = "yyyy年MM月";
+            this.dtp_stop.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_stop.Location = new System.Drawing.Point(353, 41);
+            this.dtp_stop.Name = "dtp_stop";
+            this.dtp_stop.Size = new System.Drawing.Size(121, 21);
+            this.dtp_stop.TabIndex = 30;
+            this.dtp_stop.Value = new System.DateTime(2017, 4, 1, 0, 0, 0, 0);
+            // 
             // MainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -547,11 +916,12 @@
             this.Text = "工资报表统计系统";
             this.panel_menu.ResumeLayout(false);
             this.panel_table.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panel_bottom.ResumeLayout(false);
+            this.panel_bottom.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel_command.ResumeLayout(false);
             this.panel_command.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.payrollBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -574,7 +944,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_xiashudanwei;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel_bottom;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TextBox txb_pager;
         private System.Windows.Forms.Button btn_before;
@@ -594,12 +964,53 @@
         private System.Windows.Forms.ComboBox comboBox7;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.ComboBox comboBox6;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.BindingSource payrollBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn socialSecurityNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subordinateNnitsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn yearsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn positionIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn postRankIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn coefficientDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn whetherOnDutyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn probationPeriodDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wageAttributeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn positionLinkDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn postRankLinkDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn postWageDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn monthlyPerformancePayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn performancePayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn seniorityWageDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn technicalAllowanceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn professionalAllowancesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quasiVehicleAllowancesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn postAllowanceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn staffServiceAllowanceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dustChargeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nightAllowanceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hardshipAllowanceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tollStationServiceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn smileStarDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jobReplacementDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn replacementPayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pluggingIncomeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn otherDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn reserve1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn reserve2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subtotalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn highSubsidiesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn communicationSubsidyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn overtimePayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn debitDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalShouldBeIssuedDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn naturalYearEndPerformanceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn annualYearEndPerformanceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DateTimePicker dtp_stop;
+        private System.Windows.Forms.DateTimePicker dtp_start;
     }
 }
 
