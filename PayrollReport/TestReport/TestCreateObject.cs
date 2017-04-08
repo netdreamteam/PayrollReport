@@ -158,54 +158,6 @@ namespace TestReport
             dicReportLeader["Manage"] = list1;
             report.ExportPostWage("公司:柳州分公司", "月份:12", dicReportLeader);
         }
-
-        [Test]
-        public void TestAnnualWage()
-        {
-            List<ReportAnnualWage> list = new List<ReportAnnualWage>();
-            list.Add(new ReportAnnualWage()
-            {
-                CompanyName="柳州公司",
-                January=10,
-                February=20,
-                March=30,
-                April=10,
-                May=22,
-                June=11,
-                July=32,
-                August=32,
-                September=30,
-                October=10,
-                November=20,
-                December=30,
-                NaturalYearEndPerformance=40,
-                NaturalYearEndSum=32,
-                AnnualYearEndPerformance=30,
-                AnnualYearEndSum=20
-            });
-            list.Add(new ReportAnnualWage()
-            {
-                CompanyName = "桂林公司",
-                January = 20,
-                February = 320,
-                March = 330,
-                April = 130,
-                May = 223,
-                June = 131,
-                July = 323,
-                August = 332,
-                September = 330,
-                October = 310,
-                November = 320,
-                December = 330,
-                NaturalYearEndPerformance = 430,
-                NaturalYearEndSum = 323,
-                AnnualYearEndPerformance = 330,
-                AnnualYearEndSum = 230
-            });
-            report.ExportReportAnnualWage(list);
-        }
-
         [Test]
         public void TestExportReportDetailed()
         {
