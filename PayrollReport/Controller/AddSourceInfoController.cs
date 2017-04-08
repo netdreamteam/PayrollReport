@@ -38,23 +38,24 @@ namespace Controller
 
                     //using (var scope = new TransactionScope())
                     //{
-                        if (AddPayroll(dataDt))
-                        {
-                            //scope.Complete();
-                            //scope.Dispose();
-
-                            continue;
-                        }
-
+                    if (AddPayroll(dataDt))
+                    {
+                        //scope.Complete();
                         //scope.Dispose();
 
-                        return false;
+                        continue;
+                    }
+
+                    //scope.Dispose();
+
+                    return false;
                     //}
                 }
             }
 
             return true;
         }
+
 
         /// <summary>
         /// 添加工资表
@@ -64,8 +65,7 @@ namespace Controller
         public bool AddPayroll(DataTable dataDt)
         {
             BusinessContext dbContext = new BusinessContext();
-
-            for (var i = 2; i < dataDt.Rows.Count; i++)
+            for (var i = 0; i < dataDt.Rows.Count; i++)
             {
                 DataRow dr = dataDt.Rows[i];
                 float coefficient = 0;
@@ -133,6 +133,7 @@ namespace Controller
                 {
                     dbContext.Payroll.Add(new Payroll
                     {
+                        ID = Guid.NewGuid().ToString(),
                         SubordinateNnits = dr[0].ToString(),
                         Years = dr[1].ToString(),
                         Name = dr[2].ToString(),
@@ -175,7 +176,7 @@ namespace Controller
 
                     dbContext.SaveChanges();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     return false;
                 }
@@ -192,7 +193,8 @@ namespace Controller
         /// <returns>编号</returns>
         public string AddPosition(BusinessContext dbContext, DataRow dr)
         {
-            var item = dbContext.Position.FirstOrDefault(a => a.PositionName.Equals(dr[4].ToString()));
+            var positionName = dr[4].ToString();
+            var item = dbContext.Position.FirstOrDefault(a => a.PositionName.Equals(positionName));
             if (item != null)
             {
                 return item.PositionID;
@@ -218,7 +220,8 @@ namespace Controller
         /// <returns>编号</returns>
         public string AddPostRank(BusinessContext dbContext, DataRow dr)
         {
-            var item = dbContext.PostRank.FirstOrDefault(a => a.PostRankName.Equals(dr[5].ToString()));
+            var postRankName = dr[5].ToString();
+            var item = dbContext.PostRank.FirstOrDefault(a => a.PostRankName.Equals(postRankName));
             if (item != null)
             {
                 return item.PostRankID;
