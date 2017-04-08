@@ -65,7 +65,7 @@ namespace Controller
         {
             BusinessContext dbContext = new BusinessContext();
 
-            for (var i = 2; i < dataDt.Rows.Count; i++)
+            for (var i = 0; i < dataDt.Rows.Count; i++)
             {
                 DataRow dr = dataDt.Rows[i];
                 float coefficient = 0;

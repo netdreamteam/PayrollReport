@@ -24,7 +24,7 @@ namespace Model
         /// <summary>
         /// 下属单位
         /// </summary>
-        public string SubordinateNnits { get; set; }
+        public List<string> SubordinateNnits { get; set; }
         /// <summary>
         /// 年月
         /// </summary>

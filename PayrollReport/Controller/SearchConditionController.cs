@@ -30,9 +30,9 @@ namespace Controller
             {
                 result = result.Where(a => a.SocialSecurityNumber.Equals(model.SocialSecurityNumber)).ToList();
             }
-            if (!string.IsNullOrEmpty(model.SubordinateNnits))
+            if (model.SubordinateNnits != null && model.SubordinateNnits.Count() > 0)
             {
-                result = result.Where(a => a.SubordinateNnits.Equals(model.SubordinateNnits)).ToList();
+                result = result.Where(a => model.SubordinateNnits.Contains(a.SubordinateNnits)).ToList();
             }
 
             List<string> timeStr = new List<string>();

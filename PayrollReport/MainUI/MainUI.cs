@@ -43,6 +43,11 @@ namespace MainUI
         {
             FileImportService(@"F:\code\PayrollReport\输入件\12");
 
+            SearchConditionController s = new SearchConditionController();
+            var item = s.SearchByCondition(null);
+            ImportTableThree i = new ImportTableThree(item);
+            i.Run();
+
             //FolderBrowserDialog fbd = new FolderBrowserDialog();
             //if (fbd.ShowDialog() == DialogResult.OK)
             //{
