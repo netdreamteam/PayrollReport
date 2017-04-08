@@ -54,7 +54,7 @@ namespace MainUI
                 MessageBox.Show(string.Format("[{0}]路径不存在,请重新选择",this.txb_savePath.Text.ToString()), "提示");
                 return;
             }
-            if(this.checkBox1.Checked==false&&this.checkBox2.Checked==false&&this.checkBox3.Checked==false)
+            if(this.checkBox1.Checked==false&&this.checkBox2.Checked==false&&this.checkBox3.Checked==false&&this.checkBox4.Checked==false)
             {
                 MessageBox.Show("请选择要导出的报表", "提示");
                 return;

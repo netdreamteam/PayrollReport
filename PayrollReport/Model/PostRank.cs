@@ -16,6 +16,10 @@ namespace Model
     {
         public PostRank()
         { }
+        public override string ToString()
+        {
+            return PostRankName;
+        }
         #region Model
         /// <summary>
         /// 岗位职级ID

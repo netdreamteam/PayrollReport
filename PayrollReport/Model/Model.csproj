@@ -61,6 +61,7 @@
     <Compile Include="Report\ReportAnnualWage.cs" />
     <Compile Include="Report\ReportDetailed.cs" />
     <Compile Include="Report\ReportPost.cs" />
+    <Compile Include="UIDataSummaryModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

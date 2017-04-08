@@ -36,7 +36,6 @@
             this.panel_table = new System.Windows.Forms.Panel();
             this.panel_bottom = new System.Windows.Forms.Panel();
             this.btn_last = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.btn_next = new System.Windows.Forms.Button();
             this.txb_pager = new System.Windows.Forms.TextBox();
             this.btn_before = new System.Windows.Forms.Button();
@@ -44,6 +43,8 @@
             this.lbl_RecordCount = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel_command = new System.Windows.Forms.Panel();
+            this.dtp_stop = new System.Windows.Forms.DateTimePicker();
+            this.dtp_start = new System.Windows.Forms.DateTimePicker();
             this.listView1 = new System.Windows.Forms.ListView();
             this.button11 = new System.Windows.Forms.Button();
             this.btn_shuaixuan = new System.Windows.Forms.Button();
@@ -69,18 +70,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.payrollBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.socialSecurityNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subordinateNnitsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.yearsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.socialSecurityNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.positionIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.postRankIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.positionLinkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.postRankLinkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.coefficientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.whetherOnDutyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.probationPeriodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.wageAttributeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.positionLinkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.postRankLinkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.postWageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.monthlyPerformancePayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -110,19 +111,21 @@
             this.totalShouldBeIssuedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.naturalYearEndPerformanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.annualYearEndPerformanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtp_start = new System.Windows.Forms.DateTimePicker();
-            this.dtp_stop = new System.Windows.Forms.DateTimePicker();
+            this.positionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btn_summary = new System.Windows.Forms.Button();
             this.panel_menu.SuspendLayout();
             this.panel_table.SuspendLayout();
             this.panel_bottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel_command.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.payrollBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.positionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_menu
             // 
             this.panel_menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel_menu.Controls.Add(this.btn_summary);
             this.panel_menu.Controls.Add(this.btn_command);
             this.panel_menu.Controls.Add(this.btn_export);
             this.panel_menu.Controls.Add(this.btn_import);
@@ -193,7 +196,6 @@
             // panel_bottom
             // 
             this.panel_bottom.Controls.Add(this.btn_last);
-            this.panel_bottom.Controls.Add(this.button6);
             this.panel_bottom.Controls.Add(this.btn_next);
             this.panel_bottom.Controls.Add(this.txb_pager);
             this.panel_bottom.Controls.Add(this.btn_before);
@@ -215,15 +217,6 @@
             this.btn_last.Text = "尾页";
             this.btn_last.UseVisualStyleBackColor = false;
             this.btn_last.Click += new System.EventHandler(this.btn_last_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(696, 4);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "设置";
-            this.button6.UseVisualStyleBackColor = true;
             // 
             // btn_next
             // 
@@ -286,18 +279,18 @@
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.socialSecurityNumberDataGridViewTextBoxColumn,
             this.subordinateNnitsDataGridViewTextBoxColumn,
             this.yearsDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
+            this.socialSecurityNumberDataGridViewTextBoxColumn,
             this.positionIDDataGridViewTextBoxColumn,
             this.postRankIDDataGridViewTextBoxColumn,
+            this.positionLinkDataGridViewTextBoxColumn,
+            this.postRankLinkDataGridViewTextBoxColumn,
             this.coefficientDataGridViewTextBoxColumn,
             this.whetherOnDutyDataGridViewTextBoxColumn,
             this.probationPeriodDataGridViewTextBoxColumn,
             this.wageAttributeDataGridViewTextBoxColumn,
-            this.positionLinkDataGridViewTextBoxColumn,
-            this.postRankLinkDataGridViewTextBoxColumn,
             this.iDDataGridViewTextBoxColumn,
             this.postWageDataGridViewTextBoxColumn,
             this.monthlyPerformancePayDataGridViewTextBoxColumn,
@@ -369,6 +362,25 @@
             this.panel_command.Name = "panel_command";
             this.panel_command.Size = new System.Drawing.Size(984, 136);
             this.panel_command.TabIndex = 2;
+            // 
+            // dtp_stop
+            // 
+            this.dtp_stop.CustomFormat = "yyyyMM";
+            this.dtp_stop.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_stop.Location = new System.Drawing.Point(353, 41);
+            this.dtp_stop.Name = "dtp_stop";
+            this.dtp_stop.Size = new System.Drawing.Size(121, 21);
+            this.dtp_stop.TabIndex = 30;
+            this.dtp_stop.Value = new System.DateTime(2017, 4, 1, 0, 0, 0, 0);
+            // 
+            // dtp_start
+            // 
+            this.dtp_start.CustomFormat = "yyyyMM";
+            this.dtp_start.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_start.Location = new System.Drawing.Point(353, 15);
+            this.dtp_start.Name = "dtp_start";
+            this.dtp_start.Size = new System.Drawing.Size(121, 21);
+            this.dtp_start.TabIndex = 29;
             // 
             // listView1
             // 
@@ -541,6 +553,7 @@
             // 
             // cmb_suozaigangwei
             // 
+            this.cmb_suozaigangwei.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.payrollBindingSource, "PositionID", true));
             this.cmb_suozaigangwei.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_suozaigangwei.FormattingEnabled = true;
             this.cmb_suozaigangwei.Location = new System.Drawing.Point(97, 67);
@@ -597,13 +610,6 @@
             // 
             this.payrollBindingSource.DataSource = typeof(Model.Payroll);
             // 
-            // socialSecurityNumberDataGridViewTextBoxColumn
-            // 
-            this.socialSecurityNumberDataGridViewTextBoxColumn.DataPropertyName = "SocialSecurityNumber";
-            this.socialSecurityNumberDataGridViewTextBoxColumn.HeaderText = "SocialSecurityNumber";
-            this.socialSecurityNumberDataGridViewTextBoxColumn.Name = "socialSecurityNumberDataGridViewTextBoxColumn";
-            this.socialSecurityNumberDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // subordinateNnitsDataGridViewTextBoxColumn
             // 
             this.subordinateNnitsDataGridViewTextBoxColumn.DataPropertyName = "SubordinateNnits";
@@ -625,12 +631,20 @@
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             this.nameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // socialSecurityNumberDataGridViewTextBoxColumn
+            // 
+            this.socialSecurityNumberDataGridViewTextBoxColumn.DataPropertyName = "SocialSecurityNumber";
+            this.socialSecurityNumberDataGridViewTextBoxColumn.HeaderText = "SocialSecurityNumber";
+            this.socialSecurityNumberDataGridViewTextBoxColumn.Name = "socialSecurityNumberDataGridViewTextBoxColumn";
+            this.socialSecurityNumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // positionIDDataGridViewTextBoxColumn
             // 
             this.positionIDDataGridViewTextBoxColumn.DataPropertyName = "PositionID";
             this.positionIDDataGridViewTextBoxColumn.HeaderText = "PositionID";
             this.positionIDDataGridViewTextBoxColumn.Name = "positionIDDataGridViewTextBoxColumn";
             this.positionIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.positionIDDataGridViewTextBoxColumn.Visible = false;
             // 
             // postRankIDDataGridViewTextBoxColumn
             // 
@@ -638,6 +652,21 @@
             this.postRankIDDataGridViewTextBoxColumn.HeaderText = "PostRankID";
             this.postRankIDDataGridViewTextBoxColumn.Name = "postRankIDDataGridViewTextBoxColumn";
             this.postRankIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.postRankIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // positionLinkDataGridViewTextBoxColumn
+            // 
+            this.positionLinkDataGridViewTextBoxColumn.DataPropertyName = "PositionLink";
+            this.positionLinkDataGridViewTextBoxColumn.HeaderText = "PositionLink";
+            this.positionLinkDataGridViewTextBoxColumn.Name = "positionLinkDataGridViewTextBoxColumn";
+            this.positionLinkDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // postRankLinkDataGridViewTextBoxColumn
+            // 
+            this.postRankLinkDataGridViewTextBoxColumn.DataPropertyName = "PostRankLink";
+            this.postRankLinkDataGridViewTextBoxColumn.HeaderText = "PostRankLink";
+            this.postRankLinkDataGridViewTextBoxColumn.Name = "postRankLinkDataGridViewTextBoxColumn";
+            this.postRankLinkDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // coefficientDataGridViewTextBoxColumn
             // 
@@ -667,26 +696,13 @@
             this.wageAttributeDataGridViewTextBoxColumn.Name = "wageAttributeDataGridViewTextBoxColumn";
             this.wageAttributeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // positionLinkDataGridViewTextBoxColumn
-            // 
-            this.positionLinkDataGridViewTextBoxColumn.DataPropertyName = "PositionLink";
-            this.positionLinkDataGridViewTextBoxColumn.HeaderText = "PositionLink";
-            this.positionLinkDataGridViewTextBoxColumn.Name = "positionLinkDataGridViewTextBoxColumn";
-            this.positionLinkDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // postRankLinkDataGridViewTextBoxColumn
-            // 
-            this.postRankLinkDataGridViewTextBoxColumn.DataPropertyName = "PostRankLink";
-            this.postRankLinkDataGridViewTextBoxColumn.HeaderText = "PostRankLink";
-            this.postRankLinkDataGridViewTextBoxColumn.Name = "postRankLinkDataGridViewTextBoxColumn";
-            this.postRankLinkDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // iDDataGridViewTextBoxColumn
             // 
             this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
             this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
             this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
             this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDDataGridViewTextBoxColumn.Visible = false;
             // 
             // postWageDataGridViewTextBoxColumn
             // 
@@ -884,24 +900,24 @@
             this.annualYearEndPerformanceDataGridViewTextBoxColumn.Name = "annualYearEndPerformanceDataGridViewTextBoxColumn";
             this.annualYearEndPerformanceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dtp_start
+            // positionBindingSource
             // 
-            this.dtp_start.CustomFormat = "yyyy年MM月";
-            this.dtp_start.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_start.Location = new System.Drawing.Point(353, 15);
-            this.dtp_start.Name = "dtp_start";
-            this.dtp_start.Size = new System.Drawing.Size(121, 21);
-            this.dtp_start.TabIndex = 29;
+            this.positionBindingSource.DataSource = typeof(Model.Position);
             // 
-            // dtp_stop
+            // btn_summary
             // 
-            this.dtp_stop.CustomFormat = "yyyy年MM月";
-            this.dtp_stop.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_stop.Location = new System.Drawing.Point(353, 41);
-            this.dtp_stop.Name = "dtp_stop";
-            this.dtp_stop.Size = new System.Drawing.Size(121, 21);
-            this.dtp_stop.TabIndex = 30;
-            this.dtp_stop.Value = new System.DateTime(2017, 4, 1, 0, 0, 0, 0);
+            this.btn_summary.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_summary.FlatAppearance.BorderSize = 0;
+            this.btn_summary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_summary.Image = global::MainUI.Properties.Resources.search_folder;
+            this.btn_summary.Location = new System.Drawing.Point(252, 0);
+            this.btn_summary.Name = "btn_summary";
+            this.btn_summary.Size = new System.Drawing.Size(74, 64);
+            this.btn_summary.TabIndex = 5;
+            this.btn_summary.Text = "统计数据";
+            this.btn_summary.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_summary.UseVisualStyleBackColor = true;
+            this.btn_summary.Click += new System.EventHandler(this.btn_summary_Click);
             // 
             // MainUI
             // 
@@ -922,6 +938,7 @@
             this.panel_command.ResumeLayout(false);
             this.panel_command.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.payrollBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.positionBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -945,7 +962,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_xiashudanwei;
         private System.Windows.Forms.Panel panel_bottom;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TextBox txb_pager;
         private System.Windows.Forms.Button btn_before;
         private System.Windows.Forms.Button btn_firstPage;
@@ -968,18 +984,20 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.BindingSource payrollBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn socialSecurityNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DateTimePicker dtp_stop;
+        private System.Windows.Forms.DateTimePicker dtp_start;
         private System.Windows.Forms.DataGridViewTextBoxColumn subordinateNnitsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn yearsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn socialSecurityNumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn positionIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn postRankIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn positionLinkDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn postRankLinkDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn coefficientDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn whetherOnDutyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn probationPeriodDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn wageAttributeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn positionLinkDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn postRankLinkDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn postWageDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn monthlyPerformancePayDataGridViewTextBoxColumn;
@@ -1009,8 +1027,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn totalShouldBeIssuedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn naturalYearEndPerformanceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn annualYearEndPerformanceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DateTimePicker dtp_stop;
-        private System.Windows.Forms.DateTimePicker dtp_start;
+        private System.Windows.Forms.BindingSource positionBindingSource;
+        private System.Windows.Forms.Button btn_summary;
     }
 }
 

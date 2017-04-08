@@ -16,6 +16,10 @@ namespace Model
     {
         public Position()
         { }
+        public override string ToString()
+        {
+            return PositionName;
+        }
         #region Model
         /// <summary>
         /// 岗位id

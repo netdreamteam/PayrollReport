@@ -43,12 +43,12 @@ namespace MainUI
         private void btn_import_Click(object sender, EventArgs e)
         {
             //FileImportService(@"F:\code\PayrollReport\输入件\12");
-            //FileImportService(@"H:\项目\PayrollReport\输入件");
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            if (fbd.ShowDialog() == DialogResult.OK)
-            {
-                FileImportService(fbd.SelectedPath);
-            }
+            FileImportService(@"H:\项目\PayrollReport\输入件");
+            //FolderBrowserDialog fbd = new FolderBrowserDialog();
+            //if (fbd.ShowDialog() == DialogResult.OK)
+            //{
+            //    FileImportService(fbd.SelectedPath);
+            //}
 
         }
         /// <summary>
@@ -70,10 +70,16 @@ namespace MainUI
             if (ds != null&& ds.Tables.Count>0)
             {
                 this.btn_command.Visible = true;
-                //for (int i = 0; i < ds.Tables[0].Columns.Count; i++)
-                //{
-                //    dataGridView1.Columns[i].HeaderCell.Value = ds.Tables[0].Columns[i].ColumnName;
-                //}
+                int j = 0;
+                for (int i = 0; i < dataGridView1.ColumnCount; i++)
+                {
+                    if (!dataGridView1.Columns[i].Visible)
+                    {
+                        continue;
+                    }
+                    dataGridView1.Columns[i].HeaderCell.Value = ds.Tables[0].Columns[j].ColumnName;
+                    j++;
+                }
             }
             AddSourceInfoController addSourceInfoController = new AddSourceInfoController();
             addSourceInfoController.Run(ds);
@@ -130,8 +136,8 @@ namespace MainUI
 
             this.cmb_xiashudanwei.DataSource = _bc.Payroll.Select(r => r.SubordinateNnits).Distinct().ToList();
             this.cmb_nianyue.DataSource = _bc.Payroll.Select(r => r.Years).Distinct().ToList();
-            this.cmb_suozaigangwei.DataSource = _bc.Payroll.Select(r => r.PositionID).Distinct().ToList();
-            this.cmb_gangweizhiji.DataSource = _bc.Payroll.Select(r => r.PostRankID).Distinct().ToList();
+            this.cmb_suozaigangwei.DataSource = _bc.Payroll.Select(r => r.PositionLink).Distinct().ToList();
+            this.cmb_gangweizhiji.DataSource = _bc.Payroll.Select(r => r.PostRankLink).Distinct().ToList();
         }
         /// <summary>
         /// 页面初始化数据
@@ -312,6 +318,14 @@ namespace MainUI
                     this.listView1.Items.Add(lvi);
                 }
             }
+        }
+
+        private void btn_summary_Click(object sender, EventArgs e)
+        {
+            var data = dataGridView1.DataSource as List<Payroll>;
+            DataSummary ui = new DataSummary(data);
+            ui.ShowDialog();
+           
         }
     }
 }
