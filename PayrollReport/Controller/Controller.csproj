@@ -57,6 +57,7 @@
     <Compile Include="ImportTableThree.cs" />
     <Compile Include="ImportTableTwo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchConditionController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">
