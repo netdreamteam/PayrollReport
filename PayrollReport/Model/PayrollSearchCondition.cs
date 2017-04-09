@@ -67,6 +67,7 @@ namespace Model
             SubordinateNnits = new List<string>();
             PositionName = new List<string>();
             PostRankName = new List<string>();
+            Name = new List<string>();
         }
     }
 }

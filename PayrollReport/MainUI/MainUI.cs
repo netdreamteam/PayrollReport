@@ -46,14 +46,11 @@ namespace MainUI
         /// <param name="e"></param>
         private void btn_import_Click(object sender, EventArgs e)
         {
-            FileImportService(@"H:\项目\PayrollReport\输入件");
-            //FolderBrowserDialog fbd = new FolderBrowserDialog();
-            //if (fbd.ShowDialog() == DialogResult.OK)
-            //{
-            //    FileImportService(fbd.SelectedPath);
-            //}
-            //FileImportService(@"F:\code\PayrollReport\输入件\12");
-
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                FileImportService(fbd.SelectedPath);
+            }
         }
         /// <summary>
         /// 数据源导入服务
@@ -102,7 +99,7 @@ namespace MainUI
         /// <param name="e"></param>
         private void btn_export_Click(object sender, EventArgs e)
         {
-            ExportMenu em = new ExportMenu();
+            ExportMenu em = new ExportMenu(_dataSource);
             em.ShowDialog();
 
         }
@@ -151,7 +148,6 @@ namespace MainUI
                 return;
             }
             this.cmb_xiashudanwei.DataSource = _bc.Payroll.Select(r => r.SubordinateNnits).Distinct().ToList();
-            this.cmb_nianyue.DataSource = _bc.Payroll.Select(r => r.Years).Distinct().ToList();
             this.cmb_suozaigangwei.DataSource = _bc.Payroll.Select(r => r.PositionLink).Distinct().ToList();
             this.cmb_gangweizhiji.DataSource = _bc.Payroll.Select(r => r.PostRankLink).Distinct().ToList();
         }
@@ -168,10 +164,10 @@ namespace MainUI
             }
             int count = _dataSource.Count;
             
-            if (count == 0)
-            {
-                return;
-            }
+            //if (count == 0)
+            //{
+            //    return;
+            //}
             int pager = (count / num);
             if (count % 30 > 0)
             {
@@ -233,7 +229,6 @@ namespace MainUI
             PagerInit(1, 30);
 
         }
-
         private void btn_xiashudanwei_Click(object sender, EventArgs e)
         {
 
@@ -250,28 +245,15 @@ namespace MainUI
             Condition();
         }
 
-        private void btn_nianyue_Click(object sender, EventArgs e)
-        {
-            if (!_condition.ContainsKey("年月"))
-            {
-                _condition.Add("年月", new List<string>());
-            }
-            if (!_condition["年月"].Contains(cmb_nianyue.SelectedValue.ToString()))
-            {
-                _condition["年月"].Add(cmb_nianyue.SelectedValue.ToString());
-            }
-            Condition();
-        }
-
         private void btn_suozaigangwei_Click(object sender, EventArgs e)
         {
-            if (!_condition.ContainsKey("所在单位"))
+            if (!_condition.ContainsKey("所在岗位"))
             {
-                _condition.Add("所在单位", new List<string>());
+                _condition.Add("所在岗位", new List<string>());
             }
-            if (!_condition["所在单位"].Contains(cmb_suozaigangwei.SelectedValue.ToString()))
+            if (!_condition["所在岗位"].Contains(cmb_suozaigangwei.SelectedValue.ToString()))
             {
-                _condition["所在单位"].Add(cmb_suozaigangwei.SelectedValue.ToString());
+                _condition["所在岗位"].Add(cmb_suozaigangwei.SelectedValue.ToString());
                 _conditionModel.PositionName.Add(cmb_suozaigangwei.SelectedValue.ToString());
             }
             Condition();
@@ -329,9 +311,40 @@ namespace MainUI
 
         private void btn_date_Click(object sender, EventArgs e)
         {
-            _conditionModel.StartYears = this.dtp_start.Value;
-            _conditionModel.EndYears = this.dtp_start.Value;
+            if (!_condition.ContainsKey("时间"))
+            {
+                _condition.Add("时间", new List<string>());
+
+            }
+            if (!_condition["时间"].Contains(string.Format("{0}-{1}",dtp_start.Value.ToString("yyyyMM"), dtp_stop.Value.ToString("yyyyMM"))))
+            {
+                _condition["时间"].Add(string.Format("{0}-{1}", dtp_start.Value.ToString("yyyyMM"), dtp_stop.Value.ToString("yyyyMM")));
+                _conditionModel.StartYears = this.dtp_start.Value;
+                _conditionModel.EndYears = this.dtp_stop.Value;
+            }
+            Condition();
+
+        }
+        
+
+        private void btn_Name_Click(object sender, EventArgs e)
+        {
+            if (!_condition.ContainsKey("姓名"))
+            {
+                _condition.Add("姓名", new List<string>());
+            }
+            if (!_condition["姓名"].Contains(cmb_gangweizhiji.SelectedValue.ToString()))
+            {
+                _condition["姓名"].Add(txt_Name.Text.ToString());
+                _conditionModel.Name.Add(txt_Name.Text.ToString());
+            }
+            Condition();
         }
         #endregion
+
+        private void MainUI_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
