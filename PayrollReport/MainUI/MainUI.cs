@@ -16,9 +16,11 @@ namespace MainUI
 {
     public partial class MainUI : Form
     {
-        private Payroll _payroll;
         private Dictionary<string, List<string>> _condition = new Dictionary<string, List<string>>();
         private BusinessContext _bc;
+        private PayrollSearchCondition _conditionModel = new PayrollSearchCondition();
+        private List<Payroll> _dataSource = new List<Payroll>();
+
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -28,13 +30,15 @@ namespace MainUI
             this.panel_command.Visible = false;
             this.panel_table.Height += 136;
             _bc = new BusinessContext();
-            _payroll = new Payroll();
             if (_bc.Payroll == null || _bc.Payroll.Count() == 0)
             {
                 this.btn_command.Visible = false;
             }
+            _dataSource = _bc.Payroll.ToList();
             PagerInit(1, 30);
         }
+
+        #region 导航栏
         /// <summary>
         /// 导入按钮点击事件
         /// </summary>
@@ -123,6 +127,19 @@ namespace MainUI
             }
         }
         /// <summary>
+        /// 统计信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_summary_Click(object sender, EventArgs e)
+        {
+            var data = dataGridView1.DataSource as List<Payroll>;
+            UIDataSummary ui = new UIDataSummary(data);
+            ui.ShowDialog();
+        }
+        #endregion
+
+        /// <summary>
         /// 下拉框数据绑定
         /// </summary>
         /// <returns></returns>
@@ -135,8 +152,8 @@ namespace MainUI
             }
             this.cmb_xiashudanwei.DataSource = _bc.Payroll.Select(r => r.SubordinateNnits).Distinct().ToList();
             this.cmb_nianyue.DataSource = _bc.Payroll.Select(r => r.Years).Distinct().ToList();
-            this.cmb_suozaigangwei.DataSource = _bc.Payroll.Select(r => r.PositionID).Distinct().ToList();
-            this.cmb_gangweizhiji.DataSource = _bc.Payroll.Select(r => r.PostRankID).Distinct().ToList();
+            this.cmb_suozaigangwei.DataSource = _bc.Payroll.Select(r => r.PositionLink).Distinct().ToList();
+            this.cmb_gangweizhiji.DataSource = _bc.Payroll.Select(r => r.PostRankLink).Distinct().ToList();
         }
         /// <summary>
         /// 页面初始化数据
@@ -145,13 +162,11 @@ namespace MainUI
         /// <param name="num">一页显示的数量</param>
         private void PagerInit(int startPager, int num)
         {
-            if (this._bc.Payroll == null)
-
-            if (_bc.Payroll==null)
+            if (_dataSource == null)
             {
                 return;
             }
-            int count = this._bc.Payroll.Count();
+            int count = _dataSource.Count;
             
             if (count == 0)
             {
@@ -173,10 +188,11 @@ namespace MainUI
             this.txb_pager.Text = startPager.ToString();
             startPager -= 1;
             this.lbl_RecordCount.Text = string.Format("共【{0}】记录,每页【{1}】条记录,共【{2}】页", count, num, pager);
-            this.dataGridView1.DataSource = _bc.Payroll.AsEnumerable().Skip(0 + startPager * num).Take(num).ToList();
+            this.dataGridView1.DataSource = _dataSource.Skip(0 + startPager * num).Take(num).ToList();
             
         }
 
+        #region 分页按钮
         private void btn_firstPage_Click(object sender, EventArgs e)
         {
             PagerInit(1, 30);
@@ -207,69 +223,71 @@ namespace MainUI
             int.TryParse(this.txb_pager.Text, out result);
             PagerInit(result, 30);
         }
-
+        #endregion
+        #region 筛选条件
         private void btn_shuaixuan_Click(object sender, EventArgs e)
         {
-            
-            
+            SearchConditionController search = new SearchConditionController();
+            List<Payroll> result =search.SearchByCondition(_conditionModel);
+            _dataSource = result;
+            PagerInit(1, 30);
+
         }
 
         private void btn_xiashudanwei_Click(object sender, EventArgs e)
         {
-
 
             if (!_condition.ContainsKey("下属单位"))
             {
                 _condition.Add("下属单位", new List<string>());
 
             }
-            _condition["下属单位"].Add(cmb_xiashudanwei.SelectedValue.ToString());
+            if (!_condition["下属单位"].Contains(cmb_xiashudanwei.SelectedValue.ToString()))
+            {
+                _condition["下属单位"].Add(cmb_xiashudanwei.SelectedValue.ToString());
+                _conditionModel.SubordinateNnits.Add(cmb_xiashudanwei.SelectedValue.ToString());
+            }
             Condition();
         }
 
         private void btn_nianyue_Click(object sender, EventArgs e)
         {
-
-
             if (!_condition.ContainsKey("年月"))
             {
                 _condition.Add("年月", new List<string>());
-
-
             }
-            _condition["年月"].Add(cmb_nianyue.SelectedValue.ToString());
-
-
+            if (!_condition["年月"].Contains(cmb_nianyue.SelectedValue.ToString()))
+            {
+                _condition["年月"].Add(cmb_nianyue.SelectedValue.ToString());
+            }
             Condition();
         }
 
         private void btn_suozaigangwei_Click(object sender, EventArgs e)
         {
-
-
             if (!_condition.ContainsKey("所在单位"))
             {
                 _condition.Add("所在单位", new List<string>());
-
             }
-            _condition["所在单位"].Add(cmb_suozaigangwei.SelectedValue.ToString());
-
-
+            if (!_condition["所在单位"].Contains(cmb_suozaigangwei.SelectedValue.ToString()))
+            {
+                _condition["所在单位"].Add(cmb_suozaigangwei.SelectedValue.ToString());
+                _conditionModel.PositionName.Add(cmb_suozaigangwei.SelectedValue.ToString());
+            }
             Condition();
         }
 
         private void btn_gangweizhiji_Click(object sender, EventArgs e)
         {
-
-
             if (!_condition.ContainsKey("岗位职级"))
             {
                 _condition.Add("岗位职级", new List<string>());
-
-
             }
-            _condition["岗位职级"].Add(cmb_gangweizhiji.SelectedValue.ToString());
-
+            if (!_condition["岗位职级"].Contains(cmb_gangweizhiji.SelectedValue.ToString()))
+            {
+                _condition["岗位职级"].Add(cmb_gangweizhiji.SelectedValue.ToString());
+                _conditionModel.PostRankName.Add(cmb_gangweizhiji.SelectedValue.ToString());
+            }
             Condition();
         }
         /// <summary>
@@ -280,19 +298,21 @@ namespace MainUI
         private void btn_refresh_Click(object sender, EventArgs e)
         {
             listView1.Clear();
+            listView1.Visible = false;
+            _dataSource = _bc.Payroll.ToList();
             PagerInit(1, 30);
             this._condition.Clear();
+            this._conditionModel = new PayrollSearchCondition();
         }
         internal void Condition()
         {
             listView1.Clear();
+            listView1.Visible = true;
             this.listView1.Columns.Add("类别", 90, HorizontalAlignment.Left);
             this.listView1.Columns.Add("条件", 90, HorizontalAlignment.Left);
             ListViewItem lvi = null;
             foreach (var item in _condition)
             {
-
-
                 lvi = null;
                 foreach (var item1 in item.Value)
                 {
@@ -305,11 +325,13 @@ namespace MainUI
             }
         }
 
-        private void btn_summary_Click(object sender, EventArgs e)
+        
+
+        private void btn_date_Click(object sender, EventArgs e)
         {
-            var data = dataGridView1.DataSource as List<Payroll>;
-            UIDataSummary ui = new UIDataSummary(data);
-            ui.ShowDialog();
+            _conditionModel.StartYears = this.dtp_start.Value;
+            _conditionModel.EndYears = this.dtp_start.Value;
         }
+        #endregion
     }
 }

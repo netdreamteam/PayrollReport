@@ -62,5 +62,11 @@ namespace Model
         /// </summary>
         public List<string> WageAttribute { get; set; }
         #endregion
+        public PayrollSearchCondition()
+        {
+            SubordinateNnits = new List<string>();
+            PositionName = new List<string>();
+            PostRankName = new List<string>();
+        }
     }
 }
