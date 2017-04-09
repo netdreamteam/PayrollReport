@@ -79,6 +79,12 @@
     <Compile Include="ExportMenu.Designer.cs">
       <DependentUpon>ExportMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     </Compile>
     <EmbeddedResource Include="ExportMenu.resx">
       <DependentUpon>ExportMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainUI.resx">
       <DependentUpon>MainUI.cs</DependentUpon>
@@ -152,6 +161,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\103.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tongjiData.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tongjiData1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tongjiData.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e01fb2a74b4e503f24dbd539f088962d.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.104.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.104.0\build\net45\System.Data.SQLite.Core.targets')" />
