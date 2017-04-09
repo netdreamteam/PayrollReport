@@ -64,6 +64,10 @@
       <Project>{6b645896-84cb-4bee-b8f2-faec9c13fb5b}</Project>
       <Name>Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ReportExport\ReportExport.csproj">
+      <Project>{20c705d6-6a77-4bff-b616-4c8bbb40b010}</Project>
+      <Name>ReportExport</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
