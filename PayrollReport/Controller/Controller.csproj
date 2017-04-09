@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddSourceInfoController.cs" />
+    <Compile Include="ImportTableFour.cs" />
     <Compile Include="ImportTableOne.cs" />
     <Compile Include="ImportTableThree.cs" />
     <Compile Include="ImportTableTwo.cs" />
