@@ -37,9 +37,9 @@ namespace Controller
         /// 执行
         /// </summary>
         /// <returns></returns>
-        public ReportPost Run()
+        public List<ReportPost> Run()
         {
-            ReportPost result = new ReportPost();
+            List<ReportPost> result = new List<ReportPost>();
             if (m_Payroll.Count > 0)
             {
                 var values = m_Payroll.AsEnumerable().GroupBy(a => a.PositionID);
@@ -47,9 +47,9 @@ namespace Controller
                 {
                     foreach (var val in value)
                     {
-                        Dictionary<string,List<ReportDetailed>> dic=new Dictionary<string, List<ReportDetailed>>();
-                        List<ReportDetailed> listReport=new List<ReportDetailed>();
-                        ReportDetailed report=new ReportDetailed();
+                        Dictionary<string, List<ReportPost>> dic = new Dictionary<string, List<ReportPost>>();
+                        List<ReportPost> listReport = new List<ReportPost>();
+                        ReportPost report = new ReportPost();
                         
                     }
                 }
