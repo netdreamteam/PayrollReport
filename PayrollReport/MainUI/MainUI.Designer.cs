@@ -29,11 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainUI));
             this.panel_menu = new System.Windows.Forms.Panel();
-            this.btn_summary = new System.Windows.Forms.Button();
-            this.btn_command = new System.Windows.Forms.Button();
-            this.btn_export = new System.Windows.Forms.Button();
-            this.btn_import = new System.Windows.Forms.Button();
             this.panel_table = new System.Windows.Forms.Panel();
             this.panel_bottom = new System.Windows.Forms.Panel();
             this.btn_last = new System.Windows.Forms.Button();
@@ -44,26 +41,26 @@
             this.lbl_RecordCount = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel_command = new System.Windows.Forms.Panel();
+            this.txt_Name = new System.Windows.Forms.TextBox();
             this.dtp_stop = new System.Windows.Forms.DateTimePicker();
             this.dtp_start = new System.Windows.Forms.DateTimePicker();
             this.listView1 = new System.Windows.Forms.ListView();
             this.button11 = new System.Windows.Forms.Button();
             this.btn_shuaixuan = new System.Windows.Forms.Button();
-            this.btn_Name = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.btn_date = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.btn_gangweizhiji = new System.Windows.Forms.Button();
-            this.btn_suozaigangwei = new System.Windows.Forms.Button();
-            this.btn_xiashudanwei = new System.Windows.Forms.Button();
             this.cmb_gangweizhiji = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cmb_suozaigangwei = new System.Windows.Forms.ComboBox();
             this.cmb_xiashudanwei = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txt_Name = new System.Windows.Forms.TextBox();
+            this.btn_Name = new System.Windows.Forms.Button();
+            this.btn_date = new System.Windows.Forms.Button();
+            this.btn_gangweizhiji = new System.Windows.Forms.Button();
+            this.btn_suozaigangwei = new System.Windows.Forms.Button();
+            this.btn_xiashudanwei = new System.Windows.Forms.Button();
             this.payrollBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.subordinateNnitsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.yearsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,6 +103,10 @@
             this.totalShouldBeIssuedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.naturalYearEndPerformanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.annualYearEndPerformanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_summary = new System.Windows.Forms.Button();
+            this.btn_command = new System.Windows.Forms.Button();
+            this.btn_export = new System.Windows.Forms.Button();
+            this.btn_import = new System.Windows.Forms.Button();
             this.positionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel_menu.SuspendLayout();
             this.panel_table.SuspendLayout();
@@ -128,66 +129,6 @@
             this.panel_menu.Name = "panel_menu";
             this.panel_menu.Size = new System.Drawing.Size(984, 67);
             this.panel_menu.TabIndex = 0;
-            // 
-            // btn_summary
-            // 
-            this.btn_summary.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_summary.FlatAppearance.BorderSize = 0;
-            this.btn_summary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_summary.Image = global::MainUI.Properties.Resources.search_folder;
-            this.btn_summary.Location = new System.Drawing.Point(252, 0);
-            this.btn_summary.Name = "btn_summary";
-            this.btn_summary.Size = new System.Drawing.Size(74, 64);
-            this.btn_summary.TabIndex = 5;
-            this.btn_summary.Text = "统计数据";
-            this.btn_summary.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_summary.UseVisualStyleBackColor = true;
-            this.btn_summary.Click += new System.EventHandler(this.btn_summary_Click);
-            // 
-            // btn_command
-            // 
-            this.btn_command.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_command.FlatAppearance.BorderSize = 0;
-            this.btn_command.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_command.Image = global::MainUI.Properties.Resources.search_folder;
-            this.btn_command.Location = new System.Drawing.Point(172, 0);
-            this.btn_command.Name = "btn_command";
-            this.btn_command.Size = new System.Drawing.Size(74, 64);
-            this.btn_command.TabIndex = 4;
-            this.btn_command.Text = "筛选";
-            this.btn_command.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_command.UseVisualStyleBackColor = true;
-            this.btn_command.Click += new System.EventHandler(this.btn_command_Click);
-            // 
-            // btn_export
-            // 
-            this.btn_export.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_export.FlatAppearance.BorderSize = 0;
-            this.btn_export.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_export.Image = global::MainUI.Properties.Resources.export__1_;
-            this.btn_export.Location = new System.Drawing.Point(92, 0);
-            this.btn_export.Name = "btn_export";
-            this.btn_export.Size = new System.Drawing.Size(74, 64);
-            this.btn_export.TabIndex = 3;
-            this.btn_export.Text = "导出";
-            this.btn_export.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_export.UseVisualStyleBackColor = true;
-            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
-            // 
-            // btn_import
-            // 
-            this.btn_import.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_import.FlatAppearance.BorderSize = 0;
-            this.btn_import.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_import.Image = global::MainUI.Properties.Resources.import__1_;
-            this.btn_import.Location = new System.Drawing.Point(12, 0);
-            this.btn_import.Name = "btn_import";
-            this.btn_import.Size = new System.Drawing.Size(74, 64);
-            this.btn_import.TabIndex = 2;
-            this.btn_import.Text = "导入";
-            this.btn_import.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_import.UseVisualStyleBackColor = true;
-            this.btn_import.Click += new System.EventHandler(this.btn_import_Click);
             // 
             // panel_table
             // 
@@ -281,6 +222,7 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -366,6 +308,13 @@
             this.panel_command.Size = new System.Drawing.Size(984, 136);
             this.panel_command.TabIndex = 2;
             // 
+            // txt_Name
+            // 
+            this.txt_Name.Location = new System.Drawing.Point(353, 80);
+            this.txt_Name.Name = "txt_Name";
+            this.txt_Name.Size = new System.Drawing.Size(121, 21);
+            this.txt_Name.TabIndex = 31;
+            // 
             // dtp_stop
             // 
             this.dtp_stop.CustomFormat = "yyyyMM";
@@ -416,16 +365,6 @@
             this.btn_shuaixuan.UseVisualStyleBackColor = true;
             this.btn_shuaixuan.Click += new System.EventHandler(this.btn_shuaixuan_Click);
             // 
-            // btn_Name
-            // 
-            this.btn_Name.Image = global::MainUI.Properties.Resources._103;
-            this.btn_Name.Location = new System.Drawing.Point(480, 78);
-            this.btn_Name.Name = "btn_Name";
-            this.btn_Name.Size = new System.Drawing.Size(38, 23);
-            this.btn_Name.TabIndex = 21;
-            this.btn_Name.UseVisualStyleBackColor = true;
-            this.btn_Name.Click += new System.EventHandler(this.btn_Name_Click);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -434,16 +373,6 @@
             this.label7.Size = new System.Drawing.Size(41, 12);
             this.label7.TabIndex = 19;
             this.label7.Text = "姓名：";
-            // 
-            // btn_date
-            // 
-            this.btn_date.Image = global::MainUI.Properties.Resources._103;
-            this.btn_date.Location = new System.Drawing.Point(480, 15);
-            this.btn_date.Name = "btn_date";
-            this.btn_date.Size = new System.Drawing.Size(38, 54);
-            this.btn_date.TabIndex = 18;
-            this.btn_date.UseVisualStyleBackColor = true;
-            this.btn_date.Click += new System.EventHandler(this.btn_date_Click);
             // 
             // label6
             // 
@@ -462,36 +391,6 @@
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 13;
             this.label5.Text = "开始时间：";
-            // 
-            // btn_gangweizhiji
-            // 
-            this.btn_gangweizhiji.Image = global::MainUI.Properties.Resources._103;
-            this.btn_gangweizhiji.Location = new System.Drawing.Point(224, 78);
-            this.btn_gangweizhiji.Name = "btn_gangweizhiji";
-            this.btn_gangweizhiji.Size = new System.Drawing.Size(38, 23);
-            this.btn_gangweizhiji.TabIndex = 12;
-            this.btn_gangweizhiji.UseVisualStyleBackColor = true;
-            this.btn_gangweizhiji.Click += new System.EventHandler(this.btn_gangweizhiji_Click);
-            // 
-            // btn_suozaigangwei
-            // 
-            this.btn_suozaigangwei.Image = global::MainUI.Properties.Resources._103;
-            this.btn_suozaigangwei.Location = new System.Drawing.Point(224, 47);
-            this.btn_suozaigangwei.Name = "btn_suozaigangwei";
-            this.btn_suozaigangwei.Size = new System.Drawing.Size(38, 23);
-            this.btn_suozaigangwei.TabIndex = 11;
-            this.btn_suozaigangwei.UseVisualStyleBackColor = true;
-            this.btn_suozaigangwei.Click += new System.EventHandler(this.btn_suozaigangwei_Click);
-            // 
-            // btn_xiashudanwei
-            // 
-            this.btn_xiashudanwei.Image = global::MainUI.Properties.Resources._103;
-            this.btn_xiashudanwei.Location = new System.Drawing.Point(224, 15);
-            this.btn_xiashudanwei.Name = "btn_xiashudanwei";
-            this.btn_xiashudanwei.Size = new System.Drawing.Size(38, 23);
-            this.btn_xiashudanwei.TabIndex = 9;
-            this.btn_xiashudanwei.UseVisualStyleBackColor = true;
-            this.btn_xiashudanwei.Click += new System.EventHandler(this.btn_xiashudanwei_Click);
             // 
             // cmb_gangweizhiji
             // 
@@ -548,12 +447,55 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "下属单位：";
             // 
-            // txt_Name
+            // btn_Name
             // 
-            this.txt_Name.Location = new System.Drawing.Point(353, 80);
-            this.txt_Name.Name = "txt_Name";
-            this.txt_Name.Size = new System.Drawing.Size(121, 21);
-            this.txt_Name.TabIndex = 31;
+            this.btn_Name.Image = global::MainUI.Properties.Resources._103;
+            this.btn_Name.Location = new System.Drawing.Point(480, 78);
+            this.btn_Name.Name = "btn_Name";
+            this.btn_Name.Size = new System.Drawing.Size(38, 23);
+            this.btn_Name.TabIndex = 21;
+            this.btn_Name.UseVisualStyleBackColor = true;
+            this.btn_Name.Click += new System.EventHandler(this.btn_Name_Click);
+            // 
+            // btn_date
+            // 
+            this.btn_date.Image = global::MainUI.Properties.Resources._103;
+            this.btn_date.Location = new System.Drawing.Point(480, 15);
+            this.btn_date.Name = "btn_date";
+            this.btn_date.Size = new System.Drawing.Size(38, 54);
+            this.btn_date.TabIndex = 18;
+            this.btn_date.UseVisualStyleBackColor = true;
+            this.btn_date.Click += new System.EventHandler(this.btn_date_Click);
+            // 
+            // btn_gangweizhiji
+            // 
+            this.btn_gangweizhiji.Image = global::MainUI.Properties.Resources._103;
+            this.btn_gangweizhiji.Location = new System.Drawing.Point(224, 78);
+            this.btn_gangweizhiji.Name = "btn_gangweizhiji";
+            this.btn_gangweizhiji.Size = new System.Drawing.Size(38, 23);
+            this.btn_gangweizhiji.TabIndex = 12;
+            this.btn_gangweizhiji.UseVisualStyleBackColor = true;
+            this.btn_gangweizhiji.Click += new System.EventHandler(this.btn_gangweizhiji_Click);
+            // 
+            // btn_suozaigangwei
+            // 
+            this.btn_suozaigangwei.Image = global::MainUI.Properties.Resources._103;
+            this.btn_suozaigangwei.Location = new System.Drawing.Point(224, 47);
+            this.btn_suozaigangwei.Name = "btn_suozaigangwei";
+            this.btn_suozaigangwei.Size = new System.Drawing.Size(38, 23);
+            this.btn_suozaigangwei.TabIndex = 11;
+            this.btn_suozaigangwei.UseVisualStyleBackColor = true;
+            this.btn_suozaigangwei.Click += new System.EventHandler(this.btn_suozaigangwei_Click);
+            // 
+            // btn_xiashudanwei
+            // 
+            this.btn_xiashudanwei.Image = global::MainUI.Properties.Resources._103;
+            this.btn_xiashudanwei.Location = new System.Drawing.Point(224, 15);
+            this.btn_xiashudanwei.Name = "btn_xiashudanwei";
+            this.btn_xiashudanwei.Size = new System.Drawing.Size(38, 23);
+            this.btn_xiashudanwei.TabIndex = 9;
+            this.btn_xiashudanwei.UseVisualStyleBackColor = true;
+            this.btn_xiashudanwei.Click += new System.EventHandler(this.btn_xiashudanwei_Click);
             // 
             // payrollBindingSource
             // 
@@ -849,6 +791,66 @@
             this.annualYearEndPerformanceDataGridViewTextBoxColumn.Name = "annualYearEndPerformanceDataGridViewTextBoxColumn";
             this.annualYearEndPerformanceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // btn_summary
+            // 
+            this.btn_summary.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_summary.FlatAppearance.BorderSize = 0;
+            this.btn_summary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_summary.Image = global::MainUI.Properties.Resources.e01fb2a74b4e503f24dbd539f088962d;
+            this.btn_summary.Location = new System.Drawing.Point(252, 0);
+            this.btn_summary.Name = "btn_summary";
+            this.btn_summary.Size = new System.Drawing.Size(74, 64);
+            this.btn_summary.TabIndex = 5;
+            this.btn_summary.Text = "统计数据";
+            this.btn_summary.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_summary.UseVisualStyleBackColor = true;
+            this.btn_summary.Click += new System.EventHandler(this.btn_summary_Click);
+            // 
+            // btn_command
+            // 
+            this.btn_command.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_command.FlatAppearance.BorderSize = 0;
+            this.btn_command.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_command.Image = global::MainUI.Properties.Resources.search_folder;
+            this.btn_command.Location = new System.Drawing.Point(172, 0);
+            this.btn_command.Name = "btn_command";
+            this.btn_command.Size = new System.Drawing.Size(74, 64);
+            this.btn_command.TabIndex = 4;
+            this.btn_command.Text = "筛选";
+            this.btn_command.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_command.UseVisualStyleBackColor = true;
+            this.btn_command.Click += new System.EventHandler(this.btn_command_Click);
+            // 
+            // btn_export
+            // 
+            this.btn_export.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_export.FlatAppearance.BorderSize = 0;
+            this.btn_export.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_export.Image = global::MainUI.Properties.Resources.export__1_;
+            this.btn_export.Location = new System.Drawing.Point(92, 0);
+            this.btn_export.Name = "btn_export";
+            this.btn_export.Size = new System.Drawing.Size(74, 64);
+            this.btn_export.TabIndex = 3;
+            this.btn_export.Text = "导出";
+            this.btn_export.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_export.UseVisualStyleBackColor = true;
+            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
+            // 
+            // btn_import
+            // 
+            this.btn_import.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_import.FlatAppearance.BorderSize = 0;
+            this.btn_import.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_import.Image = global::MainUI.Properties.Resources.import__1_;
+            this.btn_import.Location = new System.Drawing.Point(12, 0);
+            this.btn_import.Name = "btn_import";
+            this.btn_import.Size = new System.Drawing.Size(74, 64);
+            this.btn_import.TabIndex = 2;
+            this.btn_import.Text = "导入";
+            this.btn_import.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_import.UseVisualStyleBackColor = true;
+            this.btn_import.Click += new System.EventHandler(this.btn_import_Click);
+            // 
             // positionBindingSource
             // 
             this.positionBindingSource.DataSource = typeof(Model.Position);
@@ -861,9 +863,11 @@
             this.Controls.Add(this.panel_command);
             this.Controls.Add(this.panel_table);
             this.Controls.Add(this.panel_menu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "工资报表统计系统";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainUI_FormClosing);
             this.panel_menu.ResumeLayout(false);
             this.panel_table.ResumeLayout(false);
             this.panel_bottom.ResumeLayout(false);

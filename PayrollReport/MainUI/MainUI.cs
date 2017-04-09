@@ -51,7 +51,6 @@ namespace MainUI
             {
                 FileImportService(fbd.SelectedPath);
             }
-
         }
         /// <summary>
         /// 数据源导入服务
@@ -230,7 +229,6 @@ namespace MainUI
             PagerInit(1, 30);
 
         }
-
         private void btn_xiashudanwei_Click(object sender, EventArgs e)
         {
 
@@ -343,5 +341,10 @@ namespace MainUI
             Condition();
         }
         #endregion
+
+        private void MainUI_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

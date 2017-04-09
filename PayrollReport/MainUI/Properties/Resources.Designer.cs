@@ -73,6 +73,16 @@ namespace MainUI.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap e01fb2a74b4e503f24dbd539f088962d {
+            get {
+                object obj = ResourceManager.GetObject("e01fb2a74b4e503f24dbd539f088962d", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap export__1_ {
             get {
                 object obj = ResourceManager.GetObject("export (1)", resourceCulture);
@@ -96,6 +106,36 @@ namespace MainUI.Properties {
         internal static System.Drawing.Bitmap search_folder {
             get {
                 object obj = ResourceManager.GetObject("search-folder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap tongjiData {
+            get {
+                object obj = ResourceManager.GetObject("tongjiData", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap tongjiData1 {
+            get {
+                object obj = ResourceManager.GetObject("tongjiData1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap tongjiData2 {
+            get {
+                object obj = ResourceManager.GetObject("tongjiData2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
