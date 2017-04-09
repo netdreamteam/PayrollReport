@@ -31,10 +31,10 @@ namespace MainUI
             this.listView1.Clear();
             List<float> list = new List<float>();
             List<UIDataSummaryModel> uiModel = new List<UIDataSummaryModel>();
-            this.listView1.Columns.Add("类别", 150, HorizontalAlignment.Left);
-            this.listView1.Columns.Add("最大值", 90, HorizontalAlignment.Left);
-            this.listView1.Columns.Add("最小值", 90, HorizontalAlignment.Left);
-            this.listView1.Columns.Add("平均值", 90, HorizontalAlignment.Left);
+            this.listView1.Columns.Add("类别", 150, HorizontalAlignment.Center);
+            this.listView1.Columns.Add("最大值", 110, HorizontalAlignment.Center);
+            this.listView1.Columns.Add("最小值", 110, HorizontalAlignment.Center);
+            this.listView1.Columns.Add("平均值", 110, HorizontalAlignment.Center);
             ListViewItem lvi = null;
             list = _data.Select(s => s.Subtotal).ToList();
             uiModel.Add(new UIDataSummaryModel() { Name = "Subtotal", MaxValue = list.Max().ToString(), MinValue = list.Min().ToString(), AvgValue = list.Average().ToString() });
