@@ -1,4 +1,5 @@
 ﻿using Model;
+using ReportExport;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,9 +19,13 @@ namespace Controller
         /// </summary>
         private List<Payroll> m_Payroll;
         /// <summary>
+        /// 保存路径
+        /// </summary>
+        private string _savePath;
+        /// <summary>
         /// 构造函数
         /// </summary>
-        public ImportTableThree(List<Payroll> payroll)
+        public ImportTableThree(List<Payroll> payroll, string savePath)
         {
             if (payroll == null)
             {
@@ -30,18 +35,19 @@ namespace Controller
             {
                 m_Payroll = payroll;
             }
+            _savePath = savePath;
         }
 
         /// <summary>
         /// 执行
         /// </summary>
         /// <returns></returns>
-        public List<ReportDetailed> Run()
+        public void Run()
         {
             List<ReportDetailed> result = new List<ReportDetailed>();
             if (m_Payroll == null)
             {
-                return result;
+                return;
             }
 
             var itemGroupByPosition = m_Payroll.GroupBy(a => a.PositionLink.PositionName);
@@ -129,7 +135,16 @@ namespace Controller
                 }
             }
 
-            return result;
+            //导出报表二
+            ReportExportByAspose export = new ReportExportByAspose();
+            try
+            {
+                export.ExportReport(result, _savePath);
+            }
+            catch (Exception ex)
+            {
+                ex.Message.ToString();
+            }
         }
 
         private Payroll GetPayRollByMonth(string monthStr, IGrouping<string, Payroll> itemGSSN)
