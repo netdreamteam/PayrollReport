@@ -49,12 +49,6 @@ namespace MainUI
             //    FileImportService(fbd.SelectedPath);
             //}
             //FileImportService(@"F:\code\PayrollReport\输入件\12");
-            FileImportService(@"H:\项目\PayrollReport\输入件");
-            //FolderBrowserDialog fbd = new FolderBrowserDialog();
-            //if (fbd.ShowDialog() == DialogResult.OK)
-            //{
-            //    FileImportService(fbd.SelectedPath);
-            //}
 
         }
         /// <summary>
@@ -77,10 +71,6 @@ namespace MainUI
             if (ds != null&& ds.Tables.Count>0)
             {
                 this.btn_command.Visible = true;
-                //for (int i = 0; i < ds.Tables[0].Columns.Count; i++)
-                //{
-                //    dataGridView1.Columns[i].HeaderCell.Value = ds.Tables[0].Columns[i].ColumnName;
-                //}
                 int j = 0;
                 for (int i = 0; i < dataGridView1.ColumnCount; i++)
                 {
@@ -209,8 +199,6 @@ namespace MainUI
         private void btn_last_Click(object sender, EventArgs e)
         {
             PagerInit(1000000000, 30);
-
-            PagerInit(1000000000, 30);
         }
 
         private void txb_pager_TextChanged(object sender, EventArgs e)
@@ -236,8 +224,6 @@ namespace MainUI
 
             }
             _condition["下属单位"].Add(cmb_xiashudanwei.SelectedValue.ToString());
-
-
             Condition();
         }
 
@@ -293,21 +279,9 @@ namespace MainUI
         /// <param name="e"></param>
         private void btn_refresh_Click(object sender, EventArgs e)
         {
-            //listView1.Clear();
-            //this._ds = _dsOld;
-            //PagerInit(1, 30);
-            //this._condition.Clear();
-
             listView1.Clear();
             PagerInit(1, 30);
             this._condition.Clear();
-        }
-
-        private void btn_condition_Click(object sender, EventArgs e)
-        {
-            //ConditionUI cui = new ConditionUI(_condition);
-            //cui.ShowDialog();
-
         }
         internal void Condition()
         {
@@ -325,9 +299,6 @@ namespace MainUI
                     lvi = new ListViewItem();
                     lvi.Tag = item.Key;
                     lvi.Text = item.Key;
-
-                    lvi.Tag = item.Key;
-                    lvi.Text = item.Key;
                     lvi.SubItems.Add(item1.ToString());
                     this.listView1.Items.Add(lvi);
                 }
@@ -337,9 +308,8 @@ namespace MainUI
         private void btn_summary_Click(object sender, EventArgs e)
         {
             var data = dataGridView1.DataSource as List<Payroll>;
-            DataSummary ui = new DataSummary(data);
+            UIDataSummary ui = new UIDataSummary(data);
             ui.ShowDialog();
-           
         }
     }
 }

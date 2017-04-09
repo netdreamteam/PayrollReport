@@ -73,12 +73,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSummary.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DataSummary.Designer.cs">
-      <DependentUpon>DataSummary.cs</DependentUpon>
-    </Compile>
     <Compile Include="ExportMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,9 +87,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DataSummary.resx">
-      <DependentUpon>DataSummary.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="UIDataSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIDataSummary.Designer.cs">
+      <DependentUpon>UIDataSummary.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ExportMenu.resx">
       <DependentUpon>ExportMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,6 +103,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIDataSummary.resx">
+      <DependentUpon>UIDataSummary.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Model.Position.datasource" />
