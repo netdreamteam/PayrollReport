@@ -79,8 +79,8 @@ namespace Controller.TableOne
             {
                 foreach (var key in dicCompanyResult.Keys)
                 {
-                    var path = Path.Combine(_savePath + "/分公司汇总表/", key + ".xlsx");
-                    if (!Directory.Exists(_savePath + "/分公司汇总表/"))
+                    var path = Path.Combine(_savePath, key + ".xlsx");
+                    if (!Directory.Exists(_savePath))
                     {
                         Directory.CreateDirectory(_savePath + "/分公司汇总表/");
                     }
