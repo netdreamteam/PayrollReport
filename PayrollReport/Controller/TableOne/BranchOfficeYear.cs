@@ -82,7 +82,7 @@ namespace Controller.TableOne
                     var path = Path.Combine(_savePath, key + ".xlsx");
                     if (!Directory.Exists(_savePath))
                     {
-                        Directory.CreateDirectory(_savePath + "/分公司汇总表/");
+                        Directory.CreateDirectory(_savePath);
                     }
                     export.ExportReportDic(path, dicCompanyResult[key]);
                 }
@@ -158,50 +158,49 @@ namespace Controller.TableOne
         {
             //根据岗位名称查数据库所有数据
             var itemsGBOByPN = itemsGBO.Where(a => a.PositionName.Equals(positionName));
-            if (itemsGBOByPN.Count() == 0)
-            {
-                return;
-            }
-            //4.根据岗位职级分组
-            var itemsGroupByPostRank = itemsGBOByPN.GroupBy(a => a.PostRankName);
             List<ReportPost> result = new List<ReportPost>();
-
-            foreach (var itemsGBPR in itemsGroupByPostRank)
+            if (itemsGBOByPN.Count() != 0)
             {
-                var item = itemsGBPR.First();
+                //4.根据岗位职级分组
+                var itemsGroupByPostRank = itemsGBOByPN.GroupBy(a => a.PostRankName);
 
-                var notWage = itemsGBPR.Where(a => a.WageAttribute.Equals("未发")).Select(a => a.Name);
-                var reuserWage = itemsGBPR.Where(a => a.WageAttribute.Equals("补发")).Select(a => a.Name);
-                ReportPost model = new ReportPost
+                foreach (var itemsGBPR in itemsGroupByPostRank)
                 {
-                    PositionName = item.PositionName,
-                    PostRankName = item.PostRankName,
-                    AlreadyCount = itemsGBPR.Count(a => string.IsNullOrEmpty(a.WageAttribute) || a.WageAttribute.Equals("正常")),
-                    NotCount = notWage.Count(),
-                    ReuseCount = reuserWage.Count(),
-                    NotName = string.Join(",", notWage),
-                    ReuseName = string.Join(",", reuserWage),
-                    PostWage = itemsGBPR.Sum(a => a.PostWage),
-                    MonthlyPerformancePay = itemsGBPR.Sum(a => a.MonthlyPerformancePay),
-                    SeniorityWage = itemsGBPR.Sum(a => a.SeniorityWage),
-                    TechnicalAllowance = itemsGBPR.Sum(a => a.TechnicalAllowance),
-                    PostAllowance = itemsGBPR.Sum(a => a.PostAllowance),
-                    OvertimePay = itemsGBPR.Sum(a => a.OvertimePay),
-                    DustCharge = itemsGBPR.Sum(a => a.DustCharge),
-                    NightAllowance = itemsGBPR.Sum(a => a.NightAllowance),
-                    HardshipAllowance = itemsGBPR.Sum(a => a.HardshipAllowance),
-                    TollStationService = itemsGBPR.Sum(a => a.TollStationService),
-                    ReplacementPay = itemsGBPR.Sum(a => a.ReplacementPay),
-                    HighSubsidies = itemsGBPR.Sum(a => a.HighSubsidies),
-                    CommunicationSubsidy = itemsGBPR.Sum(a => a.CommunicationSubsidy),
-                    Reserve1 = itemsGBPR.Sum(a => a.Reserve1),
-                    Reserve2 = itemsGBPR.Sum(a => a.Reserve2),
-                    Other = itemsGBPR.Sum(a => a.Other),
-                    NaturalYearEndPerformance = itemsGBPR.Sum(a => a.NaturalYearEndPerformance),
-                    AnnualYearEndPerformance = itemsGBPR.Sum(a => a.AnnualYearEndPerformance)
-                };
+                    var item = itemsGBPR.First();
 
-                result.Add(model);
+                    var notWage = itemsGBPR.Where(a => a.WageAttribute.Equals("未发")).Select(a => a.Name);
+                    var reuserWage = itemsGBPR.Where(a => a.WageAttribute.Equals("补发")).Select(a => a.Name);
+                    ReportPost model = new ReportPost
+                    {
+                        PositionName = item.PositionName,
+                        PostRankName = item.PostRankName,
+                        AlreadyCount = itemsGBPR.Count(a => string.IsNullOrEmpty(a.WageAttribute) || a.WageAttribute.Equals("正常")),
+                        NotCount = notWage.Count(),
+                        ReuseCount = reuserWage.Count(),
+                        NotName = string.Join(",", notWage),
+                        ReuseName = string.Join(",", reuserWage),
+                        PostWage = itemsGBPR.Sum(a => a.PostWage),
+                        MonthlyPerformancePay = itemsGBPR.Sum(a => a.MonthlyPerformancePay),
+                        SeniorityWage = itemsGBPR.Sum(a => a.SeniorityWage),
+                        TechnicalAllowance = itemsGBPR.Sum(a => a.TechnicalAllowance),
+                        PostAllowance = itemsGBPR.Sum(a => a.PostAllowance),
+                        OvertimePay = itemsGBPR.Sum(a => a.OvertimePay),
+                        DustCharge = itemsGBPR.Sum(a => a.DustCharge),
+                        NightAllowance = itemsGBPR.Sum(a => a.NightAllowance),
+                        HardshipAllowance = itemsGBPR.Sum(a => a.HardshipAllowance),
+                        TollStationService = itemsGBPR.Sum(a => a.TollStationService),
+                        ReplacementPay = itemsGBPR.Sum(a => a.ReplacementPay),
+                        HighSubsidies = itemsGBPR.Sum(a => a.HighSubsidies),
+                        CommunicationSubsidy = itemsGBPR.Sum(a => a.CommunicationSubsidy),
+                        Reserve1 = itemsGBPR.Sum(a => a.Reserve1),
+                        Reserve2 = itemsGBPR.Sum(a => a.Reserve2),
+                        Other = itemsGBPR.Sum(a => a.Other),
+                        NaturalYearEndPerformance = itemsGBPR.Sum(a => a.NaturalYearEndPerformance),
+                        AnnualYearEndPerformance = itemsGBPR.Sum(a => a.AnnualYearEndPerformance)
+                    };
+
+                    result.Add(model);
+                }
             }
 
             //(3).自动归入工勤人员
