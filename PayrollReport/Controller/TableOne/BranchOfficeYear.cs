@@ -1,6 +1,8 @@
 ﻿using Model;
+using ReportExport;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,11 +18,16 @@ namespace Controller.TableOne
         /// 源数据表
         /// </summary>
         private List<Payroll> m_Payroll;
+
+        /// <summary>
+        /// 保存路径
+        /// </summary>
+        private string _savePath;
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="payroll">源数据表</param>
-        public BranchOfficeYear(List<Payroll> payroll)
+        public BranchOfficeYear(List<Payroll> payroll, string path)
         {
             if (payroll == null)
             {
@@ -30,6 +37,8 @@ namespace Controller.TableOne
             {
                 m_Payroll = payroll;
             }
+
+            _savePath = path;
         }
 
         public void Run()
@@ -50,7 +59,7 @@ namespace Controller.TableOne
                     //(1)."所在岗位”和“岗位职级"交换的以及劳务派遣人员信息
                     if (CommonStrInfo.DicPositionChange.Keys.Contains(position.Value))
                     {
-                        AddInfoByChange(itemsGBO, dicResult);
+                        AddInfoByChange(itemsGBO, dicResult, position.Value, true);
                     }
                     //（2）.正常情况
                     else
@@ -59,35 +68,58 @@ namespace Controller.TableOne
                     }
                 }
 
+                dicCompanyResult.Add(itemsGBO.Key, dicResult);
             }
+
+            //导出数据
+
+            //导出报表三
+            ReportExportByAspose export = new ReportExportByAspose();
+            try
+            {
+                foreach (var key in dicCompanyResult.Keys)
+                {
+                    var path = Path.Combine(_savePath + "/分公司汇总表/", key + ".xlsx");
+                    if (!Directory.Exists(_savePath + "/分公司汇总表/"))
+                    {
+                        Directory.CreateDirectory(_savePath + "/分公司汇总表/");
+                    }
+                    export.ExportReportDic(path, dicCompanyResult[key]);
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.Message.ToString();
+            }
+
         }
 
-        private void AddInfoByChange(IGrouping<string, Payroll> itemsGBO, Dictionary<string, List<ReportPost>> dicResult)
+        private void AddInfoByChange(IGrouping<string, Payroll> itemsGBO, Dictionary<string, List<ReportPost>> dicResult, string key, bool isChange = false)
         {
-            foreach (var positionList in CommonStrInfo.DicPositionChange)
+            foreach (var positionList in CommonStrInfo.DicPositionChange.Where(a => a.Key.Equals(key)))
             {
                 List<ReportPost> result = new List<ReportPost>();
-                AddInfoByPostionList(itemsGBO, positionList.Value, result);
+                AddInfoByPostionList(itemsGBO, positionList.Value, result, isChange);
                 dicResult.Add(positionList.Key, result);
             }
         }
 
-        private void AddInfoByPostionList(IGrouping<string, Payroll> itemsGBO, List<string> positionList, List<ReportPost> result)
+        private void AddInfoByPostionList(IGrouping<string, Payroll> itemsGBO, List<string> positionList, List<ReportPost> result, bool isChange = false)
         {
             foreach (var pItem in positionList)
             {
-                var items = itemsGBO.Where(a => a.PostRankName.Equals(pItem));
+                var items = itemsGBO.Where(a => a.PositionName.Equals(pItem));
                 if (items.Count() == 0)
                 {
                     continue;
                 }
                 var item = items.First();
-                var notWage = items.Where(a => a.WageAttribute.Equals("未发"));
-                var reuserWage = items.Where(a => a.WageAttribute.Equals("补发"));
+                var notWage = items.Where(a => a.WageAttribute.Equals("未发")).Select(a => a.Name);
+                var reuserWage = items.Where(a => a.WageAttribute.Equals("补发")).Select(a => a.Name);
                 ReportPost model = new ReportPost()
                 {
                     PositionName = item.PositionName,
-                    PostRankName = item.PostRankName,
+                    PostRankName = isChange ? item.PositionName : item.PostRankName,
                     AlreadyCount = items.Count(a => string.IsNullOrEmpty(a.WageAttribute) || a.WageAttribute.Equals("正常")),
                     NotCount = notWage.Count(),
                     ReuseCount = reuserWage.Count(),
@@ -126,6 +158,10 @@ namespace Controller.TableOne
         {
             //根据岗位名称查数据库所有数据
             var itemsGBOByPN = itemsGBO.Where(a => a.PositionName.Equals(positionName));
+            if (itemsGBOByPN.Count() == 0)
+            {
+                return;
+            }
             //4.根据岗位职级分组
             var itemsGroupByPostRank = itemsGBOByPN.GroupBy(a => a.PostRankName);
             List<ReportPost> result = new List<ReportPost>();
@@ -134,8 +170,8 @@ namespace Controller.TableOne
             {
                 var item = itemsGBPR.First();
 
-                var notWage = itemsGBPR.Where(a => a.WageAttribute.Equals("未发"));
-                var reuserWage = itemsGBPR.Where(a => a.WageAttribute.Equals("补发"));
+                var notWage = itemsGBPR.Where(a => a.WageAttribute.Equals("未发")).Select(a => a.Name);
+                var reuserWage = itemsGBPR.Where(a => a.WageAttribute.Equals("补发")).Select(a => a.Name);
                 ReportPost model = new ReportPost
                 {
                     PositionName = item.PositionName,

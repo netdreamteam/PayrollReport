@@ -27,7 +27,7 @@ namespace MainUI
             InitializeComponent();
         }
 
-        public ExportMenu(List<Payroll> _dataSource):this()
+        public ExportMenu(List<Payroll> _dataSource) : this()
         {
             this._dataSource = _dataSource;
         }
@@ -51,7 +51,7 @@ namespace MainUI
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             if (fbd.ShowDialog() == DialogResult.OK)
             {
-                this.txb_savePath.Text= fbd.SelectedPath;
+                this.txb_savePath.Text = fbd.SelectedPath;
             }
         }
         /// <summary>
@@ -63,23 +63,23 @@ namespace MainUI
         {
             if (!Directory.Exists(this.txb_savePath.Text.ToString()))
             {
-                MessageBox.Show(string.Format("[{0}]路径不存在,请重新选择",this.txb_savePath.Text.ToString()), "提示");
+                MessageBox.Show(string.Format("[{0}]路径不存在,请重新选择", this.txb_savePath.Text.ToString()), "提示");
                 return;
             }
-            if(this.checkBox1.Checked==false&&this.checkBox2.Checked==false&&this.checkBox3.Checked==false&&this.checkBox4.Checked==false)
+            if (this.checkBox1.Checked == false && this.checkBox2.Checked == false && this.checkBox3.Checked == false && this.checkBox4.Checked == false)
             {
                 MessageBox.Show("请选择要导出的报表", "提示");
                 return;
             }
             if (checkBox4.Checked)
             {
-                var t = new ImportTableFour(_dataSource,Path.Combine(txb_savePath.Text.ToString(),"4.xlsx"));
+                var t = new ImportTableFour(_dataSource, Path.Combine(txb_savePath.Text.ToString(), "4.xlsx"));
                 this.Export += new DelegateExport(t.Run);
             }
             if (checkBox1.Checked)
             {
-                //var t = new ImportTableOne(_dataSource, Path.Combine(txb_savePath.Text.ToString(), "1.xlsx"));
-                //this.Export += new DelegateExport(t.Run);
+                var t = new ImportTableOne(_dataSource, txb_savePath.Text.ToString());
+                this.Export += new DelegateExport(t.Run);
 
             }
             if (checkBox2.Checked)
@@ -94,7 +94,7 @@ namespace MainUI
             }
             Export();
             this.Close();
-            
+
         }
     }
 }

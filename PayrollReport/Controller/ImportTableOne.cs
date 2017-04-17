@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Controller.TableOne;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,11 +18,16 @@ namespace Controller
         /// 源数据表
         /// </summary>
         private List<Payroll> m_Payroll;
+
+        /// <summary>
+        /// 保存路径
+        /// </summary>
+        private string _savePath;
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="dt">源数据表</param>
-        public ImportTableOne(List<Payroll> payroll)
+        public ImportTableOne(List<Payroll> payroll, string path)
         {
             if (payroll == null)
             {
@@ -31,30 +37,26 @@ namespace Controller
             {
                 m_Payroll = payroll;
             }
+
+            _savePath = path;
         }
 
         /// <summary>
         /// 执行
         /// </summary>
         /// <returns></returns>
-        public List<ReportPost> Run()
+        public void Run()
         {
-            List<ReportPost> result = new List<ReportPost>();
-            if (m_Payroll.Count > 0)
-            {
-                var values = m_Payroll.AsEnumerable().GroupBy(a => a.PositionID);
-                foreach (var value in values)
-                {
-                    foreach (var val in value)
-                    {
-                        Dictionary<string, List<ReportPost>> dic = new Dictionary<string, List<ReportPost>>();
-                        List<ReportPost> listReport = new List<ReportPost>();
-                        ReportPost report = new ReportPost();
-                        
-                    }
-                }
-            }
-            return result;
+            //初始化数据
+            CommonStrInfo common = new CommonStrInfo();
+            //分公司年汇总
+            BranchOfficeYear branchOfficeYear = new BranchOfficeYear(m_Payroll, _savePath);
+            branchOfficeYear.Run();
+            //分公司月汇总
+
+            //总公司年汇总
+
+            //总公司月汇总
         }
     }
 }

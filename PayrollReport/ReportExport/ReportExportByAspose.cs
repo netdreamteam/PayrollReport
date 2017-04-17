@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Model;
 using Aspose.Cells;
 using System.Reflection;
+using System.IO;
 
 namespace ReportExport
 {
@@ -54,6 +55,28 @@ namespace ReportExport
                     designer.SetDataSource(item.Key, item.Value);
                 }
                 
+            }
+            //根据数据源处理生成报表内容
+            designer.Process();
+            //保存Excel文件
+            designer.Workbook.Save(reportFile);
+        }
+
+        public void ExportReportDic<T>(string reportFile, Dictionary<string, List<T>> dicVariable = null)
+        {
+            WorkbookDesigner designer = new WorkbookDesigner();
+            string typeName = typeof(T).Name;
+            string muban = string.Format("ReportTemplate\\{0}.xlsx", typeName);
+            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, muban);
+
+            designer.Workbook = new Workbook(path);
+            if (dicVariable != null)
+            {
+                foreach (var item in dicVariable)
+                {
+                    designer.SetDataSource(item.Key, item.Value);
+                }
+
             }
             //根据数据源处理生成报表内容
             designer.Process();
