@@ -50,7 +50,7 @@ namespace Controller
             //初始化数据
             CommonStrInfo common = new CommonStrInfo();
             //分公司年汇总
-            BranchOfficeYear branchOfficeYear = new BranchOfficeYear(m_Payroll, _savePath);
+            BranchOfficeYear branchOfficeYear = new BranchOfficeYear(m_Payroll, _savePath + "/分公司汇总表/");
             branchOfficeYear.Run();
             //分公司月汇总
 
