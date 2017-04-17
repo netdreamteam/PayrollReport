@@ -50,23 +50,7 @@ namespace Controller.TableOne
             var itemsGroupByOffice = m_Payroll.GroupBy(a => a.SubordinateNnits);
             foreach (var itemsGBO in itemsGroupByOffice)
             {
-                //key:所在岗位,value：数据
-                Dictionary<string, List<ReportPost>> dicResult = new Dictionary<string, List<ReportPost>>();
-                //2.根据所在岗位筛选
-                foreach (var position in CommonStrInfo.DicPosition)
-                {
-                    //3.判断岗位是否是特殊岗位
-                    //(1)."所在岗位”和“岗位职级"交换的以及劳务派遣人员信息
-                    if (CommonStrInfo.DicPositionChange.Keys.Contains(position.Value))
-                    {
-                        AddInfoByChange(itemsGBO, dicResult, position.Value, true);
-                    }
-                    //（2）.正常情况
-                    else
-                    {
-                        AddInfoByPosition(itemsGBO, dicResult, position.Key, position.Value);
-                    }
-                }
+                Dictionary<string, List<ReportPost>> dicResult = OutUsing(itemsGBO);
 
                 dicCompanyResult.Add(itemsGBO.Key, dicResult);
             }
@@ -92,6 +76,29 @@ namespace Controller.TableOne
                 ex.Message.ToString();
             }
 
+        }
+
+        public Dictionary<string, List<ReportPost>> OutUsing(IGrouping<string, Payroll> itemsGBO)
+        {
+            //key:所在岗位,value：数据
+            Dictionary<string, List<ReportPost>> dicResult = new Dictionary<string, List<ReportPost>>();
+            //2.根据所在岗位筛选
+            foreach (var position in CommonStrInfo.DicPosition)
+            {
+                //3.判断岗位是否是特殊岗位
+                //(1)."所在岗位”和“岗位职级"交换的以及劳务派遣人员信息
+                if (CommonStrInfo.DicPositionChange.Keys.Contains(position.Value))
+                {
+                    AddInfoByChange(itemsGBO, dicResult, position.Value, true);
+                }
+                //（2）.正常情况
+                else
+                {
+                    AddInfoByPosition(itemsGBO, dicResult, position.Key, position.Value);
+                }
+            }
+
+            return dicResult;
         }
 
         private void AddInfoByChange(IGrouping<string, Payroll> itemsGBO, Dictionary<string, List<ReportPost>> dicResult, string key, bool isChange = false)

@@ -61,6 +61,7 @@
     <Compile Include="SearchConditionController.cs" />
     <Compile Include="TableOne\BranchOfficeYear.cs" />
     <Compile Include="TableOne\BranchOfficeMonth.cs" />
+    <Compile Include="TableOne\OfficeYear.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">

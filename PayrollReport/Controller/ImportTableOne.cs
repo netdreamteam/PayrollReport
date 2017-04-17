@@ -55,7 +55,8 @@ namespace Controller
             //分公司月汇总
 
             //总公司年汇总
-
+            OfficeYear o = new OfficeYear(m_Payroll, _savePath);
+            o.Run();
             //总公司月汇总
         }
     }
