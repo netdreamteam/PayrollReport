@@ -19,7 +19,7 @@ namespace ReportExport
         /// <param name="companyName"></param>
         /// <param name="month"></param>
         /// <param name="dicReportLeader"></param>
-        public void ExportPostWage(string companyName, string month, Dictionary<string, List<ReportPost>> dicReportLeader,string reportFile)
+        public void ExportPostWage(string companyName, string month, Dictionary<string, List<ReportPost>> dicReportLeader, string reportFile)
         {
             WorkbookDesigner designer = new WorkbookDesigner();
             string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ReportTemplate\\ReportPost.xlsx");
@@ -39,10 +39,10 @@ namespace ReportExport
             designer.Workbook.Save(reportFile);
         }
 
-        public void ExportReport<T>(List<T> listData,string reportFile,Dictionary<string,object> dicVariable=null)
+        public void ExportReport<T>(List<T> listData, string reportFile, Dictionary<string, object> dicVariable = null)
         {
             WorkbookDesigner designer = new WorkbookDesigner();
-            string typeName = typeof (T).Name;
+            string typeName = typeof(T).Name;
             string muban = string.Format("ReportTemplate\\{0}.xlsx", typeName);
             string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, muban);
 
@@ -54,7 +54,7 @@ namespace ReportExport
                 {
                     designer.SetDataSource(item.Key, item.Value);
                 }
-                
+
             }
             //根据数据源处理生成报表内容
             designer.Process();
@@ -62,7 +62,7 @@ namespace ReportExport
             designer.Workbook.Save(reportFile);
         }
 
-        public void ExportReportDic<T>(string reportFile, Dictionary<string, List<T>> dicVariable = null)
+        public void ExportReportDic<T>(string reportFile, Dictionary<string, List<T>> dicVariable = null, string companyName = "", string month = "")
         {
             WorkbookDesigner designer = new WorkbookDesigner();
             string typeName = typeof(T).Name;
@@ -70,6 +70,9 @@ namespace ReportExport
             string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, muban);
 
             designer.Workbook = new Workbook(path);
+            designer.SetDataSource("Company", companyName);
+            designer.SetDataSource("Month", month);
+
             if (dicVariable != null)
             {
                 foreach (var item in dicVariable)

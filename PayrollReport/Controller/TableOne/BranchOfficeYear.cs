@@ -68,7 +68,7 @@ namespace Controller.TableOne
                     {
                         Directory.CreateDirectory(_savePath);
                     }
-                    export.ExportReportDic(path, dicCompanyResult[key]);
+                    export.ExportReportDic(path, dicCompanyResult[key], key);
                 }
             }
             catch (Exception ex)
