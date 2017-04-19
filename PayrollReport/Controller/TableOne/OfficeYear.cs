@@ -41,7 +41,7 @@ namespace Controller.TableOne
         public void Run()
         {
             BranchOfficeYear b = new BranchOfficeYear(m_Payroll, _savePath);
-            Dictionary<string, List<ReportPost>> dicResult = b.OutUsing(m_Payroll as IGrouping<string, Payroll>);
+            Dictionary<string, List<ReportPost>> dicResult = b.OutUsing(m_Payroll);
 
             //导出数据
 

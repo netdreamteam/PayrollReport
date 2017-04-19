@@ -50,7 +50,7 @@ namespace Controller.TableOne
             var itemsGroupByOffice = m_Payroll.GroupBy(a => a.SubordinateNnits);
             foreach (var itemsGBO in itemsGroupByOffice)
             {
-                Dictionary<string, List<ReportPost>> dicResult = OutUsing(itemsGBO);
+                Dictionary<string, List<ReportPost>> dicResult = OutUsing(itemsGBO.ToList());
 
                 dicCompanyResult.Add(itemsGBO.Key, dicResult);
             }
@@ -78,7 +78,7 @@ namespace Controller.TableOne
 
         }
 
-        public Dictionary<string, List<ReportPost>> OutUsing(IGrouping<string, Payroll> itemsGBO)
+        public Dictionary<string, List<ReportPost>> OutUsing(List<Payroll> itemsGBO)
         {
             //key:所在岗位,value：数据
             Dictionary<string, List<ReportPost>> dicResult = new Dictionary<string, List<ReportPost>>();
@@ -101,7 +101,7 @@ namespace Controller.TableOne
             return dicResult;
         }
 
-        private void AddInfoByChange(IGrouping<string, Payroll> itemsGBO, Dictionary<string, List<ReportPost>> dicResult, string key, bool isChange = false)
+        private void AddInfoByChange(List<Payroll> itemsGBO, Dictionary<string, List<ReportPost>> dicResult, string key, bool isChange = false)
         {
             foreach (var positionList in CommonStrInfo.DicPositionChange.Where(a => a.Key.Equals(key)))
             {
@@ -111,7 +111,7 @@ namespace Controller.TableOne
             }
         }
 
-        private void AddInfoByPostionList(IGrouping<string, Payroll> itemsGBO, List<string> positionList, List<ReportPost> result, bool isChange = false)
+        private void AddInfoByPostionList(List<Payroll> itemsGBO, List<string> positionList, List<ReportPost> result, bool isChange = false)
         {
             foreach (var pItem in positionList)
             {
@@ -161,7 +161,7 @@ namespace Controller.TableOne
         /// <param name="itemsGBO"></param>
         /// <param name="dicResult"></param>
         /// <param name="position"></param>
-        private void AddInfoByPosition(IGrouping<string, Payroll> itemsGBO, Dictionary<string, List<ReportPost>> dicResult, string positionName, string positionNameEn)
+        private void AddInfoByPosition(List<Payroll> itemsGBO, Dictionary<string, List<ReportPost>> dicResult, string positionName, string positionNameEn)
         {
             //根据岗位名称查数据库所有数据
             var itemsGBOByPN = itemsGBO.Where(a => a.PositionName.Equals(positionName));
