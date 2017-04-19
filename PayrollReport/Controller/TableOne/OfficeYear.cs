@@ -54,7 +54,7 @@ namespace Controller.TableOne
                 {
                     Directory.CreateDirectory(_savePath);
                 }
-                export.ExportReportDic(path, dicResult);
+                export.ExportReportDic(path, dicResult, "总公司");
             }
             catch (Exception ex)
             {
