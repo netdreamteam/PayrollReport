@@ -20,6 +20,11 @@ namespace MainUI
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox2.Text))
+            {
+                MessageBox.Show("用户名密码不能为空", "提示");
+                return;
+            }
             if (!File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"config.txt")))
             {
                 MessageBox.Show("用户名或密码不存在", "提示");
@@ -43,6 +48,13 @@ namespace MainUI
             }
             
             
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            List<string> s = File.ReadLines("config.txt").ToList();
+            textBox1.Text = s[0].Trim();
+            //textBox2.Text = s[1].Trim();
         }
     }
 }

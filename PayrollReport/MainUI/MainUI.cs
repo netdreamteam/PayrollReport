@@ -50,7 +50,11 @@ namespace MainUI
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 FileImportService(fbd.SelectedPath);
+                MessageBox.Show("数据导入成功", "提示");
             }
+            _dataSource = _bc.Payroll.ToList();
+            PagerInit(1, 30);
+
         }
         /// <summary>
         /// 数据源导入服务
@@ -87,7 +91,7 @@ namespace MainUI
             bool flag = addSourceInfoController.Run(ds);
             if (!flag)
             {
-                MessageBox.Show("添加数据到数据库失败","提示");
+                //MessageBox.Show("添加数据到数据库失败","提示");
             }
             PagerInit(1, 30);
         }
@@ -345,6 +349,11 @@ namespace MainUI
         private void MainUI_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void MainUI_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

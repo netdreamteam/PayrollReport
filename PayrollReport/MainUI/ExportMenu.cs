@@ -94,7 +94,7 @@ namespace MainUI
             }
             Export();
             this.Close();
-
+            MessageBox.Show("导出成功","提示");
         }
     }
 }
