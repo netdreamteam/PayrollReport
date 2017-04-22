@@ -147,8 +147,8 @@ namespace Controller.TableOne
                 var reuserWage = items.Where(a => a.WageAttribute.Equals("补发")).Select(a => a.Name);
                 ReportPost model = new ReportPost()
                 {
-                    PositionName = item.PositionName,
-                    PostRankName = isChange ? item.PostRankName : item.PositionName,
+                    PositionName = isChange ? item.PostRankName : item.PositionName,
+                    PostRankName = isChange ? item.PositionName : item.PostRankName,
                     AlreadyCount = items.Count(a => string.IsNullOrEmpty(a.WageAttribute) || a.WageAttribute.Equals("正常")),
                     NotCount = notWage.Count(),
                     ReuseCount = reuserWage.Count(),
