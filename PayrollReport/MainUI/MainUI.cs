@@ -343,6 +343,10 @@ namespace MainUI
 
         private void btn_Name_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txt_Name.Text))
+            {
+                return;
+            }
             if (!_condition.ContainsKey("姓名"))
             {
                 _condition.Add("姓名", new List<string>());

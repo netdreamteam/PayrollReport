@@ -87,6 +87,15 @@
             this.annualYearEndPerformanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.payrollBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel_command = new System.Windows.Forms.Panel();
+            this.button_gongzishuxing = new System.Windows.Forms.Button();
+            this.cmb_gongzishuxing = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.button_shiyongqi = new System.Windows.Forms.Button();
+            this.cmb_shiyongqi = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button_shifouzaigang = new System.Windows.Forms.Button();
+            this.cmb_shifouzaigang = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.txt_Name = new System.Windows.Forms.TextBox();
             this.dtp_stop = new System.Windows.Forms.DateTimePicker();
             this.dtp_start = new System.Windows.Forms.DateTimePicker();
@@ -108,15 +117,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.positionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button_shifouzaigang = new System.Windows.Forms.Button();
-            this.cmb_shifouzaigang = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button_shiyongqi = new System.Windows.Forms.Button();
-            this.cmb_shiyongqi = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.button_gongzishuxing = new System.Windows.Forms.Button();
-            this.cmb_gongzishuxing = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.panel_menu.SuspendLayout();
             this.panel_table.SuspendLayout();
             this.panel_bottom.SuspendLayout();
@@ -209,7 +209,7 @@
             this.panel_table.Controls.Add(this.dataGridView1);
             this.panel_table.Location = new System.Drawing.Point(0, 70);
             this.panel_table.Name = "panel_table";
-            this.panel_table.Size = new System.Drawing.Size(983, 349);
+            this.panel_table.Size = new System.Drawing.Size(983, 369);
             this.panel_table.TabIndex = 1;
             // 
             // panel_bottom
@@ -221,9 +221,9 @@
             this.panel_bottom.Controls.Add(this.btn_firstPage);
             this.panel_bottom.Controls.Add(this.lbl_RecordCount);
             this.panel_bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_bottom.Location = new System.Drawing.Point(0, 315);
+            this.panel_bottom.Location = new System.Drawing.Point(0, 333);
             this.panel_bottom.Name = "panel_bottom";
-            this.panel_bottom.Size = new System.Drawing.Size(979, 30);
+            this.panel_bottom.Size = new System.Drawing.Size(979, 32);
             this.panel_bottom.TabIndex = 1;
             // 
             // btn_last
@@ -340,11 +340,11 @@
             this.naturalYearEndPerformanceDataGridViewTextBoxColumn,
             this.annualYearEndPerformanceDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.payrollBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(-2, -2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(983, 316);
+            this.dataGridView1.Size = new System.Drawing.Size(983, 334);
             this.dataGridView1.TabIndex = 0;
             // 
             // subordinateNnitsDataGridViewTextBoxColumn
@@ -674,10 +674,94 @@
             this.panel_command.Controls.Add(this.label3);
             this.panel_command.Controls.Add(this.label1);
             this.panel_command.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_command.Location = new System.Drawing.Point(0, 387);
+            this.panel_command.Location = new System.Drawing.Point(0, 437);
             this.panel_command.Name = "panel_command";
             this.panel_command.Size = new System.Drawing.Size(984, 174);
             this.panel_command.TabIndex = 2;
+            // 
+            // button_gongzishuxing
+            // 
+            this.button_gongzishuxing.Image = global::MainUI.Properties.Resources._103;
+            this.button_gongzishuxing.Location = new System.Drawing.Point(224, 139);
+            this.button_gongzishuxing.Name = "button_gongzishuxing";
+            this.button_gongzishuxing.Size = new System.Drawing.Size(38, 23);
+            this.button_gongzishuxing.TabIndex = 40;
+            this.button_gongzishuxing.UseVisualStyleBackColor = true;
+            this.button_gongzishuxing.Click += new System.EventHandler(this.button_gongzishuxing_Click);
+            // 
+            // cmb_gongzishuxing
+            // 
+            this.cmb_gongzishuxing.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_gongzishuxing.FormattingEnabled = true;
+            this.cmb_gongzishuxing.Location = new System.Drawing.Point(97, 141);
+            this.cmb_gongzishuxing.Name = "cmb_gongzishuxing";
+            this.cmb_gongzishuxing.Size = new System.Drawing.Size(121, 20);
+            this.cmb_gongzishuxing.TabIndex = 39;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(38, 144);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 12);
+            this.label9.TabIndex = 38;
+            this.label9.Text = "工资属性：";
+            // 
+            // button_shiyongqi
+            // 
+            this.button_shiyongqi.Image = global::MainUI.Properties.Resources._103;
+            this.button_shiyongqi.Location = new System.Drawing.Point(480, 108);
+            this.button_shiyongqi.Name = "button_shiyongqi";
+            this.button_shiyongqi.Size = new System.Drawing.Size(38, 23);
+            this.button_shiyongqi.TabIndex = 37;
+            this.button_shiyongqi.UseVisualStyleBackColor = true;
+            this.button_shiyongqi.Click += new System.EventHandler(this.button_shiyongqi_Click);
+            // 
+            // cmb_shiyongqi
+            // 
+            this.cmb_shiyongqi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_shiyongqi.FormattingEnabled = true;
+            this.cmb_shiyongqi.Location = new System.Drawing.Point(353, 110);
+            this.cmb_shiyongqi.Name = "cmb_shiyongqi";
+            this.cmb_shiyongqi.Size = new System.Drawing.Size(121, 20);
+            this.cmb_shiyongqi.TabIndex = 36;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(294, 113);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 12);
+            this.label8.TabIndex = 35;
+            this.label8.Text = "试用期：";
+            // 
+            // button_shifouzaigang
+            // 
+            this.button_shifouzaigang.Image = global::MainUI.Properties.Resources._103;
+            this.button_shifouzaigang.Location = new System.Drawing.Point(224, 108);
+            this.button_shifouzaigang.Name = "button_shifouzaigang";
+            this.button_shifouzaigang.Size = new System.Drawing.Size(38, 23);
+            this.button_shifouzaigang.TabIndex = 34;
+            this.button_shifouzaigang.UseVisualStyleBackColor = true;
+            this.button_shifouzaigang.Click += new System.EventHandler(this.button_shifouzaigang_Click);
+            // 
+            // cmb_shifouzaigang
+            // 
+            this.cmb_shifouzaigang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_shifouzaigang.FormattingEnabled = true;
+            this.cmb_shifouzaigang.Location = new System.Drawing.Point(97, 110);
+            this.cmb_shifouzaigang.Name = "cmb_shifouzaigang";
+            this.cmb_shifouzaigang.Size = new System.Drawing.Size(121, 20);
+            this.cmb_shifouzaigang.TabIndex = 33;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(38, 113);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 12);
+            this.label2.TabIndex = 32;
+            this.label2.Text = "是否在岗：";
             // 
             // txt_Name
             // 
@@ -872,95 +956,11 @@
             // 
             this.positionBindingSource.DataSource = typeof(Model.Position);
             // 
-            // button_shifouzaigang
-            // 
-            this.button_shifouzaigang.Image = global::MainUI.Properties.Resources._103;
-            this.button_shifouzaigang.Location = new System.Drawing.Point(224, 108);
-            this.button_shifouzaigang.Name = "button_shifouzaigang";
-            this.button_shifouzaigang.Size = new System.Drawing.Size(38, 23);
-            this.button_shifouzaigang.TabIndex = 34;
-            this.button_shifouzaigang.UseVisualStyleBackColor = true;
-            this.button_shifouzaigang.Click += new System.EventHandler(this.button_shifouzaigang_Click);
-            // 
-            // cmb_shifouzaigang
-            // 
-            this.cmb_shifouzaigang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_shifouzaigang.FormattingEnabled = true;
-            this.cmb_shifouzaigang.Location = new System.Drawing.Point(97, 110);
-            this.cmb_shifouzaigang.Name = "cmb_shifouzaigang";
-            this.cmb_shifouzaigang.Size = new System.Drawing.Size(121, 20);
-            this.cmb_shifouzaigang.TabIndex = 33;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 113);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
-            this.label2.TabIndex = 32;
-            this.label2.Text = "是否在岗：";
-            // 
-            // button_shiyongqi
-            // 
-            this.button_shiyongqi.Image = global::MainUI.Properties.Resources._103;
-            this.button_shiyongqi.Location = new System.Drawing.Point(480, 108);
-            this.button_shiyongqi.Name = "button_shiyongqi";
-            this.button_shiyongqi.Size = new System.Drawing.Size(38, 23);
-            this.button_shiyongqi.TabIndex = 37;
-            this.button_shiyongqi.UseVisualStyleBackColor = true;
-            this.button_shiyongqi.Click += new System.EventHandler(this.button_shiyongqi_Click);
-            // 
-            // cmb_shiyongqi
-            // 
-            this.cmb_shiyongqi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_shiyongqi.FormattingEnabled = true;
-            this.cmb_shiyongqi.Location = new System.Drawing.Point(353, 110);
-            this.cmb_shiyongqi.Name = "cmb_shiyongqi";
-            this.cmb_shiyongqi.Size = new System.Drawing.Size(121, 20);
-            this.cmb_shiyongqi.TabIndex = 36;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(294, 113);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 12);
-            this.label8.TabIndex = 35;
-            this.label8.Text = "试用期：";
-            // 
-            // button_gongzishuxing
-            // 
-            this.button_gongzishuxing.Image = global::MainUI.Properties.Resources._103;
-            this.button_gongzishuxing.Location = new System.Drawing.Point(224, 139);
-            this.button_gongzishuxing.Name = "button_gongzishuxing";
-            this.button_gongzishuxing.Size = new System.Drawing.Size(38, 23);
-            this.button_gongzishuxing.TabIndex = 40;
-            this.button_gongzishuxing.UseVisualStyleBackColor = true;
-            this.button_gongzishuxing.Click += new System.EventHandler(this.button_gongzishuxing_Click);
-            // 
-            // cmb_gongzishuxing
-            // 
-            this.cmb_gongzishuxing.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_gongzishuxing.FormattingEnabled = true;
-            this.cmb_gongzishuxing.Location = new System.Drawing.Point(97, 141);
-            this.cmb_gongzishuxing.Name = "cmb_gongzishuxing";
-            this.cmb_gongzishuxing.Size = new System.Drawing.Size(121, 20);
-            this.cmb_gongzishuxing.TabIndex = 39;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(38, 144);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 12);
-            this.label9.TabIndex = 38;
-            this.label9.Text = "工资属性：";
-            // 
             // MainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 561);
+            this.ClientSize = new System.Drawing.Size(984, 611);
             this.Controls.Add(this.panel_command);
             this.Controls.Add(this.panel_table);
             this.Controls.Add(this.panel_menu);
