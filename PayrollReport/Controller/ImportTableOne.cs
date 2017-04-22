@@ -53,11 +53,16 @@ namespace Controller
             BranchOfficeYear branchOfficeYear = new BranchOfficeYear(m_Payroll, _savePath + "/分公司汇总表/");
             branchOfficeYear.Run();
             //分公司月汇总
+            BranchOfficeMonth branchOfficeMonth = new BranchOfficeMonth(m_Payroll, _savePath + "/分公司月汇总表/");
+            branchOfficeMonth.Run();
 
             //总公司年汇总
             OfficeYear o = new OfficeYear(m_Payroll, _savePath);
             o.Run();
+
             //总公司月汇总
+            OfficeMonth om = new OfficeMonth(m_Payroll, _savePath + "/总公司月汇总表/");
+            om.Run();
         }
     }
 }

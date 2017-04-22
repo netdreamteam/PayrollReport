@@ -38,8 +38,13 @@ namespace Controller.TableOne
             _savePath = path;
         }
 
-        public void Run()
+        public void Run(string month = "")
         {
+            if (m_Payroll == null || m_Payroll.Count == 0)
+            {
+                return;
+            }
+
             BranchOfficeYear b = new BranchOfficeYear(m_Payroll, _savePath);
             Dictionary<string, List<ReportPost>> dicResult = b.OutUsing(m_Payroll);
 
@@ -49,12 +54,12 @@ namespace Controller.TableOne
             ReportExportByAspose export = new ReportExportByAspose();
             try
             {
-                var path = Path.Combine(_savePath, "总公司年汇总表.xlsx");
+                var path = Path.Combine(_savePath, "总公司年汇总表" + month + ".xlsx");
                 if (!Directory.Exists(_savePath))
                 {
                     Directory.CreateDirectory(_savePath);
                 }
-                export.ExportReportDic(path, dicResult, "总公司");
+                export.ExportReportDic(path, dicResult, "总公司", month);
             }
             catch (Exception ex)
             {

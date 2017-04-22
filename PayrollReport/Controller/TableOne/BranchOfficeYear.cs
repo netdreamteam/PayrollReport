@@ -41,7 +41,43 @@ namespace Controller.TableOne
             _savePath = path;
         }
 
-        public void Run()
+        public void Run(string month = "")
+        {
+            if (m_Payroll == null || m_Payroll.Count == 0)
+            {
+                return;
+            }
+
+            Dictionary<string, Dictionary<string, List<ReportPost>>> dicCompanyResult = OutUsingBranch();
+
+            //导出数据
+
+            //导出报表三
+            ReportExportByAspose export = new ReportExportByAspose();
+            try
+            {
+                foreach (var key in dicCompanyResult.Keys)
+                {
+                    var path = Path.Combine(_savePath, key + month + ".xlsx");
+                    if (!Directory.Exists(_savePath))
+                    {
+                        Directory.CreateDirectory(_savePath);
+                    }
+                    export.ExportReportDic(path, dicCompanyResult[key], key, month);
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.Message.ToString();
+            }
+
+        }
+
+        /// <summary>
+        /// 用于外部调用——分公司
+        /// </summary>
+        /// <returns></returns>
+        private Dictionary<string, Dictionary<string, List<ReportPost>>> OutUsingBranch()
         {
             //key:公司名称,value:数据
             Dictionary<string, Dictionary<string, List<ReportPost>>> dicCompanyResult = new Dictionary<string, Dictionary<string, List<ReportPost>>>();
@@ -55,29 +91,15 @@ namespace Controller.TableOne
                 dicCompanyResult.Add(itemsGBO.Key, dicResult);
             }
 
-            //导出数据
-
-            //导出报表三
-            ReportExportByAspose export = new ReportExportByAspose();
-            try
-            {
-                foreach (var key in dicCompanyResult.Keys)
-                {
-                    var path = Path.Combine(_savePath, key + ".xlsx");
-                    if (!Directory.Exists(_savePath))
-                    {
-                        Directory.CreateDirectory(_savePath);
-                    }
-                    export.ExportReportDic(path, dicCompanyResult[key], key);
-                }
-            }
-            catch (Exception ex)
-            {
-                ex.Message.ToString();
-            }
-
+            return dicCompanyResult;
         }
 
+
+        /// <summary>
+        /// 外部调用——总公司
+        /// </summary>
+        /// <param name="itemsGBO"></param>
+        /// <returns></returns>
         public Dictionary<string, List<ReportPost>> OutUsing(List<Payroll> itemsGBO)
         {
             //key:所在岗位,value：数据
