@@ -85,12 +85,61 @@ namespace Controller
                 }
                 //添加自然年度绩效合计
                 result.NaturalYearEndPerformance = gr.Sum(a => a.NaturalYearEndPerformance);
+                float subSum = 0;
+                if (result.January != null)
+                {
+                    subSum += (float)result.January;
+                }
+                if (result.February != null)
+                {
+                    subSum += (float)result.February;
+                }
+                if (result.March != null)
+                {
+                    subSum += (float)result.March;
+                }
+                if (result.April != null)
+                {
+                    subSum += (float)result.April;
+                }
+                if (result.May != null)
+                {
+                    subSum += (float)result.May;
+                }
+                if (result.June != null)
+                {
+                    subSum += (float)result.June;
+                }
+                if (result.July != null)
+                {
+                    subSum += (float)result.July;
+                }
+                if (result.August != null)
+                {
+                    subSum += (float)result.August;
+                }
+                if (result.September != null)
+                {
+                    subSum += (float)result.September;
+                }
+                if (result.October != null)
+                {
+                    subSum += (float)result.October;
+                }
+                if (result.November != null)
+                {
+                    subSum += (float)result.November;
+                }
+                if (result.December != null)
+                {
+                    subSum += (float)result.December;
+                }
                 //添加自然年度合计 合计
-
+                result.NaturalYearEndSum = subSum + result.NaturalYearEndPerformance;
                 //添加所属年度绩效合计
                 result.AnnualYearEndPerformance = gr.Sum(a => a.AnnualYearEndPerformance);
                 //添加所属年度合计 合计
-
+                result.AnnualYearEndSum = subSum + result.AnnualYearEndPerformance;
                 listResult.Add(result);
             }
             //导出报表二

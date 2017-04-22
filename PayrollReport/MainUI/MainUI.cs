@@ -28,7 +28,7 @@ namespace MainUI
         {
             InitializeComponent();
             this.panel_command.Visible = false;
-            this.panel_table.Height += 136;
+            this.panel_table.Height += 174;
             _bc = new BusinessContext();
             if (_bc.Payroll == null || _bc.Payroll.Count() == 0)
             {
@@ -103,6 +103,13 @@ namespace MainUI
         /// <param name="e"></param>
         private void btn_export_Click(object sender, EventArgs e)
         {
+            var list=_dataSource.Select(s => s.Years.Substring(0, 4)).ToList();
+            var result =list.Distinct();
+            if (result.Count()>1)
+            {
+                MessageBox.Show("不支持跨年导出数据", "提示");
+                return;
+            }
             ExportMenu em = new ExportMenu(_dataSource);
             em.ShowDialog();
 
@@ -117,13 +124,13 @@ namespace MainUI
             if (this.panel_command.Visible)
             {
                 this.panel_command.Visible = false;
-                this.panel_table.Height += 136;
+                this.panel_table.Height += 174;
 
             }
             else
             {
                 this.panel_command.Visible = true;
-                this.panel_table.Height -= 136;
+                this.panel_table.Height -= 174;
                 ComboBoxBinding();
             }
         }
@@ -154,6 +161,9 @@ namespace MainUI
             this.cmb_xiashudanwei.DataSource = _bc.Payroll.Select(r => r.SubordinateNnits).Distinct().ToList();
             this.cmb_suozaigangwei.DataSource = _bc.Payroll.Select(r => r.PositionLink).Distinct().ToList();
             this.cmb_gangweizhiji.DataSource = _bc.Payroll.Select(r => r.PostRankLink).Distinct().ToList();
+            this.cmb_shifouzaigang.DataSource = _bc.Payroll.Select(r => r.WhetherOnDuty).Distinct().ToList();
+            this.cmb_shiyongqi.DataSource = _bc.Payroll.Select(r => r.ProbationPeriod).Distinct().ToList();
+            this.cmb_gongzishuxing.DataSource = _bc.Payroll.Select(r => r.WageAttribute).Distinct().ToList();
         }
         /// <summary>
         /// 页面初始化数据
@@ -337,14 +347,14 @@ namespace MainUI
             {
                 _condition.Add("姓名", new List<string>());
             }
-            if (!_condition["姓名"].Contains(cmb_gangweizhiji.SelectedValue.ToString()))
+            if (!_condition["姓名"].Contains(txt_Name.Text.ToString()))
             {
                 _condition["姓名"].Add(txt_Name.Text.ToString());
                 _conditionModel.Name.Add(txt_Name.Text.ToString());
             }
             Condition();
         }
-        #endregion
+        
 
         private void MainUI_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -355,5 +365,48 @@ namespace MainUI
         {
 
         }
+
+        private void button_shifouzaigang_Click(object sender, EventArgs e)
+        {
+            if (!_condition.ContainsKey("是否在岗"))
+            {
+                _condition.Add("是否在岗", new List<string>());
+            }
+            if (!_condition["是否在岗"].Contains(cmb_shifouzaigang.SelectedValue.ToString()))
+            {
+                _condition["是否在岗"].Add(cmb_shifouzaigang.SelectedValue.ToString());
+                _conditionModel.WhetherOnDuty=int.Parse(cmb_shifouzaigang.SelectedValue.ToString());
+            }
+            Condition();
+        }
+
+        private void button_shiyongqi_Click(object sender, EventArgs e)
+        {
+            if (!_condition.ContainsKey("试用期"))
+            {
+                _condition.Add("试用期", new List<string>());
+            }
+            if (!_condition["试用期"].Contains(cmb_shiyongqi.SelectedValue.ToString()))
+            {
+                _condition["试用期"].Add(cmb_shiyongqi.SelectedValue.ToString());
+                _conditionModel.ProbationPeriod.Add(cmb_shiyongqi.SelectedValue.ToString());
+            }
+            Condition();
+        }
+
+        private void button_gongzishuxing_Click(object sender, EventArgs e)
+        {
+            if (!_condition.ContainsKey("工资属性"))
+            {
+                _condition.Add("工资属性", new List<string>());
+            }
+            if (!_condition["工资属性"].Contains(cmb_gongzishuxing.SelectedValue.ToString()))
+            {
+                _condition["工资属性"].Add(cmb_gongzishuxing.SelectedValue.ToString());
+                _conditionModel.WageAttribute.Add(cmb_gongzishuxing.SelectedValue.ToString());
+            }
+            Condition();
+        }
+        #endregion
     }
 }

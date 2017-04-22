@@ -73,7 +73,7 @@ namespace MainUI
             }
             if (checkBox4.Checked)
             {
-                var t = new ImportTableFour(_dataSource, Path.Combine(txb_savePath.Text.ToString(), "4.xlsx"));
+                var t = new ImportTableFour(_dataSource, Path.Combine(txb_savePath.Text.ToString(), "筛选数据源.xlsx"));
                 this.Export += new DelegateExport(t.Run);
             }
             if (checkBox1.Checked)
@@ -84,12 +84,12 @@ namespace MainUI
             }
             if (checkBox2.Checked)
             {
-                ImportTableTwo t = new ImportTableTwo(_dataSource, Path.Combine(txb_savePath.Text.ToString(), "2.xlsx"));
+                ImportTableTwo t = new ImportTableTwo(_dataSource, Path.Combine(txb_savePath.Text.ToString(), "职工工资总额年报.xlsx"));
                 this.Export += new DelegateExport(t.Run);
             }
             if (checkBox3.Checked)
             {
-                var t = new ImportTableThree(_dataSource, Path.Combine(txb_savePath.Text.ToString(), "3.xlsx"));
+                var t = new ImportTableThree(_dataSource, Path.Combine(txb_savePath.Text.ToString(), "年收入明细报表.xlsx"));
                 this.Export += new DelegateExport(t.Run);
             }
             Export();

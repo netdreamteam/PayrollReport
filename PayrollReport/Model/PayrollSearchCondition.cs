@@ -68,6 +68,8 @@ namespace Model
             PositionName = new List<string>();
             PostRankName = new List<string>();
             Name = new List<string>();
+            ProbationPeriod=new List<string>();
+            WageAttribute=new List<string>();
         }
     }
 }
