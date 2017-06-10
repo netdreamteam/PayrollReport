@@ -6,8 +6,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ExcelImport
 {
@@ -26,10 +28,12 @@ namespace ExcelImport
         {
             DataSet ds = new DataSet();
             int dataNum = 0;
+            string errorFileName=String.Empty;
             try
             {
                 foreach (string fileName in listFileNames)
                 {
+                    errorFileName = fileName;
                     dataNum++;
                     if (string.Compare(Path.GetExtension(fileName), ".xlsx", true).Equals(0))
                     {
@@ -42,14 +46,25 @@ namespace ExcelImport
                     {
                         DataTable dt = new DataTable();
                         dt = ReadDataBy03(fileName);
-                        dt.TableName = string.Format("数据源{0}", dataNum);
-                        ds.Tables.Add(dt);
+                        if (dt.Rows.Count > 0)
+                        {
+                            dt.TableName = string.Format("数据源{0}", dataNum);
+                            ds.Tables.Add(dt);
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                ex.Message.ToString();
+                if (ex.Message.ToString().Contains("进程"))
+                {
+                    MessageBox.Show(string.Format("文件{0}被打开，请关闭后重试", errorFileName), "提示");   
+                }
+                else
+                {
+                    MessageBox.Show(string.Format("导入文件{0}异常，请检查数据源", errorFileName), "提示");
+                }
+                return new DataSet();
             }
 
             return ds;

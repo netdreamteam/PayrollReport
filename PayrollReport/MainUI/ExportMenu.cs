@@ -89,7 +89,7 @@ namespace MainUI
             }
             if (checkBox3.Checked)
             {
-                var t = new ImportTableThree(_dataSource, Path.Combine(txb_savePath.Text.ToString(), "年收入明细报表.xlsx"));
+                var t = new ImportTableThree(_dataSource, Path.Combine(txb_savePath.Text.ToString(), "年收入明细报表.xlsx"), txb_savePath.Text.ToString());
                 this.Export += new DelegateExport(t.Run);
             }
             Export();

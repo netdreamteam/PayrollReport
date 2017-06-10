@@ -81,7 +81,7 @@ namespace Controller
                 var groupYearValues = gr.GroupBy(r => r.Years);
                 foreach (var gy in groupYearValues)
                 {
-                    SetYearValue(result,gy.Key.Substring(4),gy.Sum(r=>r.Subtotal));
+                    SetYearValue(result,gy.Key.Substring(4),gy.Sum(r=>r.TotalShouldBeIssued));
                 }
                 //添加自然年度绩效合计
                 result.NaturalYearEndPerformance = gr.Sum(a => a.NaturalYearEndPerformance);
