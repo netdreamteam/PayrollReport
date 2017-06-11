@@ -54,7 +54,33 @@ namespace MainUI
         {
             List<string> s = File.ReadLines("config.txt").ToList();
             textBox1.Text = s[0].Trim();
+             List<string> stList = File.ReadLines("RememberMe.txt").ToList();
+            if (stList[0].Trim().Equals("1"))
+            {
+                textBox2.Text = s[1].Trim();
+                checkBox1.Checked = true;
+            }
             //textBox2.Text = s[1].Trim();
+        }
+
+        private void checkBox1_Click(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "RememberMe.txt")))
+                {
+                    File.Delete(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "RememberMe.txt"));
+                }
+                File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "RememberMe.txt"),"1");
+            }
+            else
+            {
+                if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "RememberMe.txt")))
+                {
+                    File.Delete(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "RememberMe.txt"));
+                }
+                File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "RememberMe.txt"), "0");
+            }
         }
     }
 }
