@@ -137,43 +137,55 @@ namespace Controller.TableOne
         {
             foreach (var pItem in positionList)
             {
-                var items = itemsGBO.Where(a => a.PositionName.Equals(pItem));
-                if (items.Count() == 0)
+                var values = itemsGBO.Where(a => a.PositionName.Equals(pItem));
+                if (values.Count() == 0)
                 {
                     continue;
                 }
-                var item = items.First();
-                var notWage = items.Where(a => a.WageAttribute.Equals("未发")).Select(a => a.Name);
-                var reuserWage = items.Where(a => a.WageAttribute.Equals("补发")).Select(a => a.Name);
-                ReportPost model = new ReportPost()
+                var itemss = values.GroupBy(a => a.PostRankName);
+                foreach (var items in itemss)
                 {
-                    PositionName = isChange ? item.PostRankName : item.PositionName,
-                    PostRankName = isChange ? item.PositionName : item.PostRankName,
-                    AlreadyCount = items.Count(a => string.IsNullOrEmpty(a.WageAttribute) || a.WageAttribute.Equals("正常")),
-                    NotCount = notWage.Count(),
-                    ReuseCount = reuserWage.Count(),
-                    NotName = string.Join(",", notWage),
-                    ReuseName = string.Join(",", reuserWage),
-                    PostWage = items.Sum(a => a.PostWage),
-                    MonthlyPerformancePay = items.Sum(a => a.MonthlyPerformancePay),
-                    SeniorityWage = items.Sum(a => a.SeniorityWage),
-                    TechnicalAllowance = items.Sum(a => a.TechnicalAllowance),
-                    PostAllowance = items.Sum(a => a.PostAllowance),
-                    OvertimePay = items.Sum(a => a.OvertimePay),
-                    DustCharge = items.Sum(a => a.DustCharge),
-                    NightAllowance = items.Sum(a => a.NightAllowance),
-                    HardshipAllowance = items.Sum(a => a.HardshipAllowance),
-                    TollStationService = items.Sum(a => a.TollStationService),
-                    ReplacementPay = items.Sum(a => a.ReplacementPay),
-                    HighSubsidies = items.Sum(a => a.HighSubsidies),
-                    CommunicationSubsidy = items.Sum(a => a.CommunicationSubsidy),
-                    Reserve1 = items.Sum(a => a.Reserve1),
-                    Reserve2 = items.Sum(a => a.Reserve2),
-                    Other = items.Sum(a => a.Other),
-                    NaturalYearEndPerformance = items.Sum(a => a.NaturalYearEndPerformance),
-                    AnnualYearEndPerformance = items.Sum(a => a.AnnualYearEndPerformance)
-                };
-                result.Add(model);
+                    var item = items.First();
+                    var notWage = items.Where(a => a.WageAttribute.Equals("未发")).Select(a => a.Name);
+                    var reuserWage = items.Where(a => a.WageAttribute.Equals("补发")).Select(a => a.Name);
+                    ReportPost model = new ReportPost()
+                    {
+                        PositionName = isChange ? item.PostRankName : item.PositionName,
+                        PostRankName = isChange ? item.PositionName : item.PostRankName,
+                        AlreadyCount = items.Count(a => string.IsNullOrEmpty(a.WageAttribute) || a.WageAttribute.Equals("正常")),
+                        NotCount = notWage.Count(),
+                        ReuseCount = reuserWage.Count(),
+                        NotName = string.Join(",", notWage),
+                        ReuseName = string.Join(",", reuserWage),
+                        PostWage = items.Sum(a => a.PostWage),
+                        MonthlyPerformancePay = items.Sum(a => a.MonthlyPerformancePay),
+                        PerformancePay = items.Sum(a => a.PerformancePay),
+                        SeniorityWage = items.Sum(a => a.SeniorityWage),
+                        TechnicalAllowance = items.Sum(a => a.TechnicalAllowance),
+                        ProfessionalAllowances = items.Sum(a => a.ProfessionalAllowances),
+                        QuasiVehicleAllowances = items.Sum(a => a.QuasiVehicleAllowances),
+                        PostAllowance = items.Sum(a => a.PostAllowance),
+                        StaffServiceAllowance = items.Sum(a => a.StaffServiceAllowance),
+                        OvertimePay = items.Sum(a => a.OvertimePay),
+                        DustCharge = items.Sum(a => a.DustCharge),
+                        NightAllowance = items.Sum(a => a.NightAllowance),
+                        HardshipAllowance = items.Sum(a => a.HardshipAllowance),
+                        TollStationService = items.Sum(a => a.TollStationService),
+                        JobReplacement = items.Sum(a => a.JobReplacement),
+                        ReplacementPay = items.Sum(a => a.ReplacementPay),
+                        PluggingIncome = items.Sum(a => a.PluggingIncome),
+                        Debit = items.Sum(a => a.Debit),
+                        SmileStar = items.Sum(a => a.SmileStar),
+                        HighSubsidies = items.Sum(a => a.HighSubsidies),
+                        CommunicationSubsidy = items.Sum(a => a.CommunicationSubsidy),
+                        Reserve1 = items.Sum(a => a.Reserve1),
+                        Reserve2 = items.Sum(a => a.Reserve2),
+                        Other = items.Sum(a => a.Other),
+                        NaturalYearEndPerformance = items.Sum(a => a.NaturalYearEndPerformance),
+                        AnnualYearEndPerformance = items.Sum(a => a.AnnualYearEndPerformance)
+                    };
+                    result.Add(model);
+                }
             }
         }
 
@@ -210,15 +222,23 @@ namespace Controller.TableOne
                         ReuseName = string.Join(",", reuserWage),
                         PostWage = itemsGBPR.Sum(a => a.PostWage),
                         MonthlyPerformancePay = itemsGBPR.Sum(a => a.MonthlyPerformancePay),
+                        PerformancePay = itemsGBPR.Sum(a => a.PerformancePay),
                         SeniorityWage = itemsGBPR.Sum(a => a.SeniorityWage),
                         TechnicalAllowance = itemsGBPR.Sum(a => a.TechnicalAllowance),
+                        ProfessionalAllowances = itemsGBPR.Sum(a => a.ProfessionalAllowances),
+                        QuasiVehicleAllowances = itemsGBPR.Sum(a => a.QuasiVehicleAllowances),
                         PostAllowance = itemsGBPR.Sum(a => a.PostAllowance),
+                        StaffServiceAllowance = itemsGBPR.Sum(a => a.StaffServiceAllowance),
                         OvertimePay = itemsGBPR.Sum(a => a.OvertimePay),
                         DustCharge = itemsGBPR.Sum(a => a.DustCharge),
                         NightAllowance = itemsGBPR.Sum(a => a.NightAllowance),
                         HardshipAllowance = itemsGBPR.Sum(a => a.HardshipAllowance),
                         TollStationService = itemsGBPR.Sum(a => a.TollStationService),
+                        JobReplacement = itemsGBPR.Sum(a => a.JobReplacement),
                         ReplacementPay = itemsGBPR.Sum(a => a.ReplacementPay),
+                        PluggingIncome = itemsGBPR.Sum(a => a.PluggingIncome),
+                        Debit = itemsGBPR.Sum(a => a.Debit),
+                        SmileStar = itemsGBPR.Sum(a => a.SmileStar),
                         HighSubsidies = itemsGBPR.Sum(a => a.HighSubsidies),
                         CommunicationSubsidy = itemsGBPR.Sum(a => a.CommunicationSubsidy),
                         Reserve1 = itemsGBPR.Sum(a => a.Reserve1),
