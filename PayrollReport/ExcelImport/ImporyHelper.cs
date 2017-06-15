@@ -27,28 +27,29 @@ namespace ExcelImport
         public DataSet ImportExcelFile(List<string> listFileNames)
         {
             DataSet ds = new DataSet();
-            int dataNum = 0;
             string errorFileName=String.Empty;
             try
             {
-                foreach (string fileName in listFileNames)
+                foreach (string file in listFileNames)
                 {
-                    errorFileName = fileName;
-                    dataNum++;
-                    if (string.Compare(Path.GetExtension(fileName), ".xlsx", true).Equals(0))
+                    errorFileName = file;
+                    if (string.Compare(Path.GetExtension(file), ".xlsx", true).Equals(0))
                     {
                         DataTable dt = new DataTable();
-                        dt = ReadDataBy07(fileName);
-                        dt.TableName = string.Format("数据源{0}", dataNum);
-                        ds.Tables.Add(dt);
-                    }
-                    else if (string.Compare(Path.GetExtension(fileName), ".xls", true).Equals(0))
-                    {
-                        DataTable dt = new DataTable();
-                        dt = ReadDataBy03(fileName);
+                        dt = ReadDataBy07(file);
                         if (dt.Rows.Count > 0)
                         {
-                            dt.TableName = string.Format("数据源{0}", dataNum);
+                            dt.TableName = string.Format("{0}", file);
+                            ds.Tables.Add(dt);
+                        }
+                    }
+                    else if (string.Compare(Path.GetExtension(file), ".xls", true).Equals(0))
+                    {
+                        DataTable dt = new DataTable();
+                        dt = ReadDataBy03(file);
+                        if (dt.Rows.Count > 0)
+                        {
+                            dt.TableName = string.Format("{0}", file);
                             ds.Tables.Add(dt);
                         }
                     }
