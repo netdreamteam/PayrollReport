@@ -145,7 +145,7 @@ namespace Model
         #region Model
 
         /// <summary>
-        /// 社保编号
+        /// 身份证号码
         /// </summary>
         public string SocialSecurityNumber { get; set; }
         /// <summary>

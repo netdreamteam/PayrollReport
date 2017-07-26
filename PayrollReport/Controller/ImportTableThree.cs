@@ -79,62 +79,62 @@ namespace Controller
                     var jItem = GetPayRollByMonth("01", itemGSSN,reportItem.PositionName);
                     if (jItem != null)
                     {
-                        reportItem.January = jItem.TotalShouldBeIssued;
+                        reportItem.January = jItem.Sum(a=>a.TotalShouldBeIssued);
                     }
                     var febItem = GetPayRollByMonth("02", itemGSSN, reportItem.PositionName);
                     if (febItem != null)
                     {
-                        reportItem.February = febItem.TotalShouldBeIssued;
+                        reportItem.February = febItem.Sum(a => a.TotalShouldBeIssued);
                     }
                     var marItem = GetPayRollByMonth("03", itemGSSN, reportItem.PositionName);
                     if (marItem != null)
                     {
-                        reportItem.March = marItem.TotalShouldBeIssued;
+                        reportItem.March = marItem.Sum(a => a.TotalShouldBeIssued);
                     }
                     var apItem = GetPayRollByMonth("04", itemGSSN, reportItem.PositionName);
                     if (apItem != null)
                     {
-                        reportItem.April = apItem.TotalShouldBeIssued;
+                        reportItem.April = apItem.Sum(a => a.TotalShouldBeIssued);
                     }
                     var mayItem = GetPayRollByMonth("05", itemGSSN, reportItem.PositionName);
                     if (mayItem != null)
                     {
-                        reportItem.May = mayItem.TotalShouldBeIssued;
+                        reportItem.May = mayItem.Sum(a => a.TotalShouldBeIssued);
                     }
                     var juneItem = GetPayRollByMonth("06", itemGSSN, reportItem.PositionName);
                     if (juneItem != null)
                     {
-                        reportItem.June = juneItem.TotalShouldBeIssued;
+                        reportItem.June = juneItem.Sum(a => a.TotalShouldBeIssued);
                     }
                     var julyItem = GetPayRollByMonth("07", itemGSSN, reportItem.PositionName);
                     if (julyItem != null)
                     {
-                        reportItem.July = julyItem.TotalShouldBeIssued;
+                        reportItem.July = julyItem.Sum(a => a.TotalShouldBeIssued);
                     }
                     var auItem = GetPayRollByMonth("08", itemGSSN, reportItem.PositionName);
                     if (auItem != null)
                     {
-                        reportItem.August = auItem.TotalShouldBeIssued;
+                        reportItem.August = auItem.Sum(a => a.TotalShouldBeIssued);
                     }
                     var sepItem = GetPayRollByMonth("09", itemGSSN, reportItem.PositionName);
                     if (sepItem != null)
                     {
-                        reportItem.September = sepItem.TotalShouldBeIssued;
+                        reportItem.September = sepItem.Sum(a => a.TotalShouldBeIssued);
                     }
                     var octItem = GetPayRollByMonth("10", itemGSSN, reportItem.PositionName);
                     if (octItem != null)
                     {
-                        reportItem.October = octItem.TotalShouldBeIssued;
+                        reportItem.October = octItem.Sum(a => a.TotalShouldBeIssued);
                     }
                     var noveItem = GetPayRollByMonth("11", itemGSSN, reportItem.PositionName);
                     if (noveItem != null)
                     {
-                        reportItem.November = noveItem.TotalShouldBeIssued;
+                        reportItem.November = noveItem.Sum(a => a.TotalShouldBeIssued);
                     }
                     var deceItem = GetPayRollByMonth("12", itemGSSN, reportItem.PositionName);
                     if (deceItem != null)
                     {
-                        reportItem.December = deceItem.TotalShouldBeIssued;
+                        reportItem.December = deceItem.Sum(a => a.TotalShouldBeIssued);
                     }
 
                     result.Add(reportItem);
@@ -167,9 +167,15 @@ namespace Controller
             }
         }
 
-        private Payroll GetPayRollByMonth(string monthStr, IGrouping<string, Payroll> itemGSSN,string postionName)
+        private IEnumerable<Payroll> GetPayRollByMonth(string monthStr, IGrouping<string, Payroll> itemGSSN,string postionName)
         {
-            return itemGSSN.FirstOrDefault(a => a.Years.EndsWith(monthStr) && a.PositionName == postionName);
+            IEnumerable<Payroll> val = itemGSSN.Where(a => a.Years.EndsWith(monthStr) && a.PositionName == postionName);
+            if (val.Count() > 0)
+            {
+                return val;
+            }
+
+            return null;
         }
     }
 }
