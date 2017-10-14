@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="BusinessContext.cs" />
     <Compile Include="CommonStrInfo.cs" />
+    <Compile Include="IsHaveprogrom.cs" />
     <Compile Include="PayrollSearchCondition.cs" />
     <Compile Include="Payroll.cs" />
     <Compile Include="Position.cs" />

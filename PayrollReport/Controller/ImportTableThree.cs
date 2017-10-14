@@ -68,7 +68,8 @@ namespace Controller
                     {
                         PositionName = itemGBP.Key,
                         PostRankName = item.PostRankLink.PostRankName,
-                        WorkTime = itemGSSN.Count(),
+                        //WorkTime = itemGSSN.Count(),
+                        WorkTime=itemGSSN.Count(a=>a.WhetherOnDuty.Equals(1)),
                         SocialSecurityNumber = item.SocialSecurityNumber,
                         Name = item.Name,
                         HighSubsidies = itemGSSN.Sum(a => a.HighSubsidies),

@@ -148,42 +148,41 @@ namespace Controller.TableOne
                     var item = items.First();
                     var notWage = items.Where(a => a.WageAttribute.Equals("未发")).Select(a => a.Name);
                     var reuserWage = items.Where(a => a.WageAttribute.Equals("补发")).Select(a => a.Name);
-                    ReportPost model = new ReportPost()
-                    {
-                        PositionName = isChange ? item.PostRankName : item.PositionName,
-                        PostRankName = isChange ? item.PositionName : item.PostRankName,
-                        AlreadyCount = items.Count(a => string.IsNullOrEmpty(a.WageAttribute) || a.WageAttribute.Equals("正常")),
-                        NotCount = notWage.Count(),
-                        ReuseCount = reuserWage.Count(),
-                        NotName = string.Join(",", notWage),
-                        ReuseName = string.Join(",", reuserWage),
-                        PostWage = items.Sum(a => a.PostWage),
-                        MonthlyPerformancePay = items.Sum(a => a.MonthlyPerformancePay),
-                        PerformancePay = items.Sum(a => a.PerformancePay),
-                        SeniorityWage = items.Sum(a => a.SeniorityWage),
-                        TechnicalAllowance = items.Sum(a => a.TechnicalAllowance),
-                        ProfessionalAllowances = items.Sum(a => a.ProfessionalAllowances),
-                        QuasiVehicleAllowances = items.Sum(a => a.QuasiVehicleAllowances),
-                        PostAllowance = items.Sum(a => a.PostAllowance),
-                        StaffServiceAllowance = items.Sum(a => a.StaffServiceAllowance),
-                        OvertimePay = items.Sum(a => a.OvertimePay),
-                        DustCharge = items.Sum(a => a.DustCharge),
-                        NightAllowance = items.Sum(a => a.NightAllowance),
-                        HardshipAllowance = items.Sum(a => a.HardshipAllowance),
-                        TollStationService = items.Sum(a => a.TollStationService),
-                        JobReplacement = items.Sum(a => a.JobReplacement),
-                        ReplacementPay = items.Sum(a => a.ReplacementPay),
-                        PluggingIncome = items.Sum(a => a.PluggingIncome),
-                        Debit = items.Sum(a => a.Debit),
-                        SmileStar = items.Sum(a => a.SmileStar),
-                        HighSubsidies = items.Sum(a => a.HighSubsidies),
-                        CommunicationSubsidy = items.Sum(a => a.CommunicationSubsidy),
-                        Reserve1 = items.Sum(a => a.Reserve1),
-                        Reserve2 = items.Sum(a => a.Reserve2),
-                        Other = items.Sum(a => a.Other),
-                        NaturalYearEndPerformance = items.Sum(a => a.NaturalYearEndPerformance),
-                        AnnualYearEndPerformance = items.Sum(a => a.AnnualYearEndPerformance)
-                    };
+                    ReportPost model = new ReportPost();
+                    model.PositionName = isChange ? item.PostRankName : item.PositionName;
+                    model.PostRankName = isChange ? item.PositionName : item.PostRankName;
+                        //AlreadyCount = items.Count(a => string.IsNullOrEmpty(a.WageAttribute) || a.WageAttribute.Equals("正常")),
+                    model.AlreadyCount = items.Count(a => a.WhetherOnDuty.Equals(1));
+                    model.NotCount = notWage.Count();
+                    model.ReuseCount = reuserWage.Count();
+                    model.NotName = string.Join(",", notWage);
+                    model.ReuseName = string.Join(",", reuserWage);
+                    model.PostWage = items.Sum(a => a.PostWage);
+                    model.MonthlyPerformancePay = items.Sum(a => a.MonthlyPerformancePay);
+                    model.PerformancePay = items.Sum(a => a.PerformancePay);
+                    model.SeniorityWage = items.Sum(a => a.SeniorityWage);
+                    model.TechnicalAllowance = items.Sum(a => a.TechnicalAllowance);
+                    model.ProfessionalAllowances = items.Sum(a => a.ProfessionalAllowances);
+                    model.QuasiVehicleAllowances = items.Sum(a => a.QuasiVehicleAllowances);
+                    model.PostAllowance = items.Sum(a => a.PostAllowance);
+                    model.StaffServiceAllowance = items.Sum(a => a.StaffServiceAllowance);
+                    model.OvertimePay = items.Sum(a => a.OvertimePay);
+                    model.DustCharge = items.Sum(a => a.DustCharge);
+                    model.NightAllowance = items.Sum(a => a.NightAllowance);
+                    model.HardshipAllowance = items.Sum(a => a.HardshipAllowance);
+                    model.TollStationService = items.Sum(a => a.TollStationService);
+                    model.JobReplacement = items.Sum(a => a.JobReplacement);
+                    model.ReplacementPay = items.Sum(a => a.ReplacementPay);
+                    model.PluggingIncome = items.Sum(a => a.PluggingIncome);
+                    model.Debit = items.Sum(a => a.Debit);
+                    model.SmileStar = items.Sum(a => a.SmileStar);
+                    model.HighSubsidies = items.Sum(a => a.HighSubsidies);
+                    model.CommunicationSubsidy = items.Sum(a => a.CommunicationSubsidy);
+                    model.Reserve1 = items.Sum(a => a.Reserve1);
+                    model.Reserve2 = items.Sum(a => a.Reserve2);
+                    model.Other = items.Sum(a => a.Other);
+                    model.NaturalYearEndPerformance = items.Sum(a => a.NaturalYearEndPerformance);
+                    model.AnnualYearEndPerformance = items.Sum(a => a.AnnualYearEndPerformance);
                     result.Add(model);
                 }
             }
@@ -215,7 +214,8 @@ namespace Controller.TableOne
                     {
                         PositionName = item.PositionName,
                         PostRankName = item.PostRankName,
-                        AlreadyCount = itemsGBPR.Count(a => string.IsNullOrEmpty(a.WageAttribute) || a.WageAttribute.Equals("正常")),
+                        //AlreadyCount = itemsGBPR.Count(a => string.IsNullOrEmpty(a.WageAttribute) || a.WageAttribute.Equals("正常")),
+                        AlreadyCount = itemsGBPR.Count(a => a.WhetherOnDuty.Equals(1)),
                         NotCount = notWage.Count(),
                         ReuseCount = reuserWage.Count(),
                         NotName = string.Join(",", notWage),

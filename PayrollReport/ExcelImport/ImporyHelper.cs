@@ -1,4 +1,5 @@
-﻿using NPOI.HSSF.UserModel;
+﻿using Model;
+using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using System;
@@ -57,6 +58,7 @@ namespace ExcelImport
             }
             catch (Exception ex)
             {
+                IsHaveprogrom.haveprogrom = true;
                 if (ex.Message.ToString().Contains("进程"))
                 {
                     MessageBox.Show(string.Format("文件{0}被打开，请关闭后重试", errorFileName), "提示");   
@@ -129,57 +131,59 @@ namespace ExcelImport
                     }
                     foreach (XSSFRow xsRow in sheet)
                     {
-                        if (rowNum >= 2)
-                        {
+                        //if (rowNum >= 2)
+                        //{
                             if (!xsRow.GetCell(0).ToString().Contains("公司"))
                             {
-                                break;
+                                continue;
                             }
-                            DataRow dr = dt.NewRow();
-                            for (int i = 0; i < dt.Columns.Count; i++)
+                            else
                             {
-                                NPOI.SS.UserModel.ICell cell = xsRow.GetCell(i);
-                                if (cell == null)
+                                DataRow dr = dt.NewRow();
+                                for (int i = 0; i < dt.Columns.Count; i++)
                                 {
-                                    dr[i] = DBNull.Value;
-                                    continue;
-                                }
-                                switch (cell.CellType)
-                                {
-                                    case CellType.Blank:
+                                    NPOI.SS.UserModel.ICell cell = xsRow.GetCell(i);
+                                    if (cell == null)
+                                    {
                                         dr[i] = DBNull.Value;
-                                        break;
-                                    case CellType.Boolean:
-                                        dr[i] = cell.BooleanCellValue;
-                                        break;
-                                    case CellType.Error:
-                                        dr[i] = cell.ErrorCellValue;
-                                        break;
-                                    case CellType.Formula:
-                                        try
-                                        {
+                                        continue;
+                                    }
+                                    switch (cell.CellType)
+                                    {
+                                        case CellType.Blank:
+                                            dr[i] = DBNull.Value;
+                                            break;
+                                        case CellType.Boolean:
+                                            dr[i] = cell.BooleanCellValue;
+                                            break;
+                                        case CellType.Error:
+                                            dr[i] = cell.ErrorCellValue;
+                                            break;
+                                        case CellType.Formula:
+                                            try
+                                            {
+                                                dr[i] = cell.NumericCellValue;
+                                            }
+                                            catch
+                                            {
+                                                dr[i] = cell.ToString();
+                                            }
+                                            break;
+                                        case CellType.Numeric:
                                             dr[i] = cell.NumericCellValue;
-                                        }
-                                        catch
-                                        {
+                                            break;
+                                        case CellType.String:
+                                            dr[i] = cell.RichStringCellValue;
+                                            break;
+                                        case CellType.Unknown:
+                                            break;
+                                        default:
                                             dr[i] = cell.ToString();
-                                        }
-                                        break;
-                                    case CellType.Numeric:
-                                        dr[i] = cell.NumericCellValue;
-                                        break;
-                                    case CellType.String:
-                                        dr[i] = cell.RichStringCellValue;
-                                        break;
-                                    case CellType.Unknown:
-                                        break;
-                                    default:
-                                        dr[i] = cell.ToString();
-                                        break;
+                                            break;
+                                    }
                                 }
+                                dt.Rows.Add(dr);
                             }
-                            dt.Rows.Add(dr);
-                        }
                         rowNum++;
                     }
                     #endregion
@@ -300,7 +304,6 @@ namespace ExcelImport
                     #endregion
                 }
             }
-
             return dt;
         }
         #endregion

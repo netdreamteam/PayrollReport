@@ -44,7 +44,7 @@ namespace Model
 
             DicPosition.Add("收费站站长", "TollStationMaster");
             DicPosition.Add("收费站副站长", "TollStationDeputyMaster");
-            DicPosition.Add("票证员", "TicketClerk");
+            DicPosition.Add("站务员", "TicketClerk");
             DicPosition.Add("稽查员", "Inspector");
             DicPosition.Add("收费员", "TollCollector");
 
@@ -53,7 +53,7 @@ namespace Model
             DicPosition.Add("工勤人员", "HandyMan");
             DicPosition.Add("分流人员", "TriagePersonnel");
             DicPosition.Add("收费站水电工", "TollStationElectrician");
-            DicPosition.Add("隧道监控员", "TunnelMonitor ");
+            DicPosition.Add("隧道监控员", "TunnelMonitor");
             DicPosition.Add("收费站管理", "TollStationManagement");
             DicPosition.Add("生产一线", "ProductionLine");
             DicPosition.Add("劳务派遣人员", "LaborDispatchPersonnel");
