@@ -131,8 +131,9 @@ namespace ExcelImport
                     }
                     foreach (XSSFRow xsRow in sheet)
                     {
-                        //if (rowNum >= 2)
-                        //{
+                        rowNum++;
+                        if (rowNum >2)
+                        {
                             if (!xsRow.GetCell(0).ToString().Contains("公司"))
                             {
                                 continue;
@@ -184,8 +185,9 @@ namespace ExcelImport
                                 }
                                 dt.Rows.Add(dr);
                             }
-                        rowNum++;
+                        }
                     }
+
                     #endregion
                 }
             }
